@@ -1,0 +1,201 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const title = "Local SEO Sydney | Google Maps & Local Search Rankings | SpruceMySite";
+const description = "Get found on Google Maps and in local search in Sydney, Bondi Junction, and the Eastern Suburbs. Local SEO that puts real businesses in front of the people already searching for them.";
+const canonical = "https://www.sprucemysite.com.au/local-seo-sydney/";
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.sprucemysite.com.au/local-seo-sydney/#service",
+      "name": "Local SEO Sydney",
+      "description": "Google Maps ranking and local search optimisation for Sydney small businesses. Google Business Profile, citation building, and review strategy to dominate the local pack.",
+      "url": "https://www.sprucemysite.com.au/local-seo-sydney/",
+      "provider": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "areaServed": { "@type": "City", "name": "Sydney" },
+      "serviceType": "Local SEO",
+      "audience": { "@type": "Audience", "audienceType": "Local Business Owners" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sprucemysite.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Local SEO Sydney", "item": "https://www.sprucemysite.com.au/local-seo-sydney/" }
+      ]
+    }
+  ]
+});
+---
+
+<ServiceLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Local SEO Sydney</span>
+      </nav>
+      <span class="eyebrow reveal"><span class="dot"></span>Local SEO · Google Maps · Bondi Junction</span>
+      <h1 class="reveal">Show Up When Sydney <em>Searches For You</em></h1>
+      <p class="lead reveal">Your next client is Googling exactly what you do right now. Local SEO puts your business in the map pack, above your competitors, at the exact moment someone in your suburb is ready to book.</p>
+      <div class="svc-hero-cta reveal">
+        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Get A Free Local SEO Audit</a>
+        <a href="/#services" class="btn ghost">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LOCAL SEO GAP -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Gap</span>
+      <h2 class="sec-title reveal">Why Competitors Show Up and You Don't</h2>
+      <p class="sec-sub reveal">Local SEO isn't about magic keywords — it's about signal consistency. Google compares dozens of trust signals across your website, your Google Business Profile, and third-party directories. When these signals conflict or go missing, you drop out of the map pack.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🗺️</div>
+          <h3>Google Business Profile</h3>
+          <p>Most GBP listings are incomplete, unverified, or full of outdated hours. We audit and fully optimise yours: categories, services, photos, Q&amp;A, and weekly posts that signal activity to Google.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📋</div>
+          <h3>Citation Consistency</h3>
+          <p>Your business name, address, and phone number (NAP) must match exactly across every directory — Yellow Pages, True Local, Yelp, Hotfrog, and dozens more. Inconsistencies split your ranking authority.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">⭐</div>
+          <h3>Review Strategy</h3>
+          <p>Reviews are a direct Google ranking signal. We set up automated review requests that go out after every completed job, and we show you how to respond to feedback in a way that builds trust.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🏡</div>
+          <h3>Local Landing Pages</h3>
+          <p>Suburb-specific pages that target "plumber Bondi Junction" or "accountant Eastern Suburbs" — each with unique, helpful content that earns rankings rather than thin keyword stuffing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MAKES LOCAL SEO DIFFERENT -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Our Approach</span>
+      <h2 class="sec-title reveal">Local SEO Is a Long Game — But Not a Slow One</h2>
+      <p class="sec-sub reveal">Some results appear within weeks (map pack corrections, profile optimisation). Building deep local authority takes 3–6 months. We focus on quick wins first and build sustainable rankings behind them.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🔍</div>
+          <h3>Local Keyword Research</h3>
+          <p>We identify what your suburb actually types — not just "dentist Sydney" but "emergency dentist Bondi Junction open Saturday". Hyper-local intent phrases that your competitors aren't targeting yet.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔗</div>
+          <h3>Local Link Building</h3>
+          <p>Links from Sydney directories, local business associations, suburb blogs, and relevant industry sites. Each one votes for your location authority in Google's eyes.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📈</div>
+          <h3>Monthly Reporting</h3>
+          <p>Plain-English ranking reports every month: where you rank, how many people found your listing, and what we're doing next. No agency jargon, no vanity metrics.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🛡️</div>
+          <h3>Penalty-Safe Tactics</h3>
+          <p>No keyword stuffing. No fake reviews. No bulk directory spam. Everything we do aligns with Google's guidelines because rankings built on shortcuts disappear the moment Google updates its algorithm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Process</span>
+      <h2 class="sec-title reveal">Three Phases to Owning Your Local Market</h2>
+      <div class="steps-row">
+        <div class="process-step reveal">
+          <div class="sn">01</div>
+          <h3>Audit &amp; Quick Wins</h3>
+          <p>We audit your GBP, NAP consistency, existing rankings, and competitor gap. You see your current position clearly and we fix the low-hanging fruit immediately — often moving you up in the map pack within 30 days.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">02</div>
+          <h3>Optimise &amp; Build</h3>
+          <p>Full GBP optimisation, citation cleanup, on-page local SEO for your key service pages, and a structured review request process. We build your local authority the right way.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">03</div>
+          <h3>Monitor &amp; Report</h3>
+          <p>Monthly rank tracking, GBP insights, and a brief call to review progress and plan the next actions. You always know where you stand and what's moving the needle.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">FAQs</span>
+      <h2 class="sec-title reveal">Common Questions About Local SEO in Sydney</h2>
+      <div class="faq">
+        <div class="q reveal">
+          <button>How long before I see local SEO results?<span class="plus">+</span></button>
+          <div class="ans"><p>GBP optimisation and citation fixes often produce visible ranking movement within 4–8 weeks. Building the depth of authority needed to hold top-three map pack positions typically takes 3–6 months. We focus on quick wins first so you see progress early, then build the foundation for rankings that stick.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Do I need a physical Sydney address to rank locally?<span class="plus">+</span></button>
+          <div class="ans"><p>To appear in the map pack (Local Pack results), Google requires a verified physical address — a P.O. box alone won't qualify. For service-area businesses that travel to clients (like tradies or cleaners), you can hide your address and specify a service area. We'll advise the right GBP setup for your business model.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Can you guarantee I'll rank #1 on Google Maps?<span class="plus">+</span></button>
+          <div class="ans"><p>No ethical SEO agency can guarantee a specific ranking — anyone who does should be avoided. We can guarantee that every action we take is proven to improve local ranking signals, and we'll show you evidence in your monthly reports. Our clients consistently move into the top three for their target suburbs within 6 months.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Do I need a new website to do local SEO?<span class="plus">+</span></button>
+          <div class="ans"><p>Not necessarily. We can optimise your existing site's on-page local SEO signals — title tags, headings, structured data, and page content. If your site is technically broken or very slow, we'll tell you honestly that a rebuild will get you further faster — but that's a conversation, not a hard sell.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Related Services</span>
+      <h2 class="sec-title reveal">Build on Your Local Presence</h2>
+      <div class="svc-links">
+        <a href="/web-design-sydney/" class="svc-link reveal">
+          Web Design Sydney
+          <small>A fast, local-SEO-ready website</small>
+        </a>
+        <a href="/lead-generation-sydney/" class="svc-link reveal">
+          Lead Generation
+          <small>Convert your new traffic into bookings</small>
+        </a>
+        <a href="/google-analytics-setup-sydney/" class="svc-link reveal">
+          Analytics Setup
+          <small>Track which suburb traffic converts</small>
+        </a>
+        <a href="/website-maintenance-sydney/" class="svc-link reveal">
+          Site Maintenance
+          <small>Keep your site healthy &amp; ranking</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <h2>Let's Find Out Why You're Not in the Map Pack</h2>
+    <p>Book a free local SEO audit. We'll show you exactly where your listing stands, what your competitors are doing, and the three biggest levers to pull first.</p>
+    <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Audit Call</a>
+  </div>
+</ServiceLayout>

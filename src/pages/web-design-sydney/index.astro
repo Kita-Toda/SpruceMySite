@@ -1,0 +1,203 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const title = "Web Design Sydney | Sites That Launch in 7–10 Days | SpruceMySite";
+const description = "Professional web design in Sydney built around conversion, speed, and local SEO. Your new site goes live in 7–10 days — mobile-first, no templates. Based in Bondi Junction.";
+const canonical = "https://www.sprucemysite.com.au/web-design-sydney/";
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.sprucemysite.com.au/web-design-sydney/#service",
+      "name": "Web Design Sydney",
+      "description": "High-converting websites for Sydney small businesses. Mobile-first design, fast load times, and built-in local SEO. Launched in 7–10 days.",
+      "url": "https://www.sprucemysite.com.au/web-design-sydney/",
+      "provider": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "areaServed": { "@type": "City", "name": "Sydney" },
+      "serviceType": "Web Design",
+      "audience": { "@type": "Audience", "audienceType": "Small Business Owners" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sprucemysite.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Web Design Sydney", "item": "https://www.sprucemysite.com.au/web-design-sydney/" }
+      ]
+    }
+  ]
+});
+---
+
+<ServiceLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Web Design Sydney</span>
+      </nav>
+      <span class="eyebrow reveal"><span class="dot"></span>Web Design · Bondi Junction</span>
+      <h1 class="reveal">A Sydney Website That <em>Actually Wins Clients</em></h1>
+      <p class="lead reveal">Most small business websites are slow, forgettable, and buried on page four. We build fast, mobile-first sites that rank locally and turn visitors into booked calls — live in 7–10 days.</p>
+      <div class="svc-hero-cta reveal">
+        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Discovery Call</a>
+        <a href="/#services" class="btn ghost">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY YOUR SITE IS FAILING -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Problem</span>
+      <h2 class="sec-title reveal">Your Site Might Be Costing You Jobs Every Week</h2>
+      <p class="sec-sub reveal">Google rewards sites that load fast, look professional on mobile, and signal local authority. If yours doesn't tick those boxes, you're invisible — while a competitor with a better-looking site takes your calls.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">⚡</div>
+          <h3>Speed That Ranks</h3>
+          <p>We build on Astro — a modern framework that ships zero JavaScript by default. Your pages load in under a second, which Google rewards with higher rankings and lower bounce rates.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📱</div>
+          <h3>Mobile-First Always</h3>
+          <p>Over 70% of local searches happen on phones. Every pixel of your site is designed for the screen it's actually viewed on — no pinching, no horizontal scrolling, no frustrated visitors leaving.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🎯</div>
+          <h3>Built to Convert</h3>
+          <p>A website isn't a brochure — it's a salesperson. We structure every page around a clear path to action: book a call, fill a form, or pick up the phone. Visitors know exactly what to do next.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📍</div>
+          <h3>Local SEO Baked In</h3>
+          <p>From structured data to geo-targeted copy, your site signals to Google that you serve Sydney, Bondi Junction, and the Eastern Suburbs. You rank for the searches that actually book clients.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INCLUDED -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">What You Get</span>
+      <h2 class="sec-title reveal">Everything You Need, Nothing You Don't</h2>
+      <p class="sec-sub reveal">No bloated page-builders. No three-month timelines. No mystery invoices for "plugin licences". One clear scope, one clear price, launched in 7–10 days.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🎨</div>
+          <h3>Custom Design</h3>
+          <p>Your brand colours, your personality, your story — not a Squarespace template with your logo swapped in. We design from scratch around what makes your business worth choosing.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔒</div>
+          <h3>Hosting & Security</h3>
+          <p>SSL certificate, global CDN, automatic HTTPS, and security headers — all included. Your site is live, fast, and secure from day one without you touching a single setting.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📊</div>
+          <h3>Analytics & Tracking</h3>
+          <p>Google Analytics 4 and Google Tag Manager installed and configured. You'll see exactly how many people visit, where they came from, and whether they contacted you.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">✏️</div>
+          <h3>Content Copywriting</h3>
+          <p>Stuck on what to write? We help you craft headline, intro, and service-page copy that speaks to your ideal client — not industry jargon that sends them straight to your competitor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Process</span>
+      <h2 class="sec-title reveal">Live in 7–10 Days. Here's How.</h2>
+      <p class="sec-sub reveal">We've stripped out everything that makes web projects drag on for months. Three focused phases, one decision-maker, one deadline.</p>
+      <div class="steps-row">
+        <div class="process-step reveal">
+          <div class="sn">01</div>
+          <h3>Discovery Call (Day 1)</h3>
+          <p>A 45-minute conversation to understand your business, your clients, and what success looks like. We leave with a clear brief — no questionnaires, no back-and-forth email chains.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">02</div>
+          <h3>Design & Build (Days 2–8)</h3>
+          <p>You get a first preview on day three. Feedback round, final refinements, then we wire up your domain, analytics, and any forms or booking tools you use.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">03</div>
+          <h3>Launch & Handover (Days 9–10)</h3>
+          <p>Your site goes live. We walk you through how to make simple edits yourself, and you get a 30-day support period for any tweaks or questions that come up post-launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">FAQs</span>
+      <h2 class="sec-title reveal">Common Questions About Web Design in Sydney</h2>
+      <div class="faq">
+        <div class="q reveal">
+          <button>Do I really get a custom site in 7–10 days?<span class="plus">+</span></button>
+          <div class="ans"><p>Yes — for most small business sites of 4–6 pages. The timeline works because we keep the process focused: one discovery call, one feedback round, one launch. If your project is larger (e-commerce, 20+ pages, complex integrations) we'll give you a realistic timeline upfront — typically 3–4 weeks.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Will I be able to update the site myself?<span class="plus">+</span></button>
+          <div class="ans"><p>Yes. Depending on how complex the site is, we either build a simple CMS interface for text and image updates, or we show you how to send us a quick message and we handle it within 24 hours as part of your maintenance plan. You'll never feel locked out.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Do you build on WordPress?<span class="plus">+</span></button>
+          <div class="ans"><p>For most projects we use Astro — it's significantly faster and more secure than WordPress with no plugin-update overhead. That said, if you need a content-heavy site with daily publishing, we'll discuss the right tool for your goals on the discovery call.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>What do you need from me to get started?<span class="plus">+</span></button>
+          <div class="ans"><p>Mainly your time for one conversation and whatever brand assets you have (logo, photos, colour preferences). If you don't have professional photos yet, we'll talk through options — including using well-chosen stock imagery while you arrange a shoot.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Related Services</span>
+      <h2 class="sec-title reveal">Make Your New Site Work Harder</h2>
+      <p class="sec-sub reveal">A great website is the foundation. These services turn it into a full lead-generation engine.</p>
+      <div class="svc-links">
+        <a href="/local-seo-sydney/" class="svc-link reveal">
+          Local SEO Sydney
+          <small>Rank in Google Maps &amp; local search</small>
+        </a>
+        <a href="/lead-generation-sydney/" class="svc-link reveal">
+          Lead Generation
+          <small>Automated 60-second response system</small>
+        </a>
+        <a href="/google-analytics-setup-sydney/" class="svc-link reveal">
+          Analytics Setup
+          <small>Know exactly what's working</small>
+        </a>
+        <a href="/website-maintenance-sydney/" class="svc-link reveal">
+          Site Maintenance
+          <small>"Don't Panic" support &amp; uptime</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <h2>Ready to Stop Losing Clients to a Slow Website?</h2>
+    <p>Book a free 20-minute discovery call. No sales pitch — just a straight conversation about what your site needs and whether we're the right fit.</p>
+    <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Call</a>
+  </div>
+</ServiceLayout>

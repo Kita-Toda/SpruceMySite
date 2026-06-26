@@ -1,0 +1,22 @@
+# Astro build output
+dist/
+.astro/
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Legacy / backup files (replaced by Astro project)
+index.html
+index.html.bak
+backup html pages/
+.vercel

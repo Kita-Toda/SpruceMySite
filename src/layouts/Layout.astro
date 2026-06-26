@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+}
+
+const {
+  title = "Web Design & Local SEO Sydney | SpruceMySite",
+  description = "Smart websites + mindset tools for busy Sydney businesses. Less burnout, more leads — built while you grab a flat white.",
+  canonical = "https://www.sprucemysite.com.au/",
+} = Astro.props;
+
+const schemaGraph = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://www.sprucemysite.com.au/#business",
+      "name": "SpruceMySite",
+      "description": "Web design and digital marketing agency helping busy Sydney small businesses build smart websites and automated lead systems. Based in Bondi Junction.",
+      "url": "https://www.sprucemysite.com.au/",
+      "telephone": "+61433092621",
+      "email": "info@sprucemysite.com.au",
+      "image": "https://www.sprucemysite.com.au/og-cover.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Bondi Junction",
+        "addressLocality": "Bondi Junction",
+        "addressRegion": "NSW",
+        "postalCode": "2022",
+        "addressCountry": "AU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -33.8918,
+        "longitude": 151.2512
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+          "opens": "09:00",
+          "closes": "20:00"
+        }
+      ],
+      "areaServed": [
+        { "@type": "City", "name": "Sydney" },
+        { "@type": "Suburb", "name": "Bondi Junction" },
+        { "@type": "Suburb", "name": "Eastern Suburbs" }
+      ],
+      "priceRange": "$$",
+      "currenciesAccepted": "AUD",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design & Digital Marketing Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Design Sydney" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Local SEO Bondi Junction" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lead Generation Automation" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Review Management" } }
+        ]
+      },
+      "founder": { "@id": "https://www.sprucemysite.com.au/#christian" },
+      "sameAs": [
+        "https://www.facebook.com/sprucemysite",
+        "https://www.instagram.com/sprucemysite",
+        "https://www.linkedin.com/in/christian-alba/"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.sprucemysite.com.au/#christian",
+      "name": "Christian Alba",
+      "jobTitle": "Web Designer & Digital Marketing Specialist",
+      "description": "Sydney-based web designer and digital marketing specialist with 10+ years of experience helping small businesses build smart websites and automated lead systems.",
+      "url": "https://www.sprucemysite.com.au/",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bondi Junction",
+        "addressRegion": "NSW",
+        "addressCountry": "AU"
+      },
+      "worksFor": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "knowsAbout": ["web design", "local SEO", "lead generation", "Google Analytics", "digital marketing", "WordPress", "Astro"],
+      "sameAs": [
+        "https://www.linkedin.com/in/christian-alba/",
+        "https://www.facebook.com/sprucemysite",
+        "https://www.instagram.com/sprucemysite"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.sprucemysite.com.au/#website",
+      "url": "https://www.sprucemysite.com.au/",
+      "name": "SpruceMySite",
+      "description": "Web design and digital marketing for busy Sydney small businesses.",
+      "inLanguage": "en-AU",
+      "publisher": { "@id": "https://www.sprucemysite.com.au/#business" }
+    }
+  ]
+});
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#FBF4E7" />
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="/logo-leaf.jpg" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/logo-leaf.jpg" />
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content="https://www.sprucemysite.com.au/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="SpruceMySite" />
+    <meta property="og:locale" content="en_AU" />
+    <!-- Twitter / X Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.sprucemysite.com.au/og-cover.jpg" />
+    <!-- Structured Data: ProfessionalService + Person + WebSite -->
+    <script type="application/ld+json" set:html={schemaGraph} />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <!-- animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Three.js + GSAP (must load before inline scripts) -->
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" integrity="sha512-dLxUelApnYxpLt6K2iomGngnHO83iUvZytA3YjDUCjT0HDOHKXnVYdf3hU4JjM8uEhxf9nD1/ey98U3t2vZ0qQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <slot name="head" />
+  </head>
+  <body>
+    <!-- custom cursor -->
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor-dot" aria-hidden="true"></div>
+    <slot />
+  </body>
+</html>

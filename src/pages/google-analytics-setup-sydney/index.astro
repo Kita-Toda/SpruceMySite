@@ -1,0 +1,201 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const title = "Google Analytics Setup Sydney | GA4 & GTM Configuration | SpruceMySite";
+const description = "Professional GA4 and Google Tag Manager setup for Sydney businesses. Know which marketing channels drive real revenue — not just traffic. Plain-English reporting included.";
+const canonical = "https://www.sprucemysite.com.au/google-analytics-setup-sydney/";
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.sprucemysite.com.au/google-analytics-setup-sydney/#service",
+      "name": "Google Analytics Setup Sydney",
+      "description": "GA4 and Google Tag Manager setup and configuration for Sydney small businesses. Conversion tracking, campaign attribution, and plain-English monthly reporting.",
+      "url": "https://www.sprucemysite.com.au/google-analytics-setup-sydney/",
+      "provider": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "areaServed": { "@type": "City", "name": "Sydney" },
+      "serviceType": "Analytics & Tracking Setup",
+      "audience": { "@type": "Audience", "audienceType": "Small Business Owners" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sprucemysite.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Google Analytics Setup Sydney", "item": "https://www.sprucemysite.com.au/google-analytics-setup-sydney/" }
+      ]
+    }
+  ]
+});
+---
+
+<ServiceLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Google Analytics Setup Sydney</span>
+      </nav>
+      <span class="eyebrow reveal"><span class="dot"></span>GA4 · GTM · Analytics · Sydney</span>
+      <h1 class="reveal">Finally Know <em>What's Actually Working</em> in Your Marketing</h1>
+      <p class="lead reveal">Most Sydney businesses are flying blind — spending on ads, social, and SEO without knowing which one drives actual bookings. GA4 and Google Tag Manager, set up properly, answer that question once and for all.</p>
+      <div class="svc-hero-cta reveal">
+        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Analytics Review</a>
+        <a href="/#services" class="btn ghost">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE PROBLEM WITH "SOME ANALYTICS" -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Gap</span>
+      <h2 class="sec-title reveal">Having Analytics Installed Isn't the Same as Having Useful Data</h2>
+      <p class="sec-sub reveal">Most businesses have some version of Google Analytics on their site — but it's tracking page views without conversion events, missing campaign parameters, or still running the old Universal Analytics that stopped collecting data in July 2023. Messy data leads to bad marketing decisions.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🎯</div>
+          <h3>Conversion Tracking</h3>
+          <p>Page views tell you almost nothing. We configure GA4 to track what matters: form submissions, phone link clicks, booking completions, and file downloads — the actions that mean a visitor became a lead.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📍</div>
+          <h3>Campaign Attribution</h3>
+          <p>UTM parameters on every ad, email, and social post so GA4 knows exactly which campaign sent which lead. You stop guessing and start allocating budget to what's proven to convert.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔥</div>
+          <h3>Heatmaps &amp; Session Recording</h3>
+          <p>We also configure Microsoft Clarity — a free tool that shows you exactly where visitors scroll, click, and drop off. Seeing user behaviour makes it obvious where to improve your pages.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📋</div>
+          <h3>Plain-English Reports</h3>
+          <p>Monthly report that skips the jargon: how many leads came in, which channel sent them, and what page they converted on. Designed for a business owner, not a data analyst.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE STACK -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Measurement Stack</span>
+      <h2 class="sec-title reveal">Tools We Configure — and Why Each One Earns Its Place</h2>
+      <p class="sec-sub reveal">We don't install tools for the sake of complexity. Every tool in the stack has a specific job, and we configure only what will actually surface useful information for your business.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">📊</div>
+          <h3>Google Analytics 4</h3>
+          <p>The foundation. GA4 tracks sessions, traffic sources, user behaviour, and conversion events across your website. We set up the property, configure data streams, and define your key events correctly from day one.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🏷️</div>
+          <h3>Google Tag Manager</h3>
+          <p>GTM is the management layer — it lets us deploy and update tracking tags without touching your website code every time. It also keeps your site faster by managing scripts more efficiently than hard-coding them.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">👁️</div>
+          <h3>Microsoft Clarity</h3>
+          <p>Free heatmap and session recording tool that GA4 doesn't offer. Clarity shows you click maps, scroll depth, and individual session replays. Invaluable for understanding why visitors aren't converting.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔎</div>
+          <h3>Google Search Console</h3>
+          <p>The official view of how Google sees your site — which keywords you rank for, which pages get impressions and clicks, and any crawl errors. We connect it to GA4 so you see search performance and on-site behaviour in one place.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Process</span>
+      <h2 class="sec-title reveal">From Zero Visibility to Full Clarity in Three Steps</h2>
+      <div class="steps-row">
+        <div class="process-step reveal">
+          <div class="sn">01</div>
+          <h3>Audit What You Have</h3>
+          <p>We review your existing GA4 setup (if any), check for duplicate tracking, verify that your previous Universal Analytics data has been migrated, and identify what's missing. You get a clear picture of your current data quality before we touch anything.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">02</div>
+          <h3>Configure &amp; Test</h3>
+          <p>GA4 property setup, GTM container, conversion events, campaign tracking, Clarity install, and GSC connection — all verified in GA4's DebugView before going live. We don't push to production until every event fires correctly in testing.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">03</div>
+          <h3>Report &amp; Advise</h3>
+          <p>30 days after setup, you get your first proper monthly report: traffic by channel, conversions by source, and one or two specific observations about what the data suggests you should do next. Ongoing monthly reporting is available as an add-on.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">FAQs</span>
+      <h2 class="sec-title reveal">Common Questions About Analytics Setup</h2>
+      <div class="faq">
+        <div class="q reveal">
+          <button>I already have Google Analytics — do I need a new setup?<span class="plus">+</span></button>
+          <div class="ans"><p>Maybe. Universal Analytics (UA) stopped collecting data in July 2023, so if you haven't migrated to GA4, your data collection has a gap of over a year. Even if you have GA4 installed, the default configuration rarely tracks conversions correctly — most installs just count page views, which tells you very little about what's actually generating leads.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Do I need to give you access to my accounts?<span class="plus">+</span></button>
+          <div class="ans"><p>Yes — we need admin access to your Google Analytics, Google Tag Manager, and Google Search Console properties to configure them properly. We'll walk you through how to grant access safely, and you retain full ownership of every account. We work as editors, not account owners.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Will this slow down my website?<span class="plus">+</span></button>
+          <div class="ans"><p>Implemented correctly via GTM with async loading and sensible tag firing rules, the performance impact is minimal. We also check Core Web Vitals before and after the setup to confirm there's no meaningful regression in your page speed scores.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Can you set up Google Ads conversion tracking too?<span class="plus">+</span></button>
+          <div class="ans"><p>Yes. If you're running Google Ads, importing GA4 conversion events into your Ads account is one of the most impactful things you can do for campaign performance. We can set this up as part of the initial configuration or as a separate session once your analytics foundation is solid.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Related Services</span>
+      <h2 class="sec-title reveal">Put Your Data to Work</h2>
+      <div class="svc-links">
+        <a href="/web-design-sydney/" class="svc-link reveal">
+          Web Design Sydney
+          <small>A site designed to convert visitors</small>
+        </a>
+        <a href="/local-seo-sydney/" class="svc-link reveal">
+          Local SEO Sydney
+          <small>Drive the organic traffic worth tracking</small>
+        </a>
+        <a href="/lead-generation-sydney/" class="svc-link reveal">
+          Lead Generation
+          <small>Automate what the data says is working</small>
+        </a>
+        <a href="/website-maintenance-sydney/" class="svc-link reveal">
+          Site Maintenance
+          <small>Keep the site that's sending you leads healthy</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <h2>Stop Guessing. Start Knowing.</h2>
+    <p>Book a free analytics review. We'll check your current setup, show you what's broken, and tell you exactly what a proper configuration would let you see.</p>
+    <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Review</a>
+  </div>
+</ServiceLayout>

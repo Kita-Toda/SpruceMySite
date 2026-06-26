@@ -1,0 +1,202 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const title = "Website Maintenance Sydney | 'Don't Panic' Support | SpruceMySite";
+const description = "Website maintenance and support for Sydney businesses. Security updates, backups, uptime monitoring, and a direct line when something goes wrong. Based in Bondi Junction.";
+const canonical = "https://www.sprucemysite.com.au/website-maintenance-sydney/";
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.sprucemysite.com.au/website-maintenance-sydney/#service",
+      "name": "Website Maintenance Sydney",
+      "description": "Ongoing website maintenance for Sydney small businesses. Security updates, daily backups, uptime monitoring, and direct support when something goes wrong.",
+      "url": "https://www.sprucemysite.com.au/website-maintenance-sydney/",
+      "provider": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "areaServed": { "@type": "City", "name": "Sydney" },
+      "serviceType": "Website Maintenance",
+      "audience": { "@type": "Audience", "audienceType": "Small Business Owners" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sprucemysite.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Website Maintenance Sydney", "item": "https://www.sprucemysite.com.au/website-maintenance-sydney/" }
+      ]
+    }
+  ]
+});
+---
+
+<ServiceLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Website Maintenance Sydney</span>
+      </nav>
+      <span class="eyebrow reveal"><span class="dot"></span>Website Maintenance · Sydney</span>
+      <h1 class="reveal">Your Site, <em>Looked After</em> Like It's Our Own</h1>
+      <p class="lead reveal">Websites break, expire, and get hacked — usually at the worst possible time. We handle security, backups, updates, and uptime so you can stop worrying and get back to running your business.</p>
+      <div class="svc-hero-cta reveal">
+        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Talk About Your Site</a>
+        <a href="/#services" class="btn ghost">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE HIDDEN RISK -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Risk</span>
+      <h2 class="sec-title reveal">What Happens When No One's Watching Your Site</h2>
+      <p class="sec-sub reveal">A website left unattended is a liability. Plugins go out of date and create security gaps. Domains expire and redirect to a parking page. Hosting bills fail and sites go offline. None of these are dramatic — until they happen during your busiest week.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🛡️</div>
+          <h3>Security Updates</h3>
+          <p>WordPress and similar CMS platforms release security patches constantly. We apply them promptly, test for conflicts, and monitor for vulnerability reports — so hackers don't find an open door.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">💾</div>
+          <h3>Daily Backups</h3>
+          <p>Automated daily backups stored off-site. If anything goes wrong — a bad update, an accidental deletion, a hosting outage — we restore your site in minutes rather than rebuilding from scratch.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📡</div>
+          <h3>Uptime Monitoring</h3>
+          <p>We check your site every five minutes. If it goes offline, we know about it before you do — and before any clients try to visit a dead page. Average downtime caught and resolved within 15 minutes.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔑</div>
+          <h3>Domain &amp; SSL Management</h3>
+          <p>Domain expiry and SSL certificate lapses are embarrassingly common. We track renewal dates and manage them on your behalf — you'll never accidentally lose your domain name or get a "Not Secure" browser warning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE DON'T PANIC CHANNEL -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Your Support Line</span>
+      <h2 class="sec-title reveal">The "Don't Panic" Channel — Direct Access When You Need It</h2>
+      <p class="sec-sub reveal">No support ticket queue. No offshore call centre. No waiting three business days for a reply. Maintenance clients get a direct line for anything that can't wait.</p>
+      <div class="steps-row">
+        <div class="process-step reveal">
+          <div class="sn">01</div>
+          <h3>Proactive Monthly Check</h3>
+          <p>Every month, we run a site health audit: plugin updates, performance check, broken link scan, and form tests. You get a brief summary of what was done and what we found.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">02</div>
+          <h3>Content Updates Included</h3>
+          <p>Need to swap a photo, update your pricing, or add a new service? Send a message and it's done within one business day. Small content changes don't require a new project scope.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">03</div>
+          <h3>Emergency Response</h3>
+          <p>Something broke, the site is down, or you got hacked — we respond within two hours during business hours (Mon–Sat 9am–8pm AEST) and triage emergencies outside those hours via our support channel.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO NEEDS THIS -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Who This Is For</span>
+      <h2 class="sec-title reveal">Maintenance Is for Business Owners, Not Tech People</h2>
+      <p class="sec-sub reveal">You don't need to understand how websites work to know you need someone reliable looking after yours. Our maintenance clients are busy business owners who want one less thing to worry about.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🏗️</div>
+          <h3>Post-Launch Owners</h3>
+          <p>You just launched a new site and don't want to watch it degrade over time. Maintenance begins the day we hand it over, keeping your fresh investment performing at its best.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">😰</div>
+          <h3>Inherited Site Owners</h3>
+          <p>Someone built your site years ago and you've been too nervous to touch it. We audit what you have, fix what's broken, and set up proper monitoring so you know what's going on.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📈</div>
+          <h3>Growth-Stage Businesses</h3>
+          <p>Your website is starting to drive real revenue and the stakes of it going down have gone up. Proactive maintenance protects what's working while you focus on scaling.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🤝</div>
+          <h3>Switching Providers</h3>
+          <p>Your previous web person disappeared or is unresponsive. We can take over an existing site, document what's there, and become your new "go-to" for anything website-related.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">FAQs</span>
+      <h2 class="sec-title reveal">Common Questions About Website Maintenance</h2>
+      <div class="faq">
+        <div class="q reveal">
+          <button>Do you maintain sites you didn't build?<span class="plus">+</span></button>
+          <div class="ans"><p>Yes — we take on third-party sites regularly. The process starts with a site audit to understand what's there: the CMS, plugins, hosting environment, and any technical debt. We'll tell you upfront if there's anything that needs fixing before we can offer reliable ongoing maintenance.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>What if my site needs a major update or rebuild?<span class="plus">+</span></button>
+          <div class="ans"><p>Some sites reach a point where patching no longer makes sense. If we find significant structural issues during our audit, we'll give you an honest assessment of whether maintenance or a rebuild better serves your goals. We won't push a rebuild if maintenance is the right answer for your situation.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>How do I send you update requests?<span class="plus">+</span></button>
+          <div class="ans"><p>Maintenance clients get a dedicated messaging channel — you send a voice note, a screenshot, or a text description of what you need. No ticket forms. No formal briefs. We confirm receipt and give you an ETA, then send you a screenshot of the change before closing the request.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Is there a minimum contract term?<span class="plus">+</span></button>
+          <div class="ans"><p>We ask for a 3-month initial commitment — enough time to properly audit, stabilise, and monitor your site. After that, maintenance runs month-to-month with 30 days' notice to cancel. No lock-ins, no exit fees.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Related Services</span>
+      <h2 class="sec-title reveal">A Well-Maintained Site Is a Better Foundation For Everything Else</h2>
+      <div class="svc-links">
+        <a href="/web-design-sydney/" class="svc-link reveal">
+          Web Design Sydney
+          <small>Start with a site built to last</small>
+        </a>
+        <a href="/local-seo-sydney/" class="svc-link reveal">
+          Local SEO Sydney
+          <small>Keep your local rankings healthy</small>
+        </a>
+        <a href="/lead-generation-sydney/" class="svc-link reveal">
+          Lead Generation
+          <small>Make sure your forms never go silent</small>
+        </a>
+        <a href="/google-analytics-setup-sydney/" class="svc-link reveal">
+          Analytics Setup
+          <small>Know if your site is actually working</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <h2>Let Someone Else Worry About Your Website</h2>
+    <p>Book a free call and we'll audit your site, tell you what needs attention, and talk through what a maintenance plan would look like for your business.</p>
+    <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Call</a>
+  </div>
+</ServiceLayout>

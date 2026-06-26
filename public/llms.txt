@@ -1,0 +1,39 @@
+# SpruceMySite
+
+> Web design and digital marketing agency helping busy Sydney small businesses get their digital house in order. Based in Bondi Junction, NSW, Australia.
+
+SpruceMySite is run by Christian Alba, a web designer and digital marketing specialist with 10+ years of experience. We build high-converting websites with automated lead systems that launch in 7–10 days — while you grab a flat white.
+
+## Services
+
+- **Web Design Sydney**: High-converting websites built in 7–10 days for Sydney small businesses. Mobile-first, fast, and ready to generate leads from day one.
+- **Local SEO & Google Maps**: Dominate local search in Bondi Junction and the Eastern Suburbs. Google Maps ranking, local citations, and review-driven authority.
+- **Lead Generation Automation**: 60-second text/email responses to every new enquiry. Smart follow-up sequences and calendar booking — your site works while you sleep.
+- **Review Management**: Automated 5-star Google review collection after every job. Handle negative feedback professionally. Social proof on autopilot.
+- **Domain, Hosting & Support**: 24/7 "Don't Panic" support channel, automatic renewals, and monthly site health checks. You hold the keys, we hold the tools.
+- **Analytics & Tracking**: GA4, Google Tag Manager, Microsoft Clarity, and Hotjar setup and plain-English reporting.
+
+## About Christian Alba
+
+Christian Alba is a Sydney-based web designer and digital marketing specialist. He founded SpruceMySite to help busy small business owners stop losing sleep over their digital presence. He is based in Bondi Junction, NSW.
+
+- 10+ years building websites for Sydney businesses
+- Specialises in local service businesses, tradies, and consultants
+- Known for launching revenue-ready sites in 7–10 days
+
+## Contact
+
+- Email: info@sprucemysite.com.au
+- Phone: +61 433 092 621
+- Address: Bondi Junction NSW 2022, Australia
+- Service Area: Sydney, Eastern Suburbs, Inner West, Northern Beaches
+- Hours: Monday–Saturday, 9:00am–8:00pm AEST
+
+## Key Pages
+
+- [Homepage](https://www.sprucemysite.com.au/): Full service overview, process, testimonials, and booking
+- [Web Design Sydney](https://www.sprucemysite.com.au/web-design-sydney/): Custom websites that launch in 7–10 days
+- [Local SEO Sydney](https://www.sprucemysite.com.au/local-seo-sydney/): Google Maps and local search ranking for Sydney businesses
+- [Lead Generation Sydney](https://www.sprucemysite.com.au/lead-generation-sydney/): Automated 60-second enquiry response and follow-up systems
+- [Website Maintenance Sydney](https://www.sprucemysite.com.au/website-maintenance-sydney/): Security, backups, uptime, and "Don't Panic" support
+- [Google Analytics Setup Sydney](https://www.sprucemysite.com.au/google-analytics-setup-sydney/): GA4, GTM, and Clarity configuration with plain-English reporting

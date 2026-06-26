@@ -1,0 +1,202 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+
+const title = "Lead Generation Sydney | 60-Second Automated Follow-Up | SpruceMySite";
+const description = "Automated lead follow-up for Sydney businesses. Respond to every enquiry by text and email within 60 seconds — day or night. Never lose a lead to slow response times again.";
+const canonical = "https://www.sprucemysite.com.au/lead-generation-sydney/";
+
+const schema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://www.sprucemysite.com.au/lead-generation-sydney/#service",
+      "name": "Lead Generation Sydney",
+      "description": "Automated lead follow-up systems for Sydney small businesses. 60-second text and email response to every new enquiry, with smart follow-up sequences and calendar booking.",
+      "url": "https://www.sprucemysite.com.au/lead-generation-sydney/",
+      "provider": { "@id": "https://www.sprucemysite.com.au/#business" },
+      "areaServed": { "@type": "City", "name": "Sydney" },
+      "serviceType": "Lead Generation Automation",
+      "audience": { "@type": "Audience", "audienceType": "Small Business Owners" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.sprucemysite.com.au/" },
+        { "@type": "ListItem", "position": 2, "name": "Lead Generation Sydney", "item": "https://www.sprucemysite.com.au/lead-generation-sydney/" }
+      ]
+    }
+  ]
+});
+---
+
+<ServiceLayout title={title} description={description} canonical={canonical}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={schema} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="svc-hero">
+    <div class="wrap">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>›</span>
+        <span>Lead Generation Sydney</span>
+      </nav>
+      <span class="eyebrow reveal"><span class="dot"></span>Lead Automation · Sydney</span>
+      <h1 class="reveal">Respond to Every Lead in <em>Under 60 Seconds</em></h1>
+      <p class="lead reveal">The first business to respond wins the job. Studies show that responding within five minutes makes you 100× more likely to connect. Our system does it automatically — while you're on a job, in traffic, or asleep.</p>
+      <div class="svc-hero-cta reveal">
+        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">See How It Works</a>
+        <a href="/#services" class="btn ghost">See All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LEAKY BUCKET PROBLEM -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The Real Problem</span>
+      <h2 class="sec-title reveal">You're Paying for Leads You're Not Winning</h2>
+      <p class="sec-sub reveal">Most Sydney business owners spend money on ads, SEO, or a new website — and then lose those leads to slow response times. The lead goes to whoever called back first. That doesn't have to be a competitor.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">⚡</div>
+          <h3>Instant First Response</h3>
+          <p>The moment a form is submitted or a missed call comes in, your lead receives a personalised text and email. It says who you are, confirms you got their message, and sets up the next step — all automatically.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🔄</div>
+          <h3>Smart Follow-Up Sequences</h3>
+          <p>If they don't respond, the system follows up at day 1, day 3, and day 7 — with messages that feel human, not like a marketing blast. The conversation stays warm until they're ready to book or they opt out.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📅</div>
+          <h3>Calendar Booking Built In</h3>
+          <p>Instead of going back and forth over times, leads receive a booking link directly in the first message. They pick a time that suits them, it lands in your calendar, and you get a notification. Zero phone tag.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">📊</div>
+          <h3>Pipeline Visibility</h3>
+          <p>A simple dashboard shows every open conversation, every lead's status, and where they are in your follow-up sequence. You see exactly which lead needs a human touch and which one is already booked.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT ACTUALLY WORKS -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">The System</span>
+      <h2 class="sec-title reveal">How the 60-Second Response System Works</h2>
+      <p class="sec-sub reveal">We set this up using battle-tested automation tools — nothing custom-coded, so it's reliable and you can manage it yourself once it's running.</p>
+      <div class="steps-row">
+        <div class="process-step reveal">
+          <div class="sn">01</div>
+          <h3>Lead Comes In</h3>
+          <p>Someone fills in your website contact form, submits a Facebook Lead Ad, or calls and doesn't get an answer. All three trigger the same instant response sequence.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">02</div>
+          <h3>Automated Text + Email</h3>
+          <p>Within 60 seconds, your lead gets a personalised text from your business number and an email from your address. Both include your calendar booking link and a brief intro to who you are.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="sn">03</div>
+          <h3>You Step In When Ready</h3>
+          <p>Warm leads who reply get routed to a simple inbox where you continue the conversation. You're alerted the moment someone engages — you only need to step in when there's a real conversation to have.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Who This Is For</span>
+      <h2 class="sec-title reveal">Built for Sydney Businesses That Can't Afford to Miss a Call</h2>
+      <p class="sec-sub reveal">Lead automation makes the biggest difference for service businesses where the job value is high and speed-to-response determines whether you win the work.</p>
+      <div class="feature-grid">
+        <div class="feature-card reveal">
+          <div class="fi">🔧</div>
+          <h3>Tradies &amp; Contractors</h3>
+          <p>Plumbers, electricians, builders, and landscapers — you're on the tools all day. A missed call at 10am that gets returned at 4pm is a job that went to someone else.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">💼</div>
+          <h3>Consultants &amp; Advisors</h3>
+          <p>Financial advisors, mortgage brokers, accountants, and coaches — your leads compare three or four providers at once. Responding instantly signals professionalism before the first call.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🏥</div>
+          <h3>Allied Health &amp; Wellness</h3>
+          <p>Physios, dentists, psychologists, and personal trainers — appointment-based businesses live and die by booking conversion rates. Automate the booking path and fill your calendar on autopilot.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="fi">🏡</div>
+          <h3>Real Estate &amp; Property</h3>
+          <p>Property managers, buyer's agents, and conveyancers — high-value, time-sensitive decisions. Being first to respond builds trust before the first conversation even happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">FAQs</span>
+      <h2 class="sec-title reveal">Common Questions About Lead Automation</h2>
+      <div class="faq">
+        <div class="q reveal">
+          <button>What tools does the system use?<span class="plus">+</span></button>
+          <div class="ans"><p>We typically use a combination of Go High Level (for CRM and automation), Calendly or Google Calendar (for booking), and your existing email provider. The exact stack depends on what you're already using — we don't rip out tools you like, we build around them.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Can I personalise the messages to match my brand?<span class="plus">+</span></button>
+          <div class="ans"><p>Absolutely. Every message is written in your voice, with your business name and contact details. We work with you to draft templates that sound like you — not like a generic autoresponder. Most clients request two or three rounds of tweaks before we go live.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>What if I'm already using a CRM?<span class="plus">+</span></button>
+          <div class="ans"><p>We'll review your existing setup first. In many cases we can build automations inside the CRM you already have (HubSpot, Pipedrive, Active Campaign). If your current tool can't do what's needed, we'll tell you honestly what a migration would involve versus what we can achieve within your existing system.</p></div>
+        </div>
+        <div class="q reveal">
+          <button>Will leads know the first response is automated?<span class="plus">+</span></button>
+          <div class="ans"><p>The messages are written to feel human — they're personalised with the lead's name and enquiry details, sent from your number and email address, and don't mention automation. That said, we always ensure full compliance with Australian anti-spam law and include unsubscribe options in email sequences.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED SERVICES -->
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">Related Services</span>
+      <h2 class="sec-title reveal">Get More Leads to Automate</h2>
+      <div class="svc-links">
+        <a href="/web-design-sydney/" class="svc-link reveal">
+          Web Design Sydney
+          <small>A site that generates the leads in the first place</small>
+        </a>
+        <a href="/local-seo-sydney/" class="svc-link reveal">
+          Local SEO Sydney
+          <small>Organic leads from Google Maps</small>
+        </a>
+        <a href="/google-analytics-setup-sydney/" class="svc-link reveal">
+          Analytics Setup
+          <small>Track which lead source drives bookings</small>
+        </a>
+        <a href="/website-maintenance-sydney/" class="svc-link reveal">
+          Site Maintenance
+          <small>Keep your lead forms working 24/7</small>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <div class="cta-band reveal">
+    <h2>Stop Watching Leads Go Cold</h2>
+    <p>Book a free call and we'll show you exactly where you're losing leads right now and what a 60-second response system would look like for your business.</p>
+    <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener">Book A Free Call</a>
+  </div>
+</ServiceLayout>
