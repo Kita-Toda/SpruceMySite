@@ -1,7 +1,7 @@
 # SEO Action Plan — SpruceMySite
-**Based on:** FULL-AUDIT-REPORT.md (v2 — post-deployment)  
-**Date:** 2026-06-30  
-**Current Score:** 69/100 (Good)  
+**Based on:** FULL-AUDIT-REPORT.md (v3 — current)  
+**Last Updated:** 2026-07-01  
+**Current Score:** 72/100 (Good)  
 **Target:** 80+ by Month 2
 
 ---
@@ -10,10 +10,10 @@
 
 | # | Task | File | Effort | Score Impact |
 |---|------|------|--------|-------------|
-| 1.1 | Move Three.js CDN `<script>` from Layout.astro into index.astro only — service pages don't use it | `src/layouts/Layout.astro`, `src/pages/index.astro` | 15 min | Performance +5 |
-| 1.2 | Replace all "Learn More →" anchor text with descriptive labels e.g. "Web Design Sydney →", "Local SEO Sydney →" | `src/components/Services.astro` | 20 min | On-Page +3 |
+| 1.1 | ✅ Move Three.js CDN `<script>` from Layout.astro into index.astro only — service pages don't use it | `src/layouts/Layout.astro`, `src/pages/index.astro` | 15 min | Performance +5 |
+| 1.2 | ✅ Replace all "Learn More →" anchor text with descriptive labels e.g. "Web Design Sydney →", "Local SEO Sydney →" | `src/components/Services.astro` | 20 min | On-Page +3 |
 | 1.3 | Add `alt=""` to Facebook Pixel noscript `<img>` | `src/layouts/Layout.astro` or `src/pages/index.astro` | 5 min | Images +2 |
-| 1.4 | Add 3 missing AI crawlers to robots.txt: Applebot-Extended (allow), anthropic-ai (allow), FacebookBot (allow) | `public/robots.txt` | 10 min | AI Search +3 |
+| 1.4 | ✅ Add 3 missing AI crawlers to robots.txt: Applebot-Extended (allow), anthropic-ai (allow), FacebookBot (allow) | `public/robots.txt` | 10 min | AI Search +3 |
 | 1.5 | Re-run PageSpeed after Three.js move: `python3 /Users/christian/.claude/skills/seo/scripts/pagespeed.py https://www.sprucemysite.com.au --strategy mobile` | — | 2 min | Baseline CWV data |
 
 ---
@@ -46,10 +46,20 @@
 
 | Milestone | Expected Score |
 |-----------|---------------|
-| Current (post-deploy) | 69/100 |
-| After Priority 1 (code fixes, this week) | ~72/100 |
-| After Priority 2 (content, this month) | ~78/100 |
+| v1 pre-deployment | 22/100 |
+| v2 post Phase 1–3 deployment | 69/100 |
+| ✅ v3 current (Three.js moved, anchors fixed, robots.txt) | 72/100 |
+| After remaining Priority 1 + Priority 2 | ~78/100 |
 | After Priority 3 (blog + case studies) | ~85/100 |
+
+---
+
+## Project Artifacts
+
+| File | Description | Added |
+|------|-------------|-------|
+| `dashboard.html` | Single-file marketing dashboard — GHL, Blotato, Creatify, GA4, Meta Ads + Pixel. Built with Alpine.js, D3.js, GSAP. Open in browser (mock data mode). Add API keys via ⚙️ settings modal. | 2026-07-01 |
+| `FULL-AUDIT-REPORT.md` | Full SEO audit history (v1–v3) with findings and scoring | 2026-06-30 |
 
 ---
 
