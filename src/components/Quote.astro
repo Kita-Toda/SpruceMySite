@@ -1,0 +1,151 @@
+---
+---
+<section class="cta" id="quote">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div>
+        <h2>Get A Custom Quote</h2>
+        <p class="lead">Tell us about your project and we'll come back with a scope, timeline, and transparent pricing. No surprises, no fluff.</p>
+        <ul class="cta-list">
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+            No-Obligation Quote
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+            Clear Timelines & Deliverables
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>
+            Transparent, Honest Pricing
+          </li>
+        </ul>
+        <div class="cta-actions">
+          <a href="tel:0433092621" class="btn btn-primary">Call 0433 092 621</a>
+          <a href="mailto:info@sprucemysite.com.au" class="btn btn-ghost" style="color:#fff;border-color:rgba(255,255,255,.3)">info@sprucemysite.com.au</a>
+        </div>
+      </div>
+      <div>
+        <form class="form" id="quoteForm" novalidate>
+          <input type="hidden" name="_subject" value="Website Quote Request — SpruceMySite" />
+
+          <label for="cta-name">Your Name</label>
+          <input id="cta-name" name="name" type="text" placeholder="John Doe" autocomplete="name" />
+          <div class="form-error" id="name-error" role="alert">Please enter your name.</div>
+
+          <label for="cta-email">Your Email</label>
+          <input id="cta-email" name="email" type="email" placeholder="john@example.com" autocomplete="email" />
+          <div class="form-error" id="email-error" role="alert">Please enter a valid email address.</div>
+
+          <label for="cta-org">Business Name</label>
+          <input id="cta-org" name="business" type="text" placeholder="E.g. Acme Corp" />
+
+          <label for="cta-ind">What Do You Need?</label>
+          <select id="cta-ind" name="service">
+            <option>Website Design</option>
+            <option>Website Redesign</option>
+            <option>Web Development</option>
+            <option>Website Maintenance</option>
+            <option>SEO & Marketing</option>
+            <option>E-Commerce Store</option>
+            <option>Other</option>
+          </select>
+
+          <label for="cta-budget">Budget Range</label>
+          <select id="cta-budget" name="budget">
+            <option>Under $5,000</option>
+            <option>$5,000 - $15,000</option>
+            <option>$15,000 - $30,000</option>
+            <option>$30,000+</option>
+            <option>Not sure yet</option>
+          </select>
+
+          <label for="cta-msg">Tell Us About Your Project</label>
+          <textarea id="cta-msg" name="message" rows="2" placeholder="What's your vision? Any existing site to improve? Timeline?"></textarea>
+
+          <button class="btn btn-primary" id="sendBtn" type="submit">Get My Quote →</button>
+          <p class="fineprint">We'll respond within 24 hours.</p>
+          <div class="form-error form-submit-error" id="submit-error" role="alert">
+            Something went wrong — please call us or try again.
+          </div>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <svg class="form-success-icon" viewBox="0 0 48 48" aria-hidden="true">
+            <circle cx="24" cy="24" r="22" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M14 24l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <h3>Quote request sent.</h3>
+          <p>We'll review your project and get back to you within 24 hours. Check your inbox.</p>
+          <a href="tel:0433092621" class="btn btn-primary" style="margin-top:8px">Or call us: 0433 092 621</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // TODO: Replace 'xnjeabrk' with your actual Formspree Form ID
+  // Get your Form ID from: https://formspree.io
+  // Forms will be sent to: info@sprucemysite.com.au
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xnjeabrk';
+
+  const form = document.getElementById('quoteForm') as HTMLFormElement | null;
+  const sendBtn = document.getElementById('sendBtn') as HTMLButtonElement | null;
+  const nameErr = document.getElementById('name-error');
+  const emailErr = document.getElementById('email-error');
+  const submitErr = document.getElementById('submit-error');
+  const formSuccess = document.getElementById('formSuccess');
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const nameEl = document.getElementById('cta-name') as HTMLInputElement;
+    const emailEl = document.getElementById('cta-email') as HTMLInputElement;
+
+    if (nameErr) nameErr.style.display = 'none';
+    if (emailErr) emailErr.style.display = 'none';
+    if (submitErr) submitErr.style.display = 'none';
+
+    let valid = true;
+
+    if (!nameEl?.value.trim()) {
+      if (nameErr) nameErr.style.display = 'block';
+      nameEl?.focus();
+      valid = false;
+    }
+
+    const emailVal = emailEl?.value.trim() ?? '';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal)) {
+      if (emailErr) emailErr.style.display = 'block';
+      if (valid) emailEl?.focus();
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    if (sendBtn) {
+      sendBtn.disabled = true;
+      sendBtn.textContent = 'Sending…';
+    }
+
+    try {
+      const res = await fetch(FORMSPREE_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form!),
+      });
+
+      if (res.ok) {
+        form!.hidden = true;
+        if (formSuccess) formSuccess.hidden = false;
+      } else {
+        if (submitErr) submitErr.style.display = 'block';
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Get My Quote →'; }
+      }
+    } catch {
+      if (submitErr) submitErr.style.display = 'block';
+      if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Get My Quote →'; }
+    }
+  });
+</script>

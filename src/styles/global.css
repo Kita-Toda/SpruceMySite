@@ -311,3 +311,213 @@ footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padd
 @media (hover:hover){
   .me-portrait:hover{ transform:scale(1.1); z-index:40; background-size:104%; box-shadow:0 44px 90px -26px rgba(58,38,20,.62); }
 }
+
+/* ---------- Quote Section (CTA) ---------- */
+.cta {
+  padding: 60px 0;
+}
+
+.cta-box {
+  background: var(--ink);
+  border-radius: 22px;
+  padding: 32px 24px;
+  color: #eaf1f0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(217, 88, 47, 0.3), transparent 70%);
+  pointer-events: none;
+}
+
+.cta-box h2 {
+  font-size: clamp(24px, 4vw, 40px);
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+}
+
+.cta-box .lead {
+  color: #a8bcbb;
+  font-size: 15.5px;
+  margin: 12px 0 20px;
+  position: relative;
+}
+
+.cta-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  position: relative;
+}
+
+.cta-list li {
+  display: flex;
+  gap: 10px;
+  font-size: 14px;
+  color: #cfe0de;
+  font-weight: 500;
+}
+
+.cta-list svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--honey);
+  stroke-width: 2.4;
+  fill: none;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.cta-actions {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+
+.cta-actions .btn {
+  justify-content: center;
+  width: 100%;
+}
+
+/* Form */
+.form {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 24px 20px;
+  position: relative;
+}
+
+.form label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #9fb4b3;
+  margin: 0 0 6px;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 10px;
+  padding: 12px 13px;
+  color: #fff;
+  font-family: inherit;
+  font-size: 15px;
+  margin-bottom: 14px;
+  min-height: 48px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+  color: #7f9694;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  outline: none;
+  border-color: var(--honey);
+}
+
+.form select option {
+  color: #13222c;
+  background: #fff;
+}
+
+.form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.form .btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.form .fineprint {
+  font-size: 12px;
+  color: #7f9694;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.form-error {
+  color: #ff9a9a;
+  font-size: 13px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: none;
+}
+
+.form-submit-error {
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.form-success {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 44px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.form-success-icon {
+  width: 52px;
+  height: 52px;
+  color: var(--honey);
+  margin-bottom: 6px;
+}
+
+.form-success h3 {
+  font-size: 1.1875rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.form-success p {
+  color: #a8bcbb;
+  font-size: 15px;
+  line-height: 1.55;
+  max-width: 30ch;
+}
+
+@media (min-width: 920px) {
+  .cta {
+    padding: 84px 0;
+  }
+  .cta-box {
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+    padding: 48px;
+  }
+}
