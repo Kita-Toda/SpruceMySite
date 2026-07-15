@@ -1,0 +1,183 @@
+{
+  "name": "SpruceMySite Sales Plan → GHL Sync",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "When clicking 'Test workflow'",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [50, 300]
+    },
+    {
+      "parameters": {
+        "documentId": "1-0QZkRoySR01vaoyFEzX8BRxmKFf8As1vCMUa-d3HcA",
+        "sheetName": "Sheet1",
+        "options": {}
+      },
+      "name": "Google Sheets - Read Data",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "expression": "={{ $json.Score_100 >= 80 ? 'Hot' : $json.Score_100 >= 70 ? 'Warm' : 'Cold' }}",
+        "name": "Set Temperature Based on Score"
+      },
+      "name": "Function - Classify Leads",
+      "type": "n8n-nodes-base.functionItem",
+      "typeVersion": 1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "create",
+        "locationId": "EH8qZ5zqR9JWu63h3gCT",
+        "firstName": "={{ $json.Business }}",
+        "email": "={{ 'inquiry@' + $json.Business.toLowerCase().replace(/[^a-z0-9]/g, '') + '.com' }}",
+        "phone": "={{ $json.Phone }}",
+        "address": "={{ $json.Location }}",
+        "city": "Sydney",
+        "customFields": {
+          "businessType": "={{ $json.Type }}",
+          "score": "={{ $json.Score_100 }}",
+          "source": "Cold Outreach",
+          "rationale": "={{ $json.Why_This_Score }}"
+        }
+      },
+      "name": "GHL - Create/Update Contact",
+      "type": "n8n-nodes-base.http",
+      "typeVersion": 4,
+      "position": [650, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "ghl_api_key",
+          "name": "GHL API Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "opportunity",
+        "operation": "create",
+        "locationId": "EH8qZ5zqR9JWu63h3gCT",
+        "contactId": "={{ $json.id }}",
+        "pipelineId": "sprucemysite-sales-pipeline",
+        "pipelineStageId": "={{ $json.temperature === 'Hot' ? 'stage_discovery' : 'stage_warm_lead' }}",
+        "title": "={{ $json.Business }} - Website & Booking Automation"}}",
+        "monetaryValue": "5000",
+        "customFields": {
+          "temperature": "={{ $json.temperature }}",
+          "googleRating": "={{ $json.Rating }}",
+          "reviewCount": "={{ $json.Reviews }}"
+        }
+      },
+      "name": "GHL - Create Opportunity",
+      "type": "n8n-nodes-base.http",
+      "typeVersion": 4,
+      "position": [850, 300],
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "ghl_api_key",
+          "name": "GHL API Credentials"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": "1-0QZkRoySR01vaoyFEzX8BRxmKFf8As1vCMUa-d3HcA",
+        "sheetName": "Sync Log",
+        "columns": {
+          "business": "Business",
+          "timestamp": "Timestamp",
+          "ghlContactId": "GHL Contact ID",
+          "status": "Sync Status",
+          "notes": "Notes"
+        }
+      },
+      "name": "Google Sheets - Log Sync Results",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "content": "✅ Sync complete!\n\nContacts synced: {{ $json.itemsProcessed }}\nOpportunities created: {{ $json.opportunitiesCreated }}\nErrors: {{ $json.errorCount }}\n\nCheck GHL for updated contacts & pipeline."
+      },
+      "name": "Send Summary Notification",
+      "type": "n8n-nodes-base.sendSlackMessage",
+      "typeVersion": 1,
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "When clicking 'Test workflow'": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Read Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Read Data": {
+      "main": [
+        [
+          {
+            "node": "Function - Classify Leads",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Function - Classify Leads": {
+      "main": [
+        [
+          {
+            "node": "GHL - Create/Update Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GHL - Create/Update Contact": {
+      "main": [
+        [
+          {
+            "node": "GHL - Create Opportunity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GHL - Create Opportunity": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets - Log Sync Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Sheets - Log Sync Results": {
+      "main": [
+        [
+          {
+            "node": "Send Summary Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}
