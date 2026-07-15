@@ -16,47 +16,72 @@ Reality: You don't need perfect SEO yet. You need ONE customer. Everything else 
 
 ## Phase 1: Customer Acquisition (Days 1–30)
 
-**Goal:** One signed contract by Day 30.
+**Goal:** One signed contract by Day 14 (resequenced: warm leads first).  
+**Strategy:** Prioritize 5 warm leads for Customer #1. Run cold outreach in parallel for Customer #2/3.
 
-### Week 1: Launch & Outreach List (Days 1–7)
+### Warm Lead Rank (Priority Sequencing)
 
-| Task | Deadline | Owner | Success Metric |
-|------|----------|-------|-----------------|
-| 1.1 | Create a list of 50 potential customers (small businesses in Sydney, local service providers, solopreneurs) | Day 3 | 50 names, emails, or LinkedIn profiles |
-| 1.2 | Draft personalized cold email template (3 versions: service providers, local businesses, startups) | Day 4 | 3 email templates, max 100 words each, clear CTA |
-| 1.3 | Set up simple tracking spreadsheet: Name, Email, Date Contacted, Response, Follow-up Date | Day 5 | Live spreadsheet with columns for tracking |
-| 1.4 | Start face-to-face outreach (coffee meetings, local business groups, networking events, old contacts) | Day 5–7 | 5 warm conversations completed |
-| **Weekly Check-in** | **Day 7** | **You** | **How many conversations did you have? Which felt closest to saying yes?** |
+| Rank | Name | Business | Relationship Strength | Next Action | Timeline |
+|------|------|----------|----------------------|-------------|----------|
+| 1 | Bhavani | Chippo Hotel | Hot (just met, meeting scheduled) | Gentle follow-up + meeting | Day 2–3 |
+| 2 | Chris Mizzi | Startup (Sales) | Old friend + referral | Direct meeting request | Day 3–5 |
+| 3 | Ash Fleming | Pet store owner | Close friend | Casual conversation (timing) | Day 5–7 |
+| 4 | Domenic Sgro | Dom's Plant Repairs | Interested (cost reduction) | In-person warming | Day 7–10 |
+| 5 | Alan Suy | Restaurant (Saigon Summer) | Warm but trade-first | Conditional: after helping | Day 8+ |
 
-### Week 2: First Outreach Push (Days 8–14)
+---
 
-| Task | Deadline | Owner | Success Metric |
-|------|----------|-------|-----------------|
-| 2.1 | Send personalized cold emails to first 25 prospects | Day 10 | 25 emails sent, tracked in spreadsheet |
-| 2.2 | Follow up with Day 5–7 warm conversations (send portfolio link, free 15-min audit offer) | Day 11 | 5 follow-up emails sent |
-| 2.3 | Continue face-to-face outreach (aim for 2–3 new conversations) | Day 8–14 | 2–3 new coffee meetings scheduled |
-| 2.4 | Prepare "first-customer offer" (what will you do for $X to make the deal irresistible?) | Day 12 | Written offer with scope, price, timeline |
-| **Weekly Check-in** | **Day 14** | **You** | **How many responses? How many are interested? Which is closest to converting?** |
-
-### Week 3: Warm the Leads (Days 15–21)
+### Week 1: Warm Lead Blitz (Days 1–7)
 
 | Task | Deadline | Owner | Success Metric |
 |------|----------|-------|-----------------|
-| 3.1 | Send second batch of cold emails (next 25 prospects) | Day 17 | 25 emails sent |
-| 3.2 | Follow up with Week 2 responders (send portfolio case study link, or schedule call) | Day 18 | 100% of warm prospects followed up with |
-| 3.3 | Schedule discovery calls with top 3 interested prospects | Day 19 | 3 calls on calendar, each 30 min |
-| 3.4 | Continue face-to-face outreach (minimum 3 conversations) | Day 15–21 | 3 new meetings |
-| **Weekly Check-in** | **Day 21** | **You** | **Where are we in the funnel? Which prospect is most likely to sign?** |
+| 1.1 | **COMPLETED** | Rank & map 5 warm leads (already done) | Day 2 | Warm lead priority list created |
+| 1.2 | Bhavani follow-up: gentle persistence (meeting confirmation) | Day 3 | Meeting confirmed or rescheduled |
+| 1.3 | Chris Mizzi: direct ask for meeting + explore referral opportunity | Day 4 | Meeting scheduled with Chris (and/or his boss contact) |
+| 1.4 | Ash Fleming: casual catch-up conversation (gauge timing) | Day 5 | Call completed, temperature check done |
+| 1.5 | Domenic Sgro: schedule in-person coffee/meeting to warm relationship | Day 6 | Meeting scheduled or completed |
+| 1.6 | Prepare discovery framework: pain points, budget, timeline, decision process for all calls | Day 6 | Discovery template ready (reuse from cold playbook) |
+| 1.7 | Create cold prospect tracking spreadsheet (60 names from scoring audit) + start parallel cold email templates | Day 7 | Spreadsheet live + 2 email templates drafted |
+| **Weekly Check-in** | **Day 7** | **You** | **Which warm lead is hottest? Do we have 3+ meetings locked for Week 2?** |
 
-### Week 4: Close Customer #1 (Days 22–30)
+---
+
+### Week 2: Close One Warm Lead (Days 8–14)
 
 | Task | Deadline | Owner | Success Metric |
 |------|----------|-------|-----------------|
-| 4.1 | Discovery calls with top 3 prospects (take notes: pain point, budget, timeline, decision process) | Day 23–24 | 3 calls completed, notes on all three |
-| 4.2 | Send written proposal to the hottest prospect | Day 26 | Proposal sent, includes scope + price + timeline |
-| 4.3 | Follow up on proposal (phone call or in-person meeting to answer questions) | Day 27–28 | Confirm they received it, answer objections |
-| 4.4 | **Sign first contract** | Day 30 | Contract signed, deposit received |
-| **Weekly Check-in** | **Day 28** | **You** | **Are we on track for closing by Day 30? What's blocking it?** |
+| 2.1 | Execute discovery calls/meetings with top 3 warm leads (Bhavani, Chris, Ash OR Domenic) | Day 9–11 | 3 discovery calls completed, notes captured |
+| 2.2 | Synthesize findings: identify hottest lead + pain point + budget + timeline | Day 11 | Clear ranking of "Customer #1 candidate" |
+| 2.3 | Draft "first-customer offer" tailored to hottest warm lead (custom scope + price + timeline) | Day 12 | Written offer, ready to present |
+| 2.4 | Present proposal to hottest warm lead (phone call or in-person) | Day 13 | Proposal delivered, objections noted |
+| 2.5 | Close: answer final objections, negotiate if needed, **sign contract** | Day 14 | **Contract signed, deposit received** |
+| 2.6 | **PARALLEL:** Send first 25 cold emails from scoring list (if time permits) | Day 10–14 | 25 cold emails sent, tracked |
+| **Weekly Check-in** | **Day 14** | **You** | **Customer #1 signed? If yes, when do we kick off? If no, which warm lead is still in play?** |
+
+---
+
+### Week 3: Delivery Kickoff + Customer #2 Hunt (Days 15–21)
+
+| Task | Deadline | Owner | Success Metric |
+|------|----------|-------|-----------------|
+| 3.1 | Kickoff call with Customer #1 (timeline, deliverables, communication cadence) | Day 15 | Kickoff completed, project charter documented |
+| 3.2 | Start delivery work on Customer #1 project (Week 1 of work) | Day 15–21 | Deliverables on track, customer happy |
+| 3.3 | Follow up with warm leads NOT converted yet (Domenic, Alan) + explore referrals from Customer #1 | Day 15–18 | At least 2 conversations + 1 referral intro |
+| 3.4 | Send second batch of 25 cold emails (continue parallel track) | Day 17 | 25 emails sent, tracked |
+| 3.5 | Follow up with early cold email responses (from Week 2 batch) | Day 19 | 100% of responses followed up with |
+| **Weekly Check-in** | **Day 21** | **You** | **Customer #1 delivery on track? How many Customer #2 prospects in discovery pipeline?** |
+
+---
+
+### Week 4: Deliver + Close Customer #2 (Days 22–30)
+
+| Task | Deadline | Owner | Success Metric |
+|------|----------|-------|-----------------|
+| 4.1 | Complete Week 2 of Customer #1 delivery | Day 27 | Deliverables match spec, customer feedback positive |
+| 4.2 | Discovery calls with top 2–3 Customer #2 prospects (warm leads + warm cold responses) | Day 22–25 | 2–3 calls completed, notes captured |
+| 4.3 | Send proposal to hottest Customer #2 prospect | Day 27 | Proposal sent |
+| 4.4 | Close Customer #2 call/meeting: answer objections, finalize terms | Day 29 | **Contract signed** (or very close) |
+| **Weekly Check-in** | **Day 30** | **You** | **Customer #1 delivery progressing? Customer #2 signed or in final negotiation? Proof of concept achieved?** |
 
 ---
 
