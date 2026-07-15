@@ -77,8 +77,8 @@
         "operation": "create",
         "locationId": "EH8qZ5zqR9JWu63h3gCT",
         "contactId": "={{ $json.body.contact.id }}",
-        "pipelineId": "YOUR_GHL_PIPELINE_ID_HERE",
-        "pipelineStageId": "={{ $json.temperature === 'Hot' ? 'YOUR_GHL_HOT_STAGE_ID' : 'YOUR_GHL_WARM_STAGE_ID' }}",
+        "pipelineId": "9mBElImd9qaTFsWk0ifv",
+        "pipelineStageId": "={{ $json.temperature === 'Hot' ? 'sc780f094-1f23-4bd0-92d3-87e858a7b86c' : '5246cdc7-9e9c-4e83-933a-556fc821da72' }}",
         "title": "={{ $json.Business }} - Website & Booking Automation",
         "monetaryValue": "5000",
         "customFields": {
