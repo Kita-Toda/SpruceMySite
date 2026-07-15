@@ -1,5 +1,16 @@
 {
   "name": "SpruceMySite Sales Plan → GHL Sync",
+  "meta": {
+    "version": "1.0.1",
+    "lastUpdated": "2026-07-15",
+    "status": "REVIEWED - Ready for import after configuration",
+    "requiredSetup": [
+      "BEFORE IMPORTING: Create 'Sync Log' tab in your Google Sheet",
+      "BEFORE TESTING: Get your actual GHL Pipeline ID (see note below)",
+      "BEFORE TESTING: Get your actual GHL Pipeline Stage IDs",
+      "VERIFY: Google Sheet column names match mapping (Score /100, not Score_100)"
+    ]
+  },
   "nodes": [
     {
       "parameters": {},
@@ -17,18 +28,20 @@
       "name": "Google Sheets - Read Data",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
-      "position": [250, 300]
+      "position": [250, 300],
+      "notes": "VERIFY: sheetName should match your actual sheet name (e.g., 'Prospects', 'Sheet1', etc.)"
     },
     {
       "parameters": {
         "mode": "runOnceForAllItems",
-        "expression": "={{ $json.Score_100 >= 80 ? 'Hot' : $json.Score_100 >= 70 ? 'Warm' : 'Cold' }}",
+        "expression": "={{ $json['Score /100'] >= 80 ? 'Hot' : $json['Score /100'] >= 70 ? 'Warm' : 'Cold' }}",
         "name": "Set Temperature Based on Score"
       },
       "name": "Function - Classify Leads",
       "type": "n8n-nodes-base.functionItem",
       "typeVersion": 1,
-      "position": [450, 300]
+      "position": [450, 300],
+      "notes": "FIXED: Changed Score_100 to 'Score /100' (matches actual Google Sheet column name)"
     },
     {
       "parameters": {
@@ -42,9 +55,9 @@
         "city": "Sydney",
         "customFields": {
           "businessType": "={{ $json.Type }}",
-          "score": "={{ $json.Score_100 }}",
+          "score": "={{ $json['Score /100'] }}",
           "source": "Cold Outreach",
-          "rationale": "={{ $json.Why_This_Score }}"
+          "rationale": "={{ $json['Why This Score'] }}"
         }
       },
       "name": "GHL - Create/Update Contact",
@@ -63,10 +76,10 @@
         "resource": "opportunity",
         "operation": "create",
         "locationId": "EH8qZ5zqR9JWu63h3gCT",
-        "contactId": "={{ $json.id }}",
-        "pipelineId": "sprucemysite-sales-pipeline",
-        "pipelineStageId": "={{ $json.temperature === 'Hot' ? 'stage_discovery' : 'stage_warm_lead' }}",
-        "title": "={{ $json.Business }} - Website & Booking Automation"}}",
+        "contactId": "={{ $json.body.contact.id }}",
+        "pipelineId": "YOUR_GHL_PIPELINE_ID_HERE",
+        "pipelineStageId": "={{ $json.temperature === 'Hot' ? 'YOUR_GHL_HOT_STAGE_ID' : 'YOUR_GHL_WARM_STAGE_ID' }}",
+        "title": "={{ $json.Business }} - Website & Booking Automation",
         "monetaryValue": "5000",
         "customFields": {
           "temperature": "={{ $json.temperature }}",
@@ -83,7 +96,8 @@
           "id": "ghl_api_key",
           "name": "GHL API Credentials"
         }
-      }
+      },
+      "notes": "REQUIRES CONFIGURATION: Replace YOUR_GHL_PIPELINE_ID_HERE and stage IDs with actual GHL values"
     },
     {
       "parameters": {
@@ -100,7 +114,8 @@
       "name": "Google Sheets - Log Sync Results",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4,
-      "position": [1050, 300]
+      "position": [1050, 300],
+      "notes": "VERIFY: 'Sync Log' sheet must exist in your Google Sheet before running workflow"
     },
     {
       "parameters": {
