@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Base.astro
+layout: ../layouts/Layout.astro
 title: Privacy Policy | SpruceMySite
 description: Privacy Policy for SpruceMySite - Learn how we protect and handle your personal information.
 ---

@@ -1,5 +1,5 @@
 ---
-layout: ../layouts/Base.astro
+layout: ../layouts/Layout.astro
 title: Terms and Conditions | SpruceMySite
 description: Terms and Conditions for SpruceMySite services - Understand our service agreements and policies.
 ---
