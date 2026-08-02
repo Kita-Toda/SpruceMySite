@@ -19,5 +19,6 @@ Thumbs.db
 index.html
 index.html.bak
 backup html pages/
+*.zip
 .vercel
 .gstack/
