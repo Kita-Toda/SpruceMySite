@@ -62,10 +62,12 @@ Reality: You don't need perfect SEO yet. You need ONE customer. Everything else 
 
 ### Week 3: Delivery Kickoff + Customer #2 Hunt (Days 15–21)
 
+**DELIVERY CAP:** Customer #1 project MUST complete by Day 27. This is non-negotiable. Scope the offer Day 12-13 such that Week 1 of work (Days 15-21) covers ~50% of the total project. This ensures on-time delivery and protects Customer #2 hunting.
+
 | Task | Deadline | Owner | Success Metric |
 |------|----------|-------|-----------------|
-| 3.1 | Kickoff call with Customer #1 (timeline, deliverables, communication cadence) | Day 15 | Kickoff completed, project charter documented |
-| 3.2 | Start delivery work on Customer #1 project (Week 1 of work) | Day 15–21 | Deliverables on track, customer happy |
+| 3.1 | Kickoff call with Customer #1 (timeline, deliverables, communication cadence — **FIRM 2-WEEK DEADLINE** in writing) | Day 15 | Kickoff completed, project charter signed with delivery date: Day 27 |
+| 3.2 | Start delivery work on Customer #1 project (Week 1 of work — ~50% of total scope) | Day 15–21 | Deliverables on track, customer happy, NO scope creep |
 | 3.3 | Follow up with warm leads NOT converted yet (Domenic, Alan) + explore referrals from Customer #1 | Day 15–18 | At least 2 conversations + 1 referral intro |
 | 3.4 | Send second batch of 25 cold emails (continue parallel track) | Day 17 | 25 emails sent, tracked |
 | 3.5 | Follow up with early cold email responses (from Week 2 batch) | Day 19 | 100% of responses followed up with |
