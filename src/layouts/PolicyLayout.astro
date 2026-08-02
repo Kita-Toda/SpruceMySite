@@ -1,0 +1,103 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+// Markdown pages pass their frontmatter under `frontmatter`; allow direct
+// props too so this layout also works from .astro pages.
+const { frontmatter } = Astro.props;
+const title = frontmatter?.title ?? Astro.props.title;
+const description = frontmatter?.description ?? Astro.props.description;
+const canonical = new URL(Astro.url.pathname, 'https://www.sprucemysite.com.au').href;
+---
+
+<Layout title={title} description={description} canonical={canonical}>
+  <Nav />
+  <main class="policy">
+    <div class="wrap">
+      <slot />
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+// Footer year
+const yr = document.getElementById('yr');
+if (yr) yr.textContent = String(new Date().getFullYear());
+
+// Header scroll shadow
+const header = document.getElementById('header') as HTMLElement | null;
+addEventListener('scroll', () => header?.classList.toggle('scrolled', scrollY > 40));
+
+// Burger menu
+const burger = document.getElementById('burger') as HTMLButtonElement | null;
+const menu = document.getElementById('menu') as HTMLElement | null;
+burger?.addEventListener('click', () => {
+  const open = menu?.classList.toggle('open');
+  burger.setAttribute('aria-expanded', String(open));
+});
+menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menu.classList.remove('open');
+  burger?.setAttribute('aria-expanded', 'false');
+}));
+</script>
+
+<style is:global>
+/* ---------- policy / legal pages ---------- */
+.policy {
+  padding: 140px 0 40px;
+}
+.policy .wrap {
+  max-width: 780px;
+}
+.policy h1 {
+  font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+  line-height: 1.1;
+  margin-bottom: 28px;
+}
+.policy h2 {
+  font-size: 1.5rem;
+  margin: 44px 0 12px;
+}
+.policy h3 {
+  font-size: 1.15rem;
+  margin: 30px 0 10px;
+}
+.policy p,
+.policy li {
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+.policy p { margin-bottom: 16px; }
+.policy ul,
+.policy ol {
+  margin: 0 0 18px 1.2em;
+}
+.policy li { margin-bottom: 8px; }
+.policy a {
+  color: var(--terracotta);
+  font-weight: 600;
+}
+.policy hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 40px 0;
+}
+.policy table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+}
+.policy th,
+.policy td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+
+@media (max-width: 720px) {
+  .policy { padding: 110px 0 30px; }
+}
+</style>
