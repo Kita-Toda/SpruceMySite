@@ -6,7 +6,7 @@ description: Terms and Conditions for SpruceMySite services - Understand our ser
 
 # Terms and Conditions
 
-**SpruceMySite**
+**SpruceMySite**\
 Last Updated: 2026
 
 ## 1. Introduction
@@ -103,7 +103,7 @@ We may update these Terms from time to time. Continued use of our services after
 
 For questions about these Terms, contact us at:
 
-**SpruceMySite**
-Sydney, NSW, Australia
-Email: info@sprucemysite.com.au
+**SpruceMySite**\
+Sydney, NSW, Australia\
+Email: info@sprucemysite.com.au\
 Website: www.sprucemysite.com.au

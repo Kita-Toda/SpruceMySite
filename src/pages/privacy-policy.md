@@ -6,7 +6,7 @@ description: Privacy Policy for SpruceMySite - Learn how we protect and handle y
 
 # Privacy Policy
 
-**SpruceMySite**
+**SpruceMySite**\
 Last Updated: 2026
 
 SpruceMySite ("we," "us," "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, store, and disclose personal information in accordance with the Australian Privacy Principles (APPs) under the *Privacy Act 1988* (Cth).
@@ -96,9 +96,9 @@ We may update this Privacy Policy periodically. Changes will be posted on this p
 
 If you have questions, concerns, or complaints about this Privacy Policy or how we handle your personal information, contact:
 
-**SpruceMySite**
-Sydney, NSW, Australia
-Email: info@sprucemysite.com.au
+**SpruceMySite**\
+Sydney, NSW, Australia\
+Email: info@sprucemysite.com.au\
 Website: www.sprucemysite.com.au
 
 If you are not satisfied with our response, you may lodge a complaint with the Office of the Australian Information Commissioner (OAIC) at [www.oaic.gov.au](https://www.oaic.gov.au).
