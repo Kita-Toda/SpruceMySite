@@ -1,4 +1,7 @@
 # SEO Action Plan — sprucemysite.com.au
+
+> ⚠️ **SUPERSEDED by [MARKETING-PLAN.md](MARKETING-PLAN.md)** (2026-08-12). Most of the 20-item matrix is verified complete, including "The One Big Bet" (service landing pages). Remaining items carried forward.
+
 **Date:** 2026-06-29
 **Current Score:** 22/100 (Critical)
 **Target Score:** 65+ (Good) within 90 days

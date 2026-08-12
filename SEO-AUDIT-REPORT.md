@@ -1,5 +1,7 @@
 # Full SEO Audit Report: SpruceMySite Homepage
 
+> 🛑 **SUPERSEDED AND UNRELIABLE — see [MARKETING-PLAN.md](MARKETING-PLAN.md) §1.** The 62/100 score was computed against the dead pre-Astro `index.html` at the repo root, not `https://www.sprucemysite.com.au`. The "Social Sharing 0/100" and "Schema 15/100" findings are false — both were live at audit time.
+
 **URL:** https://www.sprucemysite.com.au  
 **Date:** July 16, 2026  
 **Analysis Type:** Single-Page Deep Dive  

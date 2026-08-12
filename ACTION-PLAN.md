@@ -1,4 +1,7 @@
 # SEO Action Plan — SpruceMySite
+
+> ⚠️ **SUPERSEDED by [MARKETING-PLAN.md](MARKETING-PLAN.md)** (2026-08-12). Open items carried forward; the rest verified complete against the live site.
+
 **Based on:** FULL-AUDIT-REPORT.md (v3 — current)  
 **Last Updated:** 2026-07-01  
 **Current Score:** 72/100 (Good)  

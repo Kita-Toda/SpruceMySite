@@ -1,4 +1,7 @@
 # Full SEO Audit Report — SpruceMySite
+
+> 📁 **HISTORICAL RECORD — see [MARKETING-PLAN.md](MARKETING-PLAN.md) for the current plan.** Audit trail v1–v3 (Jun 2026). Do not action directly.
+
 **URL:** https://www.sprucemysite.com.au  
 **Auditor:** Agentic SEO Skill + LLM analysis
 

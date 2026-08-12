@@ -1,4 +1,7 @@
 # SEO Action Plan: SpruceMySite Homepage
+
+> 🛑 **SUPERSEDED AND UNRELIABLE — see [MARKETING-PLAN.md](MARKETING-PLAN.md) §1.** This plan audited the dead pre-Astro `index.html` at the repo root, not the live site. Its Phase 1–2 "critical" work (OG tags, Twitter Card, schema, canonical) shipped in the initial commit on 27 Jun, three weeks before this was written. Only §2.3 (long-sentence rewrites) is still valid.
+
 **Date Created:** July 16, 2026  
 **Overall Score:** 62/100  
 **Estimated ROI:** 30-50% increase in organic + social traffic (3-6 months)  

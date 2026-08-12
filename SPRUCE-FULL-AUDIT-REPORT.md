@@ -1,4 +1,7 @@
 # SEO Full Audit Report — sprucemysite.com.au
+
+> 📁 **HISTORICAL RECORD — see [MARKETING-PLAN.md](MARKETING-PLAN.md) for the current plan.** Baseline audit (Jun 2026). Do not action directly.
+
 **Date:** 2026-06-29
 **Scope:** Full-site audit (homepage / single-page website)
 **Auditor:** Agentic SEO Skill v3 — LLM-first + script-backed evidence

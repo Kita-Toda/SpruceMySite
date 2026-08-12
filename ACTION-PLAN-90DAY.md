@@ -1,4 +1,7 @@
 # 90-Day Sales Action Plan — SpruceMySite
+
+> ⚠️ **SUPERSEDED by [MARKETING-PLAN.md](MARKETING-PLAN.md)** (2026-08-12). Phase 2/3 tasks carried forward there. Kept for the weekly check-in template and warm-lead history.
+
 **Goal:** Acquire your first paying customer and build repeatable sales infrastructure  
 **Timeline:** Days 1–90  
 **Created:** 2026-07-14  
