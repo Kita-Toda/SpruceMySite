@@ -65,6 +65,25 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
 
    **Bonus credibility fix caught in passing:** the old `og-cover.jpg` — the image on *every* Facebook/LinkedIn/X share and in the business schema — carried a **"5/5 Google Reviews"** stat. Same fabricated-rating problem as P0 #1 and #2, still going out on every link share three weeks after those were fixed. The regenerated cover replaces it with substantiable figures (10+ Years Experience · 7-10 Days To Launch · Mon-Sat 9am-8pm Support). *This is the third place that unearned rating was hiding — worth assuming there's a fourth.*
 
+   **Full sweep done 2026-08-12** — all 6 live pages fetched and scanned, plus every repo file, `llms.txt`, the n8n→GHL workflow and the Brevo templates. **Four instances total, all now cleared:**
+
+   | # | Where | What it claimed | Status |
+   |---|---|---|---|
+   | 1 | `Reviews.astro` | 3 invented testimonials, 5 stars each | ✅ removed (`6af88b7`) |
+   | 2 | `Stats.astro` | "5★ Reviews On Autopilot" | ✅ reworded (`888178c`) |
+   | 3 | `og-cover.jpg` | "5/5 Google Reviews" on every share | ✅ regenerated (`df9dece`) |
+   | 4 | **`Hero.astro:23`** | **★★★★★ above the fold, beside "Trusted By Busy Sydney Small-Business Owners"** | ✅ **removed 2026-08-12** |
+
+   **#4 was the worst of the four and had survived all three previous fixes.** Five honey stars sat directly under the hero CTAs — the first thing every visitor and every cold-email prospect saw. No number was attached, which is exactly why it slipped through text-based checks, but five gold stars beside a trust line *is* a rating claim. Replaced with `📍 Bondi Junction Based · 10+ Years Building Sydney Sites` — both facts substantiated by the Person schema and your published address.
+
+   **Also fixed:** `llms.txt` told AI crawlers the homepage contains "testimonials" — untrue since they were removed. Now reads "FAQs".
+
+   **Judgement calls left as-is** (defensible, but you should know they exist):
+   - `Services.astro:20,40` — "5-Star Review Machine On Repeat" and "Live 5-Star Google Review Widget". These describe a service *sold to clients*, not SpruceMySite's own rating, so they're legitimate. ⚠️ But "Machine On Repeat" reads as a guaranteed 5-star outcome. Softening to "Review Collection On Autopilot" would remove the implied guarantee.
+   - `Reviews.astro:31` — the star block is **hardcoded to 5** inside the render loop. Currently harmless (the array is empty), but the first real testimonial you add will automatically display 5 stars regardless of what the client actually gave you. Make it a per-quote field before adding anyone.
+   - `SPRUCE-ACTION-PLAN.md` ~line 392 — a **copy-paste-ready `AggregateRating` block with invented `ratingValue: 5.0` / `reviewCount: 7`**. Superseded doc, but the snippet is live-looking and one paste from publishing a fake rating in structured data. Warning banner added at the top of that file.
+   - `n8n-ghl-workflow.json:87` — `googleRating` / `reviewCount` are **clean**: they map the *prospect's* rating into GHL for lead scoring, not any claim about you.
+
    **Still open (minor):** the badge makes a poor favicon — at 16–32px the stacked words collapse into unreadable marks. A simplified single-letterform variant should be drawn. Functional today, not good. See `BRAND-GUIDELINES.md` §2.3.
 
 **1. ~~Replace the fake testimonials.~~ ✅ DONE 2026-08-12** (commit `6af88b7`). All three invented quotes ("Jane D.", "John D.", "Mia R.") are pulled. `Reviews.astro` now holds an empty `quotes` array and renders nothing; the section is unmounted from `index.astro` and the Nav link removed. Restore instructions are in the file header.

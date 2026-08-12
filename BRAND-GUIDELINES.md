@@ -323,7 +323,7 @@ Motion is **gentle, organic, and continuous** — things float, spin slowly, and
   - Email: info@sprucemysite.com.au
   - Hours: Mon–Sat, 9:00–20:00
   - Socials: facebook.com/sprucemysite · instagram.com/sprucemysite · linkedin.com/in/christian-alba
-- **Rating display:** ★★★★★ stars always in honey
+- **Rating display:** ⚠️ **No star glyphs anywhere until real Google reviews exist.** Five stars beside a trust line reads as a 5-star rating whether or not a number is attached — that is the claim, not the decoration. When genuine reviews exist, stars render in honey and must match the actual score. *(Swept and cleared 2026-08-12: hero, stat bar, testimonials and OG cover all previously carried an unearned rating.)*
 - **AI-search ready:** robots.txt welcomes GPTBot, ClaudeBot, PerplexityBot etc.; `llms.txt` is published
 
 ---

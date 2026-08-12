@@ -1,6 +1,8 @@
 # SEO Action Plan — sprucemysite.com.au
 
 > ⚠️ **SUPERSEDED by [MARKETING-PLAN.md](MARKETING-PLAN.md)** (2026-08-12). Most of the 20-item matrix is verified complete, including "The One Big Bet" (service landing pages). Remaining items carried forward.
+>
+> 🛑 **DO NOT COPY THE `AggregateRating` SNIPPET IN §"Testimonials" (~line 392).** It contains hardcoded `"ratingValue": "5.0"` and `"reviewCount": "7"` — invented placeholder figures. Pasting that into `Layout.astro` would publish a fabricated rating in structured data: misleading conduct under ACL s18/s29 **and** grounds for a Google manual action. `AggregateRating` may only be added when 5+ real Google reviews exist, with the true values. Same rule as MARKETING-PLAN.md §3 P2 #17.
 
 **Date:** 2026-06-29
 **Current Score:** 22/100 (Critical)
