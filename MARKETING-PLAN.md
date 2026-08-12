@@ -62,7 +62,13 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
 
    **Action:** pull all three today. Replace with Customer #1's real name + business + outcome once permission is granted (that ask is Phase 2 task 6.3 below). A single genuine testimonial, or none, until then.
 
-**2. Substantiate or cut the stat bar.** `src/components/Stats.astro:6,9` claims **"10+ Years Building Sydney Sites"** and **"5★ Reviews On Autopilot"** with zero Google reviews on record. Same ACL exposure as #1. Either evidence them or rewrite to something true ("Launched in 7–10 days", "60s lead response").
+**2. ~~Substantiate or cut the stat bar.~~ ✅ DONE 2026-08-12.** `Stats.astro` presented four service specs as company performance statistics. Reworded, not deleted — three were true claims mislabelled:
+   - "10+ Years Building Sydney Sites" → **"Years' Industry Experience"**. The 10+ years is Christian's personal experience (already asserted in the Person schema, `Layout.astro:78`); the old label implied SpruceMySite itself had traded 10 years. *Unverified by me — it's your own standing claim in two places. Confirm it's accurate.*
+   - "Lead Response Time" → **"Auto-Reply To Your New Leads"**. 60s is the spec of the lead engine you *build for clients* (`LeadEngine.astro:15`), not a measured SpruceMySite metric. **Still gated on the n8n → GHL workflow actually being activated** — see §4.
+   - "Days To Launch" — unchanged. A forward-looking offer, consistent with the FAQ.
+   - "5★ Reviews On Autopilot" → **"6 Days A Week You Can Reach Us"**. The old figure read as SpruceMySite's own rating with zero reviews on record. The review service is still sold in `Services.astro`; it just can't appear as a rating. The replacement is substantiated by your published Mon–Sat 9am–8pm hours in the schema.
+
+   A comment in `Stats.astro` now records the rule for whoever edits it next.
 
 **3. Connect analytics — you are currently flying blind.** `src/components/Analytics.astro` is a *sales* section listing tools you sell; it installs no tracking. Live HTML has **no GA4 ID and no Meta Pixel**. Worse, line 112 tells every visitor: *"Tracking IDs Aren't Connected Yet — The Placeholders Are In Place And Ready To Switch On."* On the site of an agency whose service #5 is Google Analytics setup.
    - Install GA4 + Meta Pixel for real, verify in Realtime, then delete that sentence.
