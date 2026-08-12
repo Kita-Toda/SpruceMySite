@@ -4,8 +4,8 @@
   --paper:#FFFDF6;
   --ink:#241A12;
   --ink-soft:#5A4A3B;
-  --terracotta:#D9582F;
-  --terracotta-d:#B23F1B;
+  --terracotta:#C9603C;
+  --terracotta-d:#A24728;
   --honey:#E9A33F;
   --honey-soft:#F2C97C;
   --sage:#6F7C4C;
@@ -37,7 +37,7 @@ body::before{
   content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
   background:
     radial-gradient(900px 600px at 12% -5%, rgba(233,163,63,.22), transparent 60%),
-    radial-gradient(800px 700px at 110% 8%, rgba(217,88,47,.16), transparent 55%),
+    radial-gradient(800px 700px at 110% 8%, rgba(201,96,60,.16), transparent 55%),
     radial-gradient(900px 700px at 50% 120%, rgba(111,124,76,.16), transparent 60%);
 }
 body::after{
@@ -96,9 +96,9 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 /* three.js stage */
 .stage{position:relative;aspect-ratio:1/1;width:100%;max-width:520px;margin:0 auto}
 .stage canvas{display:block;width:100%!important;height:100%!important}
-.stage .halo{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(242,201,124,.55),rgba(217,88,47,.18) 55%,transparent 72%);filter:blur(4px);z-index:-1}
+.stage .halo{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle at 50% 42%,rgba(242,201,124,.55),rgba(201,96,60,.18) 55%,transparent 72%);filter:blur(4px);z-index:-1}
 .stage .ring{position:absolute;inset:0;border-radius:50%;border:1.5px dashed rgba(78,89,52,.4);animation:spin 38s linear infinite;pointer-events:none}
-.stage .ring.two{inset:-7%;border-color:rgba(217,88,47,.32);animation-duration:60s;animation-direction:reverse}
+.stage .ring.two{inset:-7%;border-color:rgba(201,96,60,.32);animation-duration:60s;animation-direction:reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .chip{position:absolute;background:var(--paper);border:1px solid var(--line);border-radius:50px;padding:9px 15px;font-weight:700;font-size:.86rem;box-shadow:var(--shadow);display:flex;align-items:center;gap:8px;z-index:3;pointer-events:none}
 .spinhint{position:absolute;left:50%;bottom:3%;transform:translateX(-50%);display:flex;align-items:center;gap:7px;background:rgba(36,26,18,.85);color:var(--cream);font-weight:700;font-size:.78rem;letter-spacing:.02em;padding:7px 14px;border-radius:50px;box-shadow:var(--shadow);pointer-events:none;z-index:4;white-space:nowrap;transition:opacity .6s,transform .6s;animation:hintpulse 2.2s ease-in-out infinite}
@@ -150,7 +150,7 @@ section{position:relative;z-index:2;padding:110px 0}
 
 /* ---------- lead engine (pinned) ---------- */
 .engine{background:var(--ink);color:var(--cream);border-radius:34px;margin:0 26px;overflow:hidden;position:relative}
-.engine::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 80% 0,rgba(217,88,47,.4),transparent 60%),radial-gradient(600px 500px at 0 100%,rgba(111,124,76,.4),transparent 60%);opacity:.7}
+.engine::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 80% 0,rgba(201,96,60,.4),transparent 60%),radial-gradient(600px 500px at 0 100%,rgba(111,124,76,.4),transparent 60%);opacity:.7}
 .engine-inner{position:relative;max-width:1140px;margin:0 auto;padding:90px 40px}
 .engine .tag{color:var(--honey-soft)}
 .engine h2{color:var(--cream);font-size:clamp(2rem,4vw,3.2rem);max-width:14em}
@@ -338,7 +338,7 @@ footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padd
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(217, 88, 47, 0.3), transparent 70%);
+  background: radial-gradient(circle, rgba(201,96,60, 0.3), transparent 70%);
   pointer-events: none;
 }
 

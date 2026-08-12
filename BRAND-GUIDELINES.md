@@ -1,8 +1,10 @@
 # SpruceMySite — Brand Guidelines
 
-**Version 1.1 · 12 August 2026**
+**Version 1.2 · 12 August 2026**
 Extracted from the live website (www.sprucemysite.com.au) and codebase. This document is the single source of truth for how SpruceMySite looks, sounds, and behaves across every touchpoint.
 
+> **v1.2 changelog —** **The terracotta conflict is closed.** The site adopted the logo's `#C9603C`, replacing `#D9582F` in the token and in seven hardcoded copies of the same colour, with `--terracotta-d` retuned from `#B23F1B` to `#A24728` so the hover step still lands right — §3.2 and §3.3 record exactly what moved and what it cost. Plus an accuracy pass: every claim in §3–§9 re-checked against `src/`. Corrections to §2.4 (the OG cover now needs a re-export on three counts — it still carries the retired terracotta, it's set in a sans rather than Fraunces, and its CTA says "Book A Free Call"), §3.5 (violet is used in five places, not two; honey stars and blush quote marks are dormant, not live), §6 (icon-tile fills, FAQ toggle, plus a new list of styled-but-unrendered components), §7 (float distance), §8 (**the hero 3D object is a violet coffee mug, not a coin/leaf**) and §9 (the phone number is no longer displayed on the contact card, but still ships in the schema). The other v1.1 open item — the **unnamed logo fonts (§4.0)** — is still open, and can only be closed by reading them off the original design file.
+>
 > **v1.1 changelog —** The circular `Spruce My Site` logo replaced the old leaf mark. Its colours and typography are now recorded in §2, §3 and §4, sampled pixel-by-pixel from `public/spruce_logo_1_transparent.png` rather than eyeballed. **The logo and the website do not currently use the same terracotta, the same black, or the same fonts.** Every divergence is marked ⚠️ below. Nothing about the site's CSS was changed — this release documents the gap, it doesn't close it. See §3.3 for the decision that closes it.
 
 ---
@@ -88,9 +90,15 @@ The old leaf assets were deleted; all five code references have been repointed a
 
 `og-cover.jpg` is the image behind every Facebook, LinkedIn and X share, and the `image` in the business schema. Regenerated 2026-08-12 for two reasons: the old one used the retired leaf logo, **and it displayed a "5/5 Google Reviews" stat that was never substantiated** — the same fabricated-rating problem removed from the site itself (`MARKETING-PLAN.md` §3 P0 #1–2). It had been going out on every share.
 
-Current layout: cream field · terracotta left rule · sage eyebrow pill · "Get Your Digital House In **Order.**" · one-line subhead · three **substantiable** stats (10+ Years Experience · 7-10 Days To Launch · Mon-Sat 9am-8pm Support) · badge top-right on clean cream · ink footer bar with domain and CTA.
+Current layout: cream field · terracotta left rule · sage eyebrow pill ("WEB DESIGN • SYDNEY") · "Get Your Digital House In **Order.**" · one-line subhead · three **substantiable** stats (10+ Years Experience · 7-10 Days To Launch · Mon-Sat 9am-8pm Support) · blush quarter-disc bottom-right · badge top-right on clean cream · ink footer bar with the domain and a CTA.
 
 **Rule: every figure on this image must be defensible.** It is an advertisement under Australian Consumer Law exactly like the site is.
+
+**⚠️ Three things on it are off-brand.** All are cosmetic, none is urgent, and they share one fix — a single re-export closes all three at once:
+
+- **Its terracotta is the retired one.** The left rule, "Order." and the CTA text sample as `#D9582F`, the colour the site dropped on 2026-08-12 (§3.3). The image was drawn to match the old palette, and a colour baked into a JPEG doesn't move when a CSS variable does. The badge in the corner is unaffected — it was always `#C9603C`, which is precisely why the rest of the image now disagrees with it.
+- **It is set entirely in a sans-serif.** "Get Your Digital House In Order." is a heavy grotesque, not Fraunces. The brand's display voice — the warm editorial serif that carries every headline on the site — is absent from the single image that represents the brand on Facebook, LinkedIn and X. The headline should be Fraunces 600–700 with "Order." in terracotta italic, matching the hero.
+- **Its CTA reads "Book A Free Call."** Everywhere else the CTA is **"Book A Call"** (§5). "Free" is an extra claim on the one asset that gets shared out of context, and it breaks the one-CTA-everywhere rule. Make it "Book A Call".
 
 ---
 
@@ -100,7 +108,7 @@ The palette is warm, earthy, and café-inspired — cream paper, terracotta clay
 
 ### 3.1 Logo colors (sampled from the artwork — start here)
 
-Four colors, and only four. Measured pixel-by-pixel from `spruce_logo_1_transparent.png`; percentages are share of the mark's opaque area. `spruce_logo_2_transparent.png` returns identical values.
+Four colors, and only four. Measured pixel-by-pixel from `spruce_logo_1_transparent.png`; percentages are share of the mark's opaque area. `spruce_logo_2_transparent.png` returns the **same four hexes**; its shares differ by up to 0.3 points because the disc fills more of the frame.
 
 | Name | Hex | Where in the mark | Share |
 |---|---|---|---|
@@ -113,29 +121,42 @@ Everything else in the file is anti-aliasing on the letter edges. The mark has n
 
 **On that fourth one:** `#231A13` is the site's existing `--ink` (`#241A12`) off by one unit per channel — export rounding, not a decision. **Treat them as the same color and do not mint a new token for it.** The tagline is already on-palette.
 
-### 3.2 ⚠️ Where the logo and the site disagree
+### 3.2 Where the logo and the site once disagreed — ✅ resolved 2026-08-12
 
-Two real conflicts, not rounding:
+v1.1 recorded three divergences between the badge artwork and the site CSS. **The terracotta conflict is now closed: the site moved to the logo's colour.** The other two stand, deliberately.
 
-| | Logo | Site CSS | Gap |
+| | Logo | Site CSS | Status |
 |---|---|---|---|
-| **Terracotta** | `#C9603C` | `#D9582F` (`--terracotta`) | Logo's is **darker, duller, browner** (R −16, G +8, B +13). Side by side they read as two different oranges — this is the one people will notice |
-| **Headline black** | `#000000` pure | `#241A12` (`--ink`) warm near-black | The site deliberately avoids pure black; the logo's main words use it |
-| **Almond field** | `#E7CDB0` | *no equivalent* | Nearest is `--blush` `#EAC8A2`, which is warmer and more saturated. `--cream-2` `#F3E7D2` is much lighter. **Almond is a genuinely new color** |
+| **Terracotta** | `#C9603C` | `#C9603C` (`--terracotta`) | ✅ **Matched.** The site was `#D9582F`; it now uses the logo's value everywhere. See §3.3 |
+| **Headline black** | `#000000` pure | `#241A12` (`--ink`) warm near-black | ⚠️ **Still different, and that's fine.** The site deliberately avoids pure black; the badge is drawn artwork and keeps its own. Never introduce `#000000` into the UI to "match the logo" |
+| **Almond field** | `#E7CDB0` | *no equivalent* | ⚠️ **Still logo-only.** Nearest is `--blush` `#EAC8A2` (warmer, more saturated); `--cream-2` `#F3E7D2` is much lighter. Almond is a genuinely distinct colour, and it stays inside the badge — don't mint a UI token for it unless a real need appears |
 
-### 3.3 The open decision — which way does this resolve?
+### 3.3 The terracotta resolution — what changed and why
 
-The doc can't answer this; you have to. Three coherent options:
+**Decision (2026-08-12, owner's call): the site moved to the logo.** The logo was the harder thing to change — it's already on exports, socials and anything printed — so the cheaper side moved.
 
-1. **Site moves to the logo.** Change `--terracotta` to `#C9603C` sitewide. One CSS variable, ~5 minutes, and everything matches forever. Cost: the site's accent gets noticeably muddier, and terracotta is the CTA color — it's the most-seen color on the site.
-2. **Logo moves to the site.** Re-export the badge with `#D9582F` and `#241A12`. Keeps the punchier accent on buttons. Cost: re-exporting artwork, and every copy already in circulation is now the old version.
-3. **Both stand, deliberately.** Add **Almond `#E7CDB0`** as a real palette token, and write the rule that the badge is fixed artwork with its own slightly deeper terracotta. Legitimate — plenty of brands run a logo palette distinct from a UI palette — but only if it's a choice, not a drift.
+What was actually edited. It was more than the one variable, because the same colour was hardcoded in six atmosphere gradients and one 3D light:
 
-**My recommendation: option 1.** The logo is the harder thing to change (it's already on exports, socials and anything printed), `#C9603C` still passes contrast as a CTA color, and one variable is the cheapest possible fix. But it's your eye and your brand — say the word and I'll make whichever change you pick.
+| Location | Was | Now |
+|---|---|---|
+| `--terracotta` in `global.css` | `#D9582F` | `#C9603C` |
+| 5 × `rgba()` washes in `global.css` (body gradient, hero halo, orbit ring two, Lead Engine glow, one card glow) | `rgba(217,88,47,…)` | `rgba(201,96,60,…)` |
+| 1 × `rgba()` wash in `ServiceLayout.astro` | `rgba(217,88,47,.4)` | `rgba(201,96,60,.4)` |
+| Three.js rim light in `index.astro` | `0xd9582f` | `0xc9603c` |
 
-Until you decide, **§3.4/§3.5 below remain the truth for anything you build on the website**, and §3.1 remains the truth for the logo.
+**Contrast effect — a wash, not a regression.** White on the terracotta button went **3.90 → 4.02**, terracotta text on cream went **3.56 → 3.68**, terracotta on ink went **4.37 → 4.24**. Nothing crossed the 4.5 AA threshold in either direction. Terracotta text at body size was already short of AA before this change and still is — that is a **pre-existing, separate issue**, and the fix is size and weight (terracotta is safe for large headings, stat figures and eyebrow labels; it should not carry small body copy on cream).
 
-### 3.4 Primary colors *(site CSS — current, unchanged)*
+**`--terracotta-d` was retuned to match — ✅ done.** The hover/shadow colour was `#B23F1B`, drawn against the old accent. Left alone it would have been *more* saturated than the new base, so hovering would drift toward the punchier retired orange instead of stepping straight down in lightness. It is now **`#A24728`**, which rebuilds the original relationship at the new saturation:
+
+| | Hue | Saturation | Lightness | White contrast |
+|---|---|---|---|---|
+| Base `#C9603C` | 15.3° | 56.6% | 51.2% | 4.02 |
+| Old hover `#B23F1B` | 14.3° | **73.7%** ← the mismatch | 40.2% | 5.80 |
+| **New hover `#A24728`** | 15.2° | 60.4% | 39.6% | **6.05** |
+
+Hover is now a clean −11.6 point drop in lightness at the same hue, exactly as the original pair behaved. Contrast on the hovered button improved as a side effect.
+
+### 3.4 Primary colors *(site CSS — current)*
 
 | Name | Hex | CSS token | Role |
 |---|---|---|---|
@@ -145,18 +166,18 @@ Until you decide, **§3.4/§3.5 below remain the truth for anything you build on
 | Ink | `#241A12` | `--ink` | Headlines, body text, dark sections |
 | Ink Soft | `#5A4A3B` | `--ink-soft` | Secondary/supporting text |
 
-### 3.5 Accent colors *(site CSS — current, unchanged)*
+### 3.5 Accent colors *(site CSS — current)*
 
 | Name | Hex | CSS token | Role |
 |---|---|---|---|
-| Terracotta | `#D9582F` | `--terracotta` | **Primary accent.** CTAs, links, section tags, wordmark accent, stat numbers. ⚠️ *Not the logo's terracotta — see §3.2* |
-| Terracotta Dark | `#B23F1B` | `--terracotta-d` | Button hover states, CTA shadows |
-| Honey | `#E9A33F` | `--honey` | Star ratings, underline flourishes, marquee ✺ symbol, map pin |
-| Honey Soft | `#F2C97C` | `--honey-soft` | Glows, halos, card corner accents |
+| Terracotta | `#C9603C` | `--terracotta` | **Primary accent.** CTAs, links, section tags, wordmark accent, stat numbers. ✅ *Identical to the logo's terracotta as of 2026-08-12 — see §3.3* |
+| Terracotta Dark | `#A24728` | `--terracotta-d` | Button hover states, CTA shadows. Retuned 2026-08-12 to keep the same hue and lightness step as the new base — see §3.3 |
+| Honey | `#E9A33F` | `--honey` | Hand-drawn underline flourish, marquee ✺ symbol, map pin, third stat number, third card icon tile. *Also the reserved color for star ratings — but no stars render anywhere today, see §9* |
+| Honey Soft | `#F2C97C` | `--honey-soft` | Glows, halos, card corner accents, dark-section eyebrows, the "Keys" key art |
 | Sage | `#6F7C4C` | `--sage` | Trust/nature accent. Icon tiles, eyebrow dots, "Keys" section background |
 | Sage Dark | `#4E5934` | `--sage-d` | Eyebrow text, gradient partner for sage |
-| Blush | `#EAC8A2` | `--blush` | Quote marks, soft decorative moments |
-| Violet | `#7C4DE0` | `--violet` | **Sparingly.** Custom cursor and the italic "equation" line only — the one unexpected color that signals mindset/magic |
+| Blush | `#EAC8A2` | `--blush` | Oversized testimonial quote marks. *Currently dormant — the testimonials section renders nothing, see §6* |
+| Violet | `#7C4DE0` | `--violet` | **Sparingly.** The unexpected color that signals mindset/magic. Five places only, listed below |
 
 ### Utility tokens
 
@@ -172,7 +193,12 @@ Until you decide, **§3.4/§3.5 below remain the truth for anything you build on
 - Terracotta is the only CTA color. One primary CTA style, everywhere: "Book A Call"
 - Dark sections (`--ink` background) are used as rhythm breaks: the marquee and the "Lead Engine" process section. Cream text on ink, with honey/terracotta highlights
 - Sage owns "trust and stewardship" moments (the Keys section, contact icons, location card)
-- Violet appears in exactly two places (cursor, equation line). Do not expand its use — its rarity is the point
+- Violet appears in exactly five places, and nowhere else. Do not expand the list — its rarity is the point:
+  1. The custom cursor ring and dot
+  2. The italic "equation" line in the hero
+  3. The ceramic of the hero 3D coffee mug (§8)
+  4. The fourth stack card's icon tile and heading (`.stackcard:nth-child(4)`)
+  5. The fourth feature card's icon on service pages (`ServiceLayout.astro`)
 - Atmosphere: pages carry a fixed grain texture (5% opacity noise) plus soft radial gradient washes of honey, terracotta, and sage. Surfaces should feel like warm paper, not flat screens
 
 ---
@@ -181,7 +207,7 @@ Until you decide, **§3.4/§3.5 below remain the truth for anything you build on
 
 ### 4.0 ⚠️ The logo does not use the website's typefaces
 
-Worth stating plainly, because it's the second half of the §3.2 problem. The badge is set in **two faces that appear nowhere else in the brand**, and they are not Fraunces or Hanken Grotesk.
+Worth stating plainly. The colour half of the logo-vs-site gap closed in §3.3; the type half did not, and it can't until the fonts are identified. The badge is set in **two faces that appear nowhere else in the brand**, and they are not Fraunces or Hanken Grotesk.
 
 **Logo display face — "Spruce" / "*My*" / "Site"**
 A heavy, high-contrast serif. Observed characteristics:
@@ -246,7 +272,7 @@ The SpruceMySite voice is **Aussie-warm, plain-spoken, and quietly confident**. 
 
 1. **Local and human.** Australian idiom is used naturally: "flat white," "takes a sickie," "your trusted local mate." Location (Bondi Junction, Sydney) is worn proudly.
 2. **Empathy before expertise.** Copy names the client's pain in their own words first: "You Didn't Quit Your 9-To-5 To Troubleshoot DNS Records On A Sunday Night."
-3. **Domestic metaphors for tech.** The recurring frame is the *house*: "Get Your Digital House In Order," "Your Digital Front Door Is Locked, Lit, And Ready For Guests," "Hold The Keys." Tech jargon is translated into home care.
+3. **Domestic metaphors for tech.** The recurring frame is the *house*: "Get Your Digital House In Order," "Your Digital Front Door Stays Locked, Lit, And Ready For Guests," "Hold The Keys." Tech jargon is translated into home care.
 4. **Playfully anti-panic.** Support is "Don't-Panic Support." The tone defuses tech anxiety with light humor, never sarcasm at the client's expense.
 5. **Concrete outcomes.** Every promise ends in a tangible result: leads, bookings, time back. "Turn Your Website Into A 24/7 Sales Rep That Never Takes A Sickie."
 
@@ -280,10 +306,17 @@ The SpruceMySite voice is **Aussie-warm, plain-spoken, and quietly confident**. 
 | **Cards** | Paper background, 1px `--line` border, 22px radius, warm shadow, 36px padding. Honey-soft radial glow in the top-right corner. Hover: lift |
 | **Chips / pills** | Paper, pill radius (50px), weight 700, small (0.86rem) |
 | **Eyebrow labels** | Pill with sage dot, uppercase, sage-dark text |
-| **Icon tiles** | Rounded squares (10–18px radius), terracotta or sage fill, white glyph |
-| **Dark feature bands** | Ink or sage background, 34px radius, inset from page edges (margin 0 26px) — sections float like cards |
-| **FAQ accordion** | Paper rows, 18px radius, Fraunces questions, terracotta plus-circle toggle |
+| **Icon tiles** | Rounded squares (10–18px radius), white glyph. Fill cycles by position: terracotta → sage → honey → violet → ink |
+| **Dark feature bands** | Ink or sage background, 34px radius, inset from page edges (margin 0 26px; 14px on mobile) — sections float like cards |
+| **FAQ accordion** | Paper rows, 18px radius, Fraunces 600 questions (1.18rem). Toggle is a cream-2 circle with a terracotta `+` that rotates 45° and inverts to a terracotta fill when open |
 | **Layout** | Max-width 1200px, 26px side padding |
+
+### ⚠️ Dormant components — styled but not rendered
+
+Two components exist with full styling and are **not on the live page**. Anything below that describes them is describing latent code, not something a visitor sees:
+
+- **Testimonials (`Reviews.astro`)** — the `quotes` array is empty, so the section renders nothing. Its three fabricated testimonials were removed 2026-08-12. This is why blush quote marks and honey review stars appear in the CSS but nowhere on screen. Restoring it needs a real, permissioned client quote.
+- **Quote form (`Quote.astro`)** — commented out of `index.astro` on 2026-08-12 at the owner's request. It was the site's **only form** and the entry point to the Formspree → n8n → GoHighLevel pipeline. With it hidden, the only conversion paths are the "Book A Call" booking widget and the email link in the contact card.
 
 ---
 
@@ -292,7 +325,7 @@ The SpruceMySite voice is **Aussie-warm, plain-spoken, and quietly confident**. 
 Motion is **gentle, organic, and continuous** — things float, spin slowly, and drift like a lived-in room.
 
 - **Custom cursor:** violet ring + dot (desktop only), grows to 74px over interactive elements. Signature quirk of the site
-- **Float:** decorative chips bob ±14px on 5–6.5s ease-in-out loops, with staggered delays
+- **Float:** decorative chips rise 14px and settle back on 5–6.5s ease-in-out loops, with staggered delays
 - **Marquee:** the brand-words band scrolls continuously (28s loop), tilted −1.4°, pauses on hover
 - **Dashed orbit rings** spin at 38s/60s around the hero 3D stage
 - **Hover lifts:** buttons and cards translate up 3–8px with deepening shadows
@@ -306,7 +339,8 @@ Motion is **gentle, organic, and continuous** — things float, spin slowly, and
 
 - **Icons:** inline SVG, stroke-based (stroke-width ~2–2.4), rounded caps and joins, drawn in the current text color. No icon fonts, no filled glyph sets
 - **Decorative symbols:** the eight-point star ✺ (honey) as marquee separator; hand-drawn underline squiggles; map pin built from brand shapes
-- **3D element:** the hero features an interactive Three.js coin/leaf with a honey halo — playful, tactile, invites spinning ("⟳ spin me" hint)
+- **3D element:** the hero stage holds an interactive **Three.js coffee mug with rising steam** — violet ceramic (`#7C4DE0`), dark coffee, warm key light with a terracotta rim light. It sits on a honey-soft → terracotta radial halo, inside two dashed orbit rings. Drag to spin it; the prompt reads **"⟳ Drag To Spin"**. The mug is the brand's café metaphor made literal — it is not a coin, a leaf, or a logo shape, and shouldn't be redrawn as one
+  - **It must fail softly.** WebGL is unavailable on plenty of real devices (blocklisted GPUs, hardware acceleration off, some corporate and privacy configurations). The hero renders without it — halo, rings and floating chips carry the stage on their own. Never let the 3D object become load-bearing for the page
 - **Photography:** minimal. The brand leans on color, type, and texture instead of stock photos. When photos are used, they should be warm-toned and people-first
 
 ---
@@ -319,7 +353,7 @@ Motion is **gentle, organic, and continuous** — things float, spin slowly, and
   - Name: SpruceMySite
   - Founder: Christian Alba — Web Designer & Digital Marketing Specialist
   - Location: Bondi Junction, NSW 2022, Australia
-  - Phone: +61 433 092 621
+  - Phone: +61 433 092 621 — ⚠️ **published, but not displayed.** Removed from the contact card 2026-08-12 at the owner's request; it still ships in the JSON-LD `telephone` field (`Layout.astro`) and in `llms.txt`. If the number is meant to be private, those two also need to change; if it's meant to be public, it should go back on the card as a tappable `tel:` link. Right now it's neither
   - Email: info@sprucemysite.com.au
   - Hours: Mon–Sat, 9:00–20:00
   - Socials: facebook.com/sprucemysite · instagram.com/sprucemysite · linkedin.com/in/christian-alba
@@ -338,17 +372,19 @@ DISC         #E7CDB0  almond         TYPE  Heavy ball-terminal serif
 TAGLINE      #231A13  ink (= --ink)  RULE  never re-typeset · never recolour
 ```
 
-**THE WEBSITE** — current CSS, unchanged
+**THE WEBSITE** — current CSS
 ```
 BACKGROUND   #FBF4E7  cream          TYPE  Headings: Fraunces 600
 SURFACE      #FFFDF6  paper                Body: Hanken Grotesk 400 / 18px
 TEXT         #241A12  ink            SHAPE 22px cards · 60px pill buttons
 TEXT-SOFT    #5A4A3B  ink-soft       VOICE Aussie-warm · Title Case ·
-CTA          #D9582F  terracotta ⚠️        house metaphors · "Book A Call"
+CTA          #C9603C  terracotta ✅        house metaphors · "Book A Call"
 GOLD         #E9A33F  honey          MOTION floaty, slow, ease-in-out
 TRUST        #6F7C4C  sage           QUIRK  violet cursor · tilted marquee
-MAGIC        #7C4DE0  violet (rare)         · spinning hero coin
+MAGIC        #7C4DE0  violet (5 uses)       · spinning hero coffee mug
 ```
-⚠️ **The two terracottas are different** (`#C9603C` logo vs `#D9582F` site) and the logo uses pure black where the site uses warm ink. **Unresolved — §3.3 has the options and my recommendation.**
+✅ **The terracottas now match** — the site adopted the logo's `#C9603C` on 2026-08-12 (§3.3). The logo still uses pure black where the site uses warm ink; that one is deliberate and stays.
+
+**Still open:** the two logo fonts are unidentified (§4.0), the badge makes a poor favicon at 16–32px (§2.3), and `og-cover.jpg` needs a re-export — retired terracotta, sans-serif headline, "Book A Free Call" CTA (§2.4).
 
 **The one-sentence test:** if it doesn't feel like *a warm café where a mate calmly fixes your website while you have a flat white*, it's off-brand.
