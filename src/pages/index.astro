@@ -31,7 +31,18 @@ import Footer from '../components/Footer.astro';
   <KeysBand />
   <Reviews />
   <FAQ />
-  <Quote />
+  {/*
+    <Quote /> hidden 2026-08-12 at the owner's request.
+
+    This was the site's ONLY form — the Formspree quote form that feeds the
+    n8n → GoHighLevel pipeline. While it's commented out, the sole conversion
+    paths are the "Book A Call" booking widget in the hero and the phone/email
+    links in <Contact />. Nothing else links to #quote, so no dead anchors.
+
+    To restore: uncomment the line below. The component, its styles
+    (.cta-box in global.css) and its submit handler are all untouched.
+  */}
+  {/* <Quote /> */}
   <Contact />
   <Footer />
 </Layout>
