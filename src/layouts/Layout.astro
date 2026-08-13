@@ -114,6 +114,48 @@ const schemaGraph = JSON.stringify({
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
     <link rel="canonical" href={canonical} />
     <meta name="theme-color" content="#FBF4E7" />
+
+    {/*
+      Analytics. Both tags are is:inline so Astro ships them verbatim instead of
+      bundling them — gtag() and fbq() are globals that other scripts and the
+      GA4/Meta debuggers expect to find on window.
+
+      This layout wraps every page (ServiceLayout and PolicyLayout both nest
+      inside it), so these load site-wide. Don't add them anywhere else.
+
+      Disclosed in the privacy policy §5 by name. If either ID changes, it
+      changes here and nowhere else.
+
+      No SRI on these two, deliberately — unlike the pinned GSAP/Three/animate
+      CDN tags below. Google and Meta rewrite gtag.js and fbevents.js
+      continuously and publish no integrity hashes; pinning one would break
+      the tag the next time they ship. Don't "fix" this.
+    */}
+    <!-- Google tag (gtag.js) — GA4 property G-BGDW47PVSF -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-BGDW47PVSF"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-BGDW47PVSF');
+    </script>
+
+    <!-- Meta Pixel Code — pixel 870957819396743 -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '870957819396743');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Meta Pixel Code -->
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -146,6 +188,15 @@ const schemaGraph = JSON.stringify({
     <slot name="head" />
   </head>
   <body>
+    {/*
+      Meta Pixel no-JS fallback. Lives here rather than beside the pixel script
+      in <head>: a <noscript> in the head may only contain link/style/meta, so
+      an <img> there is invalid and browsers relocate it anyway.
+    */}
+    <noscript><img height="1" width="1" style="display:none" alt=""
+      src="https://www.facebook.com/tr?id=870957819396743&ev=PageView&noscript=1"
+    /></noscript>
+
     <!-- custom cursor -->
     <div class="cursor" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
