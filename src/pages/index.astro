@@ -275,7 +275,7 @@ if (!reduced) {
 /* ---------- FAQ accordion ---------- */
 document.querySelectorAll<HTMLButtonElement>('.q button').forEach(btn => {
   btn.addEventListener('click', () => {
-    const q   = btn.parentElement!;
+    const q   = btn.closest('.q') as HTMLElement;
     const ans = q.querySelector<HTMLElement>('.ans')!;
     const open = q.classList.contains('open');
     document.querySelectorAll<HTMLElement>('.q').forEach(o => {

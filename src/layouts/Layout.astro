@@ -5,12 +5,16 @@ export interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  /** Emit `speakable` on the WebPage node. Off for pages with no summary
+   *  prose for it to point at — see the comment on the WebPage node. */
+  speakable?: boolean;
 }
 
 const {
   title = "Web Design & Local SEO Sydney | SpruceMySite",
   description = "Smart websites + mindset tools for busy Sydney businesses. Less burnout, more leads — built while you grab a flat white.",
   canonical = "https://www.sprucemysite.com.au/",
+  speakable = true,
 } = Astro.props;
 
 const schemaGraph = JSON.stringify({
@@ -99,6 +103,38 @@ const schemaGraph = JSON.stringify({
       "description": "Web design and digital marketing for busy Sydney small businesses.",
       "inLanguage": "en-AU",
       "publisher": { "@id": "https://www.sprucemysite.com.au/#business" }
+    },
+    {
+      // Per-page node carrying `speakable`, which marks the passages a voice
+      // assistant should read aloud. It belongs on WebPage rather than WebSite
+      // — speakable describes one page's content, not the whole domain.
+      //
+      // The selectors point at the summary prose each page leads with: .lead is
+      // the hero/intro paragraph, .sec-sub the section standfirst. Both are
+      // written as self-contained sentences, which is what makes them readable
+      // out of context.
+      //
+      // Caveat worth knowing: Google's own speakable support is still limited
+      // to news publishers, so this may not produce a visible result for a
+      // services site. It is valid schema.org, costs nothing, and is read by
+      // other assistants — but don't expect it to move anything on its own.
+      //
+      // Pages without .lead/.sec-sub must pass speakable={false} rather than
+      // declaring selectors that match nothing. PolicyLayout does exactly that.
+      "@type": "WebPage",
+      "@id": canonical + "#webpage",
+      "url": canonical,
+      "name": title,
+      "description": description,
+      "inLanguage": "en-AU",
+      "isPartOf": { "@id": "https://www.sprucemysite.com.au/#website" },
+      "about": { "@id": "https://www.sprucemysite.com.au/#business" },
+      ...(speakable ? {
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": [".lead", ".sec-sub"]
+        }
+      } : {})
     }
   ]
 });

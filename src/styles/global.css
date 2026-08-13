@@ -210,6 +210,12 @@ section{position:relative;z-index:2;padding:110px 0}
 /* ---------- faq ---------- */
 .faq{max-width:880px;margin:46px auto 0}
 .q{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden;box-shadow:0 14px 30px -24px rgba(58,38,20,.6)}
+/* Each FAQ question is an <h3> wrapping its button — the W3C accordion
+   pattern. The heading is what Featured Snippet / People-Also-Ask extraction
+   reads; the button keeps the interaction and a11y semantics. This reset stops
+   the h3 changing how the button looks (global h1-h4 set line-height 1.05 and
+   letter-spacing, which would tighten multi-line questions). */
+.q-title{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:normal}
 .q button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:24px 26px;display:flex;justify-content:space-between;gap:18px;align-items:center;font-family:"Fraunces";font-size:1.18rem;font-weight:600;color:var(--ink)}
 .q .plus{flex:0 0 32px;height:32px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;font-size:1.4rem;transition:.3s;color:var(--terracotta)}
 .q.open .plus{transform:rotate(45deg);background:var(--terracotta);color:#fff}

@@ -11,7 +11,9 @@ const description = frontmatter?.description ?? Astro.props.description;
 const canonical = new URL(Astro.url.pathname, 'https://www.sprucemysite.com.au').href;
 ---
 
-<Layout title={title} description={description} canonical={canonical}>
+<!-- speakable={false}: policy pages are legal text with no .lead/.sec-sub
+     summary prose, and are not answers a voice assistant should read out. -->
+<Layout title={title} description={description} canonical={canonical} speakable={false}>
   <Nav />
   <main class="policy">
     <div class="wrap">
