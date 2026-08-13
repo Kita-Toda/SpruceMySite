@@ -9,11 +9,22 @@ const { frontmatter } = Astro.props;
 const title = frontmatter?.title ?? Astro.props.title;
 const description = frontmatter?.description ?? Astro.props.description;
 const canonical = new URL(Astro.url.pathname, 'https://www.sprucemysite.com.au').href;
+// Dates come from the markdown frontmatter. On a policy page the "last
+// updated" date is a legal signal as much as an SEO one — keep it honest.
+const datePublished = frontmatter?.datePublished ?? Astro.props.datePublished;
+const dateModified = frontmatter?.dateModified ?? Astro.props.dateModified;
 ---
 
 <!-- speakable={false}: policy pages are legal text with no .lead/.sec-sub
      summary prose, and are not answers a voice assistant should read out. -->
-<Layout title={title} description={description} canonical={canonical} speakable={false}>
+<Layout
+  title={title}
+  description={description}
+  canonical={canonical}
+  speakable={false}
+  datePublished={datePublished}
+  dateModified={dateModified}
+>
   <Nav />
   <main class="policy">
     <div class="wrap">

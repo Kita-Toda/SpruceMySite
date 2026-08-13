@@ -4,7 +4,7 @@
   <div class="wrap">
     <span class="tag reveal">Get In Touch</span>
     <h2 class="sec-title reveal">Let's Grab A (Virtual) Coffee.</h2>
-    <p class="sec-sub reveal" style="margin-bottom:40px">Stop Worrying About Your Website. Start Building Your Empire. We Handle The Boring Stuff — You Handle The Fun Stuff.</p>
+    <p class="sec-sub reveal" style="margin-bottom:40px">Stop worrying about your website. Start building your empire. We handle the boring stuff — you handle the fun stuff.</p>
     <div class="contact-grid">
       <div class="contact-card reveal">
         <div class="cline">
@@ -31,11 +31,18 @@
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
-      <div class="mapcard reveal">
+      {/*
+        Links to the Google Business Profile rather than embedding a Maps
+        iframe. An embed costs a third-party request and a chunk of LCP on
+        mobile; the link gives Google the same site-to-listing connection for
+        free. Same ?cid= URL as Layout.astro — change both together.
+      */}
+      <a class="mapcard reveal" href="https://maps.google.com/?cid=16561133347934804073" rel="noopener noreferrer" target="_blank" data-cursor>
         <div class="pin"><div></div></div>
         <h3>Find Us In Bondi Junction</h3>
         <p>Bondi Junction<br>NSW 2022, Australia</p>
-      </div>
+        <span class="maplink">View on Google Maps →</span>
+      </a>
     </div>
   </div>
 </section>

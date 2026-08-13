@@ -217,7 +217,14 @@ section{position:relative;z-index:2;padding:110px 0}
    letter-spacing, which would tighten multi-line questions). */
 .q-title{margin:0;font-family:inherit;font-size:inherit;font-weight:inherit;line-height:inherit;letter-spacing:normal}
 .q button{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:24px 26px;display:flex;justify-content:space-between;gap:18px;align-items:center;font-family:"Fraunces";font-size:1.18rem;font-weight:600;color:var(--ink)}
+/* The "+" is drawn by CSS, and the span in the markup is deliberately empty.
+   It used to be a literal "+" text node inside the <h3>, which meant every
+   question extracted as "...in 7-10 days?+" — the glyph rode along into the
+   heading text that Featured Snippet and People-Also-Ask matching reads.
+   Crawlers parse HTML, not stylesheets, so generated content is invisible to
+   them and visually identical to us. Keep the span empty. */
 .q .plus{flex:0 0 32px;height:32px;border-radius:50%;background:var(--cream-2);display:grid;place-items:center;font-size:1.4rem;transition:.3s;color:var(--terracotta)}
+.q .plus::before{content:"+"}
 .q.open .plus{transform:rotate(45deg);background:var(--terracotta);color:#fff}
 .q .ans{max-height:0;overflow:hidden;transition:max-height .45s ease}
 .q .ans p{padding:0 26px 24px;color:var(--ink-soft);margin:0;font-size:1.02rem}
@@ -236,6 +243,12 @@ section{position:relative;z-index:2;padding:110px 0}
 .mapcard .pin div{transform:rotate(45deg);width:20px;height:20px;border-radius:50%;background:var(--sage-d)}
 .mapcard h3{position:relative;z-index:2;color:var(--cream);font-size:1.8rem}
 .mapcard p{position:relative;z-index:2;color:rgba(251,244,231,.9);margin:6px 0 0}
+/* .mapcard is an <a> to the Google Business Profile, so it needs the anchor
+   defaults stripped and a visible focus ring for keyboard users. */
+.mapcard{text-decoration:none;transition:transform .3s,box-shadow .3s}
+.mapcard:hover{transform:translateY(-4px);box-shadow:0 26px 46px -22px rgba(58,38,20,.7)}
+.mapcard:focus-visible{outline:3px solid var(--honey);outline-offset:3px}
+.mapcard .maplink{position:relative;z-index:2;margin-top:18px;font-weight:700;font-size:.92rem;color:var(--honey)}
 
 /* ---------- footer ---------- */
 footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padding:60px 0 34px;margin-top:110px}
