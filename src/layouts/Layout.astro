@@ -8,6 +8,11 @@ export interface Props {
   /** Emit `speakable` on the WebPage node. Off for pages with no summary
    *  prose for it to point at — see the comment on the WebPage node. */
   speakable?: boolean;
+  /** ISO date (YYYY-MM-DD) the page first went live. */
+  datePublished?: string;
+  /** ISO date (YYYY-MM-DD) the page's CONTENT last changed. See the note on
+   *  the WebPage node before touching this. */
+  dateModified?: string;
 }
 
 const {
@@ -15,6 +20,8 @@ const {
   description = "Smart websites + mindset tools for busy Sydney businesses. Less burnout, more leads — built while you grab a flat white.",
   canonical = "https://www.sprucemysite.com.au/",
   speakable = true,
+  datePublished,
+  dateModified,
 } = Astro.props;
 
 const schemaGraph = JSON.stringify({
@@ -68,10 +75,21 @@ const schemaGraph = JSON.stringify({
         ]
       },
       "founder": { "@id": "https://www.sprucemysite.com.au/#christian" },
+      // Google Business Profile. The ?cid= form is the canonical, permanent
+      // address of the listing — session-independent and locale-independent.
+      // Do NOT swap this for a google.com/search?...&stick=... URL copied from
+      // a knowledge panel: those carry authuser/ved/mat tokens tied to one
+      // signed-in session and expire.
+      //
+      // CID 16561133347934804073 = hex 0xe5d4f70909879869, resolved from the
+      // share link https://maps.app.goo.gl/qiLGyHgXZ3HzEfVB6 on 2026-08-13.
+      // Google's KG entity for the business is /g/11tt94ml6s.
+      "hasMap": "https://maps.google.com/?cid=16561133347934804073",
       "sameAs": [
         "https://www.facebook.com/sprucemysite",
         "https://www.instagram.com/sprucemysite",
-        "https://www.linkedin.com/in/christian-alba/"
+        "https://www.linkedin.com/in/christian-alba/",
+        "https://maps.google.com/?cid=16561133347934804073"
       ]
     },
     {
@@ -129,6 +147,20 @@ const schemaGraph = JSON.stringify({
       "inLanguage": "en-AU",
       "isPartOf": { "@id": "https://www.sprucemysite.com.au/#website" },
       "about": { "@id": "https://www.sprucemysite.com.au/#business" },
+      // Freshness. Both Google and the AI answer engines use dateModified to
+      // decide what's worth citing, so an undated page is quietly deprioritised.
+      //
+      // These are PROPS, passed per page, and that is deliberate — the two
+      // automatic alternatives both lie:
+      //   • build timestamp — every deploy claims every page changed, including
+      //     the five you didn't touch;
+      //   • git log on the source file — Vercel does a shallow clone, so every
+      //     page comes back with the clone date, i.e. the same lie.
+      // A hand-set date is only correct if you update it, but it is never
+      // false. UPDATE IT WHEN YOU CHANGE A PAGE'S COPY — a dateModified that
+      // runs ahead of the actual content is worse than none at all.
+      ...(datePublished ? { "datePublished": datePublished } : {}),
+      ...(dateModified ? { "dateModified": dateModified } : {}),
       ...(speakable ? {
         "speakable": {
           "@type": "SpeakableSpecification",

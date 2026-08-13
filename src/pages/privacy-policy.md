@@ -2,6 +2,8 @@
 layout: ../layouts/PolicyLayout.astro
 title: Privacy Policy | SpruceMySite
 description: Privacy Policy for SpruceMySite - Learn how we protect and handle your personal information.
+datePublished: "2026-07-16"
+dateModified: "2026-07-16"
 ---
 
 # Privacy Policy

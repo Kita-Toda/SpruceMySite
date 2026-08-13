@@ -30,7 +30,13 @@ const schema = JSON.stringify({
 });
 ---
 
-<ServiceLayout title={title} description={description} canonical={canonical}>
+<ServiceLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  datePublished="2026-06-29"
+  dateModified="2026-08-13"
+>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={schema} />
   </Fragment>
@@ -148,19 +154,19 @@ const schema = JSON.stringify({
       <h2 class="sec-title reveal">Common Questions About Web Design in Sydney</h2>
       <div class="faq">
         <div class="q reveal">
-          <h3 class="q-title"><button>Do I really get a custom site in 7–10 days?<span class="plus">+</span></button></h3>
+          <h3 class="q-title"><button>Do I really get a custom site in 7–10 days?<span class="plus" aria-hidden="true"></span></button></h3>
           <div class="ans"><p>Yes — for most small business sites of 4–6 pages. The timeline works because we keep the process focused: one discovery call, one feedback round, one launch. If your project is larger (e-commerce, 20+ pages, complex integrations) we'll give you a realistic timeline upfront — typically 3–4 weeks.</p></div>
         </div>
         <div class="q reveal">
-          <h3 class="q-title"><button>Will I be able to update the site myself?<span class="plus">+</span></button></h3>
+          <h3 class="q-title"><button>Will I be able to update the site myself?<span class="plus" aria-hidden="true"></span></button></h3>
           <div class="ans"><p>Yes. Depending on how complex the site is, we either build a simple CMS interface for text and image updates, or we show you how to send us a quick message and we handle it within 24 hours as part of your maintenance plan. You'll never feel locked out.</p></div>
         </div>
         <div class="q reveal">
-          <h3 class="q-title"><button>Do you build on WordPress?<span class="plus">+</span></button></h3>
+          <h3 class="q-title"><button>Do you build on WordPress?<span class="plus" aria-hidden="true"></span></button></h3>
           <div class="ans"><p>For most projects we use Astro — it's significantly faster and more secure than WordPress with no plugin-update overhead. That said, if you need a content-heavy site with daily publishing, we'll discuss the right tool for your goals on the discovery call.</p></div>
         </div>
         <div class="q reveal">
-          <h3 class="q-title"><button>What do you need from me to get started?<span class="plus">+</span></button></h3>
+          <h3 class="q-title"><button>What do you need from me to get started?<span class="plus" aria-hidden="true"></span></button></h3>
           <div class="ans"><p>Mainly your time for one conversation and whatever brand assets you have (logo, photos, colour preferences). If you don't have professional photos yet, we'll talk through options — including using well-chosen stock imagery while you arrange a shoot.</p></div>
         </div>
       </div>
