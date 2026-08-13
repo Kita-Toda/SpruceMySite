@@ -16,7 +16,7 @@ Seven planning docs were carrying three different scores for the same site (72/1
 Evidence:
 
 | Claim in the 16 Jul audit | Reality |
-|---|---|
+| --- | --- |
 | "Zero `og:*` or `twitter:*` tags present" · Social Sharing **0/100** | `git log -S'og:title'` → OG tags present since the **initial commit, 27 Jun** (b98f19f). Live `curl` confirms `og:title`, `twitter:card`, `og-cover.jpg` all serving. |
 | "Zero structured data detected" · Schema **15/100** | `Layout.astro:136` ships a JSON-LD `@graph`: ProfessionalService + Person + WebSite + OfferCatalog. Live-verified. |
 | "Missing canonical tag" | `Layout.astro:115`, live-verified. |
@@ -36,7 +36,8 @@ Evidence:
 
 All live-confirmed. The three older SEO plans list these as open; they are not.
 
-**Technical / on-page**
+### Technical / on-page
+
 - `robots.txt` — incl. all AI crawlers (GPTBot, ClaudeBot, PerplexityBot, Applebot-Extended, anthropic-ai, FacebookBot allowed; Bytespider/CCBot/Amazonbot blocked)
 - `sitemap.xml` · `llms.txt` · favicon + apple-touch-icon
 - Canonical · `meta robots` · full Open Graph + Twitter Card + `og-cover.jpg` (1200×630)
@@ -47,11 +48,15 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
 - Footer socials with `rel="noopener noreferrer"` + `aria-label`
 - Security headers live via `vercel.json`: HSTS (preload), nosniff, X-Frame-Options, Referrer-Policy, Permissions-Policy
 
-**Architecture / content** — *this was "The One Big Bet" in `SPRUCE-ACTION-PLAN.md`; it's done*
+### Architecture / content
+
+*This was "The One Big Bet" in `SPRUCE-ACTION-PLAN.md`; it's done.*
+
 - 5 service landing pages live: `/web-design-sydney/`, `/local-seo-sydney/`, `/lead-generation-sydney/`, `/website-maintenance-sydney/`, `/google-analytics-setup-sydney/`
 - Privacy Policy + Terms & Conditions · ABN in footer
 
-**Infrastructure**
+### Infrastructure
+
 - Quote form → Formspree (tested) · n8n → GoHighLevel workflow built (`n8n-ghl-workflow.json`, pipeline + stage IDs configured)
 - Cold email templates written (`COLD-EMAIL-TEMPLATES.md`) · Brand guidelines (`BRAND-GUIDELINES.md`)
 
@@ -68,7 +73,7 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
    **Full sweep done 2026-08-12** — all 6 live pages fetched and scanned, plus every repo file, `llms.txt`, the n8n→GHL workflow and the Brevo templates. **Four instances total, all now cleared:**
 
    | # | Where | What it claimed | Status |
-   |---|---|---|---|
+   | --- | --- | --- | --- |
    | 1 | `Reviews.astro` | 3 invented testimonials, 5 stars each | ✅ removed (`6af88b7`) |
    | 2 | `Stats.astro` | "5★ Reviews On Autopilot" | ✅ reworded (`888178c`) |
    | 3 | `og-cover.jpg` | "5/5 Google Reviews" on every share | ✅ regenerated (`df9dece`) |
@@ -79,10 +84,11 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
    **Also fixed:** `llms.txt` told AI crawlers the homepage contains "testimonials" — untrue since they were removed. Now reads "FAQs".
 
    **Judgement calls left as-is** (defensible, but you should know they exist):
-   - `Services.astro:20,40` — "5-Star Review Machine On Repeat" and "Live 5-Star Google Review Widget". These describe a service *sold to clients*, not SpruceMySite's own rating, so they're legitimate. ⚠️ But "Machine On Repeat" reads as a guaranteed 5-star outcome. Softening to "Review Collection On Autopilot" would remove the implied guarantee.
-   - `Reviews.astro:31` — the star block is **hardcoded to 5** inside the render loop. Currently harmless (the array is empty), but the first real testimonial you add will automatically display 5 stars regardless of what the client actually gave you. Make it a per-quote field before adding anyone.
-   - `SPRUCE-ACTION-PLAN.md` ~line 392 — a **copy-paste-ready `AggregateRating` block with invented `ratingValue: 5.0` / `reviewCount: 7`**. Superseded doc, but the snippet is live-looking and one paste from publishing a fake rating in structured data. Warning banner added at the top of that file.
-   - `n8n-ghl-workflow.json:87` — `googleRating` / `reviewCount` are **clean**: they map the *prospect's* rating into GHL for lead scoring, not any claim about you.
+
+- `Services.astro:20,40` — "5-Star Review Machine On Repeat" and "Live 5-Star Google Review Widget". These describe a service *sold to clients*, not SpruceMySite's own rating, so they're legitimate. ⚠️ But "Machine On Repeat" reads as a guaranteed 5-star outcome. Softening to "Review Collection On Autopilot" would remove the implied guarantee.
+- `Reviews.astro:31` — the star block is **hardcoded to 5** inside the render loop. Currently harmless (the array is empty), but the first real testimonial you add will automatically display 5 stars regardless of what the client actually gave you. Make it a per-quote field before adding anyone.
+- `SPRUCE-ACTION-PLAN.md` ~line 392 — a **copy-paste-ready `AggregateRating` block with invented `ratingValue: 5.0` / `reviewCount: 7`**. Superseded doc, but the snippet is live-looking and one paste from publishing a fake rating in structured data. Warning banner added at the top of that file.
+- `n8n-ghl-workflow.json:87` — `googleRating` / `reviewCount` are **clean**: they map the *prospect's* rating into GHL for lead scoring, not any claim about you.
 
    **Still open (minor):** the badge makes a poor favicon — at 16–32px the stacked words collapse into unreadable marks. A simplified single-letterform variant should be drawn. Functional today, not good. See `BRAND-GUIDELINES.md` §2.3.
 
@@ -91,16 +97,18 @@ All live-confirmed. The three older SEO plans list these as open; they are not.
    **Still open — the refill:** one *real* permissioned quote from Customer #1, gated on the triple ask (P1 #7 below). Rendering resumes automatically the moment an entry is added to the array. Until then the site shows no testimonials, which is the correct state — fabricated ones breach ACL s18/s29 (misleading conduct / false testimonials), an active ACCC enforcement focus, and "we didn't know" is not available to a marketing agency.
 
 **2. ~~Substantiate or cut the stat bar.~~ ✅ DONE 2026-08-12.** `Stats.astro` presented four service specs as company performance statistics. Reworded, not deleted — three were true claims mislabelled:
-   - "10+ Years Building Sydney Sites" → **"Years' Industry Experience"**. The 10+ years is Christian's personal experience (already asserted in the Person schema, `Layout.astro:78`); the old label implied SpruceMySite itself had traded 10 years. *Unverified by me — it's your own standing claim in two places. Confirm it's accurate.*
-   - "Lead Response Time" → **"Auto-Reply To Your New Leads"**. 60s is the spec of the lead engine you *build for clients* (`LeadEngine.astro:15`), not a measured SpruceMySite metric. **Still gated on the n8n → GHL workflow actually being activated** — see §4.
-   - "Days To Launch" — unchanged. A forward-looking offer, consistent with the FAQ.
-   - "5★ Reviews On Autopilot" → **"6 Days A Week You Can Reach Us"**. The old figure read as SpruceMySite's own rating with zero reviews on record. The review service is still sold in `Services.astro`; it just can't appear as a rating. The replacement is substantiated by your published Mon–Sat 9am–8pm hours in the schema.
+
+- "10+ Years Building Sydney Sites" → **"Years' Industry Experience"**. The 10+ years is Christian's personal experience (already asserted in the Person schema, `Layout.astro:78`); the old label implied SpruceMySite itself had traded 10 years. *Unverified by me — it's your own standing claim in two places. Confirm it's accurate.*
+- "Lead Response Time" → **"Auto-Reply To Your New Leads"**. 60s is the spec of the lead engine you *build for clients* (`LeadEngine.astro:15`), not a measured SpruceMySite metric. **Still gated on the n8n → GHL workflow actually being activated** — see §4.
+- "Days To Launch" — unchanged. A forward-looking offer, consistent with the FAQ.
+- "5★ Reviews On Autopilot" → **"6 Days A Week You Can Reach Us"**. The old figure read as SpruceMySite's own rating with zero reviews on record. The review service is still sold in `Services.astro`; it just can't appear as a rating. The replacement is substantiated by your published Mon–Sat 9am–8pm hours in the schema.
 
    A comment in `Stats.astro` now records the rule for whoever edits it next.
 
 **3. Connect analytics — you are currently flying blind.** `src/components/Analytics.astro` is a *sales* section listing tools you sell; it installs no tracking. Live HTML has **no GA4 ID and no Meta Pixel**. Worse, line 112 tells every visitor: *"Tracking IDs Aren't Connected Yet — The Placeholders Are In Place And Ready To Switch On."* On the site of an agency whose service #5 is Google Analytics setup.
-   - Install GA4 + Meta Pixel for real, verify in Realtime, then delete that sentence.
-   - **This gates paid ads entirely** — no pixel, no conversion tracking, no retargeting, no ad spend.
+
+- Install GA4 + Meta Pixel for real, verify in Realtime, then delete that sentence.
+- **This gates paid ads entirely** — no pixel, no conversion tracking, no retargeting, no ad spend.
 
 **4. Verify Google Search Console + submit the sitemap.** Every SEO decision below is guesswork without impression/query data. **This half is on you — I can't verify or claim a GSC property.**
 
@@ -127,14 +135,14 @@ You didn't need to tell me the delivery status, because the advice is the same e
 **Net effect on the schedule below:** #11 (GBP) moves **before** #7–#9, and a new #4a lands this week. The rest holds.
 
 | # | Action | When |
-|---|---|---|
+| --- | --- | --- |
 | **4a** | **Capture Customer #1's before-state** — site screenshots, rankings for 3–5 terms, current monthly enquiry count, GBP baseline | **This week — expires at launch** |
 | **11 (moved up)** | Start GBP claim + verification so the review link exists before acceptance | **Start now** (post takes days) |
 | 5 | Deliver Customer #1 to spec, no scope creep | as scheduled |
 | 6+7 (merged) | Acceptance **and** the triple ask, same conversation | at handover |
 
 | # | Action | Source | Target |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 5 | Deliver Customer #1 to spec, no scope creep | 90-day 5.2/6.1 | Day 52 |
 | 6 | Customer acceptance & sign-off | 90-day 6.2 | Day 54 |
 | 7 | **The triple ask:** case-study permission + testimonial quote + Google review | 90-day 6.3 | Day 55 |
@@ -147,18 +155,18 @@ You didn't need to tell me the delivery status, because the advice is the same e
 
 ### 🟡 P2 — SEO & content (Month 2, after P0/P1)
 
-14. ~~**`Service` schema per service page.**~~ ✅ **ALREADY DONE — my earlier entry was wrong.** I checked `ServiceLayout.astro` and stopped there. The layout has no JSON-LD block, but it doesn't need one: it exposes a `<slot name="head">`, and **all five** service pages pass their own `@graph` through it — a `Service` node (with `provider` `@id`-linked to `#business` in the root graph, `areaServed`, `serviceType`, `audience`) plus a `BreadcrumbList`. Verified in source and in `dist/`. Nothing to do. *(SPRUCE #20 was stale too.)*
-15. ~~**Split the two long sentences.**~~ ✅ DONE 2026-08-12. `FAQ.astro:10` (40 words) and `KeysBand.astro:9` (38 words) are now 3 sentences each, longest ~20 words. Adapted from `SEO-ACTION-PLAN.md` §2.3, but not taken literally — that doc chopped them into five 6-word fragments and used US "Customize". Kept the site's Title Case and AU spelling. Build verified.
-16. **E-E-A-T in the About section** — LinkedIn is in the footer but not in About; no years in business, no client outcomes. Add once Customer #1's numbers exist.
-17. **`AggregateRating` schema** — *gated: needs 5+ real Google reviews.* Do not add before then (see #1).
-18. ~~**Extend `meta robots`**~~ ✅ DONE 2026-08-12. `Layout.astro:114` now serves `index, follow, max-image-preview:large, max-snippet:-1` across all 8 pages. Build verified.
-19. **Blog / resource content** — 3–5 posts on long-tail intent: "How much does a website cost in Sydney", "Get your business on Google Maps in Bondi Junction", "Web design vs DIY Squarespace". Each 1000+ words, 3–5 internal links to service pages.
-20. **Core Web Vitals baseline** — never captured (PageSpeed was rate-limited during the June audits). Run once and record.
+**14.** ~~**`Service` schema per service page.**~~ ✅ **ALREADY DONE — my earlier entry was wrong.** I checked `ServiceLayout.astro` and stopped there. The layout has no JSON-LD block, but it doesn't need one: it exposes a `<slot name="head">`, and **all five** service pages pass their own `@graph` through it — a `Service` node (with `provider` `@id`-linked to `#business` in the root graph, `areaServed`, `serviceType`, `audience`) plus a `BreadcrumbList`. Verified in source and in `dist/`. Nothing to do. *(SPRUCE #20 was stale too.)*
+**15.** ~~**Split the two long sentences.**~~ ✅ DONE 2026-08-12. `FAQ.astro:10` (40 words) and `KeysBand.astro:9` (38 words) are now 3 sentences each, longest ~20 words. Adapted from `SEO-ACTION-PLAN.md` §2.3, but not taken literally — that doc chopped them into five 6-word fragments and used US "Customize". Kept the site's Title Case and AU spelling. Build verified.
+**16.** **E-E-A-T in the About section** — LinkedIn is in the footer but not in About; no years in business, no client outcomes. Add once Customer #1's numbers exist.
+**17.** **`AggregateRating` schema** — *gated: needs 5+ real Google reviews.* Do not add before then (see #1).
+**18.** ~~**Extend `meta robots`**~~ ✅ DONE 2026-08-12. `Layout.astro:114` now serves `index, follow, max-image-preview:large, max-snippet:-1` across all 8 pages. Build verified.
+**19.** **Blog / resource content** — 3–5 posts on long-tail intent: "How much does a website cost in Sydney", "Get your business on Google Maps in Bondi Junction", "Web design vs DIY Squarespace". Each 1000+ words, 3–5 internal links to service pages.
+**20.** **Core Web Vitals baseline** — never captured (PageSpeed was rate-limited during the June audits). Run once and record.
 
 ### ⚪ P3 — Deferred, deliberately
 
-21. **CSP header** — needs allowlisting for cdnjs (GSAP/animate.css), Google, Meta. Every audit deferred it; keep deferring until there's ad spend worth protecting.
-22. **`twitter:site` / `twitter:creator`** — *gated: no X account exists.* 5 minutes if one is created.
+**21.** **CSP header** — needs allowlisting for cdnjs (GSAP/animate.css), Google, Meta. Every audit deferred it; keep deferring until there's ad spend worth protecting.
+**22.** **`twitter:site` / `twitter:creator`** — *gated: no X account exists.* 5 minutes if one is created.
 
 ### 🚧 Paid ads — gated, not designed
 
@@ -177,7 +185,7 @@ Everything left in P0 lives outside this repo and needs your logins. This is the
 ### A. GA4 — gates everything measurable
 
 | Step | Who | Detail |
-|---|---|---|
+| --- | --- | --- |
 | A1 | **You** | analytics.google.com → check if a property for sprucemysite.com.au already exists. If yes, skip to A3. |
 | A2 | **You** | If not: Admin → Create property. Name "SpruceMySite", timezone **Australia/Sydney**, currency AUD. Business objective: "Generate leads". |
 | A3 | **You** | Admin → Data streams → Web → `https://www.sprucemysite.com.au`. Leave Enhanced Measurement **on**. Copy the **Measurement ID** (`G-XXXXXXXXXX`). |
@@ -232,8 +240,8 @@ You asked for the cold-email track staged, not sent. Done. **Nothing has been se
 
 **Baseline found — the account is effectively empty:**
 
-| | |
-|---|---|
+| Account item | State on 2026-08-12 |
+| --- | --- |
 | Plan | Free — **300 emails/day** cap |
 | Senders | 1 — `sprucemysite@gmail.com` → **must become `info@sprucemysite.com.au`**, see §3a E |
 | Lists | 1 — "Your first list", **1 contact** |
@@ -277,7 +285,7 @@ These are genuinely unknown, not assumed either way. Each one changes the rankin
 Replaces the three competing scorecards. No vanity SEO score — it was computed against the wrong file twice.
 
 | Metric | Now (12 Aug) | Day 60 | Day 90 |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Paying customers signed | 1 | 2 | 3 |
 | Case studies live | 0 | 1 | 2 |
 | Google reviews | 0 | 1–2 | 3–5 |
@@ -296,7 +304,7 @@ Keep the Friday check-in template from `ACTION-PLAN-90DAY.md` §"Weekly Check-in
 ## 6. Doc hygiene
 
 | File | Disposition |
-|---|---|
+| --- | --- |
 | `MARKETING-PLAN.md` | **This file. The only live plan.** |
 | `ACTION-PLAN-90DAY.md` | Superseded — Phase 2/3 tasks carried into §3 above; keep for the check-in template + warm-lead history |
 | `ACTION-PLAN.md`, `SPRUCE-ACTION-PLAN.md` | Superseded — open items carried forward; the rest verified done |
