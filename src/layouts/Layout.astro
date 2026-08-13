@@ -156,6 +156,104 @@ const schemaGraph = JSON.stringify({
     </script>
     <!-- End Meta Pixel Code -->
 
+    {/*
+      Conversion tracking — one delegated listener, not 13 inline onclicks.
+
+      The booking CTA appears 13 times across Hero, Nav, Contact and all five
+      service pages; the email link twice. Catching clicks at the document
+      level means new CTAs are tracked the moment they're added, and the
+      dormant Quote.astro (tel: + mailto: buttons) is covered if it ever
+      comes back.
+
+      WHAT THESE EVENTS ACTUALLY MEAN — read before trusting the numbers:
+      these fire on the CLICK, which is intent, not a completed booking. The
+      booking itself finishes on GoHighLevel's domain, which we don't control
+      and can't see. So book_call_click counts people who set off to book, and
+      will always overcount actual bookings by however many abandon the widget.
+      Don't report it as "bookings" to anyone, including yourself.
+
+      To get true booking conversions you need GHL's side: either point its
+      post-booking redirect at a /thank-you page on this domain and fire the
+      event there, or send a server-side hit from the n8n workflow via the GA4
+      Measurement Protocol. Either is a bigger job than this file.
+
+      Meta gets standard events (Lead / Contact) so they show up in Events
+      Manager without extra setup. GA4 gets custom event names, which need
+      marking as key events — see the note at the end of this comment.
+
+      GA4:  Admin -> Events -> mark book_call_click / email_click as key events
+      Meta: Events Manager -> the Lead and Contact events appear automatically
+    */}
+    <script is:inline>
+      (function () {
+        // Section ids double as GA4 report labels, so a couple get friendlier
+        // names — the hero's anchor is id="top", which reads as nonsense in a
+        // report column.
+        var LABELS = { top: 'hero' };
+
+        // Service pages don't use ids: their hero is an id-less <section> and
+        // the closing CTA is a bare <div class="cta-band">. Without these both
+        // would land in 'other' and you couldn't tell the top CTA from the
+        // bottom one. Checked only after a real section id fails.
+        var ZONES = [
+          ['.cta-band', 'cta-band'],
+          ['.svc-hero-cta', 'service-hero']
+        ];
+
+        function section(el) {
+          if (el.closest('header')) return 'nav';
+          if (el.closest('footer')) return 'footer';
+
+          var s = el.closest('section');
+          if (s && s.id) return LABELS[s.id] || s.id;
+
+          for (var i = 0; i < ZONES.length; i++) {
+            if (el.closest(ZONES[i][0])) return ZONES[i][1];
+          }
+          return 'other';
+        }
+
+        document.addEventListener('click', function (e) {
+          var t = e.target;
+          if (!t || typeof t.closest !== 'function') return;
+          var a = t.closest('a[href]');
+          if (!a) return;
+
+          var href = a.getAttribute('href') || '';
+          var gaEvent, metaEvent;
+
+          if (href.indexOf('/widget/booking/') > -1) {
+            gaEvent = 'book_call_click'; metaEvent = 'Lead';
+          } else if (href.indexOf('mailto:') === 0) {
+            gaEvent = 'email_click'; metaEvent = 'Contact';
+          } else if (href.indexOf('tel:') === 0) {
+            gaEvent = 'phone_click'; metaEvent = 'Contact';
+          } else {
+            return;
+          }
+
+          var where = section(a);
+          var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 100);
+
+          // Both libraries use sendBeacon, so these survive the navigation
+          // that follows. Guarded because an ad blocker removes either one.
+          if (typeof gtag === 'function') {
+            gtag('event', gaEvent, {
+              link_url: href,
+              link_text: label,
+              page_section: where
+            });
+          }
+          if (typeof fbq === 'function') {
+            fbq('track', metaEvent, {
+              content_name: gaEvent,
+              content_category: where
+            });
+          }
+        }, true);
+      })();
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
