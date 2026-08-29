@@ -37,3 +37,7 @@ Christian Alba is a Sydney-based web designer and digital marketing specialist. 
 - [Lead Generation Sydney](https://www.sprucemysite.com.au/lead-generation-sydney/): Automated 60-second enquiry response and follow-up systems
 - [Website Maintenance Sydney](https://www.sprucemysite.com.au/website-maintenance-sydney/): Security, backups, uptime, and "Don't Panic" support
 - [Google Analytics Setup Sydney](https://www.sprucemysite.com.au/google-analytics-setup-sydney/): GA4, GTM, and Clarity configuration with plain-English reporting
+
+## Optional
+
+- [Full Content](https://www.sprucemysite.com.au/llms-full.txt): Complete text of every page on the site, in one file

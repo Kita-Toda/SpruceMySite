@@ -88,7 +88,7 @@ const schemaGraph = JSON.stringify({
       "sameAs": [
         "https://www.facebook.com/sprucemysite",
         "https://www.instagram.com/sprucemysite",
-        "https://www.linkedin.com/in/christian-alba/",
+        "https://www.linkedin.com/in/christian-alba",
         "https://maps.google.com/?cid=16561133347934804073"
       ]
     },
@@ -108,7 +108,7 @@ const schemaGraph = JSON.stringify({
       "worksFor": { "@id": "https://www.sprucemysite.com.au/#business" },
       "knowsAbout": ["web design", "local SEO", "lead generation", "Google Analytics", "digital marketing", "WordPress", "Astro"],
       "sameAs": [
-        "https://www.linkedin.com/in/christian-alba/",
+        "https://www.linkedin.com/in/christian-alba",
         "https://www.facebook.com/sprucemysite",
         "https://www.instagram.com/sprucemysite"
       ]
@@ -345,12 +345,15 @@ const schemaGraph = JSON.stringify({
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <!-- animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" integrity="sha512-c42qTSw/wPZ3/5LBzD+Bw5f7bSF2oxou6wEb+I/lqeaKV5FDIfMvvRp772y4jcJLKuGUOpbJMdg/BTl50fJYAw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- GSAP (must load before inline scripts — Three.js loaded in homepage only) -->
-    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--
+      GSAP. Deferred: both consumers (index.astro, ServiceLayout.astro) are
+      Astro-bundled modules that run after the parser finishes, and each reads
+      gsap/ScrollTrigger off window behind a guard. Three.js is homepage only.
+    -->
+    <script is:inline defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script is:inline defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <slot name="head" />
   </head>
   <body>

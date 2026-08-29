@@ -40,3 +40,4 @@ Sitemap: https://www.sprucemysite.com.au/sitemap.xml
 
 # AI-readable business summary
 # https://www.sprucemysite.com.au/llms.txt
+# https://www.sprucemysite.com.au/llms-full.txt
