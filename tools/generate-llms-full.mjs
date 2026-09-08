@@ -7,10 +7,16 @@
  */
 import { readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
+import { postsByDate, SITE, path as postPath } from '../src/data/posts.mjs';
 
-const SITE = 'https://www.sprucemysite.com.au';
 const DIST = 'dist';
 
+/**
+ * Service pages are listed by hand; the blog half comes from the post
+ * manifest, so a new post lands in the corpus without touching this file.
+ * The blog goes last — an answer engine reading top-down should hit what the
+ * business sells before it hits the articles about it.
+ */
 const PAGES = [
   ['index.html', '/', 'Homepage'],
   ['web-design-sydney/index.html', '/web-design-sydney/', 'Web Design Sydney'],
@@ -18,6 +24,12 @@ const PAGES = [
   ['lead-generation-sydney/index.html', '/lead-generation-sydney/', 'Lead Generation Sydney'],
   ['website-maintenance-sydney/index.html', '/website-maintenance-sydney/', 'Website Maintenance Sydney'],
   ['google-analytics-setup-sydney/index.html', '/google-analytics-setup-sydney/', 'Google Analytics Setup Sydney'],
+  ['blog/index.html', '/blog/', 'Blog — Article Index'],
+  ...postsByDate.map((p) => [
+    `blog/${p.slug}/index.html`,
+    postPath(p.slug),
+    `Blog: ${p.title} (${p.category}, published ${p.published})`,
+  ]),
 ];
 
 const decode = (s) =>

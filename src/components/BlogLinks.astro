@@ -1,0 +1,59 @@
+---
+/**
+ * "Related reading" — the return leg of the internal link between a service
+ * page and the blog.
+ *
+ * The posts already link out to the service they belong to (the .related box
+ * at the foot of each article); without this component those links run one way
+ * only, which leaves the ten new posts hanging off the site rather than woven
+ * into it. Google follows both directions, and a service page that cites
+ * supporting articles is also the shape an AI answer engine quotes from.
+ *
+ * Pass the service's own path. Posts are matched on `service.url` in
+ * src/data/posts.mjs, so a new post joins the right service page by virtue of
+ * being in the manifest — nothing to wire up here.
+ *
+ * Renders nothing at all when a service has no posts yet, rather than an empty
+ * heading: /google-analytics-setup-sydney/ is in exactly that position today.
+ */
+import { posts, path as postPath } from '../data/posts.mjs';
+
+export interface Props {
+  /** The service page's own path, e.g. "/local-seo-sydney/". */
+  service: string;
+  /** Section heading. Defaults to something generic; override per page. */
+  heading?: string;
+  /** Standfirst under the heading. */
+  intro?: string;
+}
+
+const { service, heading = 'Related Reading', intro } = Astro.props;
+const related = posts.filter((p) => p.service.url === service);
+---
+
+{related.length > 0 && (
+  <section>
+    <div class="wrap">
+      <span class="tag reveal">From The Blog</span>
+      <h2 class="sec-title reveal">{heading}</h2>
+      {intro && <p class="sec-sub reveal">{intro}</p>}
+      <div class="svc-links">
+        {related.map((p) => (
+          <a href={postPath(p.slug)} class="svc-link reveal">
+            {p.headline}
+            <small>{p.category} · {p.readingMinutes} min read</small>
+          </a>
+        ))}
+      </div>
+      <p class="blog-all reveal">
+        <a href="/blog/">See all articles on the blog <span aria-hidden="true">&rarr;</span></a>
+      </p>
+    </div>
+  </section>
+)}
+
+<style>
+.blog-all { margin: 22px 0 0; font-weight: 700; font-size: 0.95rem; }
+.blog-all a { color: var(--terracotta); text-decoration: none; }
+.blog-all a:hover { text-decoration: underline; }
+</style>

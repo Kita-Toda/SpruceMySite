@@ -1,5 +1,6 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import BlogLinks from '../../components/BlogLinks.astro';
 
 const title = "Web Design Sydney | Sites That Launch in 7–10 Days";
 const description = "Professional web design in Sydney built around conversion, speed, and local SEO. Live in 7–10 days — mobile-first, no templates. Bondi Junction.";
@@ -199,6 +200,13 @@ const schema = JSON.stringify({
       </div>
     </div>
   </section>
+
+  <!-- RELATED READING -->
+  <BlogLinks
+    service="/web-design-sydney/"
+    heading="Before You Hire Anyone"
+    intro="What to ask, what to watch for, and what a fast build genuinely involves — including the parts that are on you."
+  />
 
   <!-- CTA BAND -->
   <div class="cta-band reveal">

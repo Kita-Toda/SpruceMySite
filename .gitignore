@@ -15,9 +15,12 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Legacy / backup files (replaced by Astro project)
-index.html
-index.html.bak
+# Legacy / backup files (replaced by Astro project).
+# Anchored to the repo root on purpose: unanchored, `index.html` matches at
+# EVERY level, which silently excluded all ten src/pages/blog/<slug>/index.html
+# posts from the repo. Keep the leading slash.
+/index.html
+/index.html.bak
 backup html pages/
 *.zip
 .vercel

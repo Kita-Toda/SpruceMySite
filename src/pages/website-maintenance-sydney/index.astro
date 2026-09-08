@@ -1,5 +1,6 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import BlogLinks from '../../components/BlogLinks.astro';
 
 const title = "Website Maintenance Sydney | 'Don't Panic' Support";
 const description = "Website maintenance and support for Sydney businesses. Security updates, backups, uptime monitoring, and a direct line when things go wrong.";
@@ -198,6 +199,13 @@ const schema = JSON.stringify({
       </div>
     </div>
   </section>
+
+  <!-- RELATED READING -->
+  <BlogLinks
+    service="/website-maintenance-sydney/"
+    heading="Spend Less Time On Your Website"
+    intro="Choosing a platform you can live with, and getting the ongoing upkeep off your plate."
+  />
 
   <!-- CTA BAND -->
   <div class="cta-band reveal">

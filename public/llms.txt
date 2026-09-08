@@ -37,6 +37,22 @@ Christian Alba is a Sydney-based web designer and digital marketing specialist. 
 - [Lead Generation Sydney](https://www.sprucemysite.com.au/lead-generation-sydney/): Automated 60-second enquiry response and follow-up systems
 - [Website Maintenance Sydney](https://www.sprucemysite.com.au/website-maintenance-sydney/): Security, backups, uptime, and "Don't Panic" support
 - [Google Analytics Setup Sydney](https://www.sprucemysite.com.au/google-analytics-setup-sydney/): GA4, GTM, and Clarity configuration with plain-English reporting
+- [Blog](https://www.sprucemysite.com.au/blog/): Plain-English articles on web design, local SEO, lead generation and site maintenance
+
+## Blog
+
+Plain-English articles for Sydney small business owners, at https://www.sprucemysite.com.au/blog/. All written by Christian Alba and published 8 September 2026.
+
+- [How To Get Found On Google Maps In Sydney](https://www.sprucemysite.com.au/blog/how-to-get-found-on-google-maps-sydney/): Google Business Profile setup and local SEO fundamentals for Sydney businesses
+- [The Best Local SEO Tools For Sydney Tradies](https://www.sprucemysite.com.au/blog/best-local-seo-tools-for-sydney-tradies/): Which local SEO tools are worth a tradie's time, and how they move rankings
+- [DIY SEO vs Hiring An Agency In Sydney](https://www.sprucemysite.com.au/blog/diy-seo-vs-hiring-an-agency-sydney/): An honest comparison of what DIY SEO costs in time versus hiring an agency
+- [A Google Review Strategy That Works For Sydney Small Business](https://www.sprucemysite.com.au/blog/google-review-strategy-sydney/): Automating review requests and handling negative feedback
+- [How To Stop Losing Leads After Hours](https://www.sprucemysite.com.au/blog/how-to-stop-losing-leads-after-hours/): Why leads go cold in minutes and how a 60-second automated reply system stops it
+- [7 Signs Your Sydney Website Is Quietly Killing Your Leads](https://www.sprucemysite.com.au/blog/signs-your-website-is-killing-your-leads/): A website audit checklist for diagnosing low enquiry rates
+- [How To Choose A Web Design Agency In Sydney](https://www.sprucemysite.com.au/blog/choosing-a-web-designer-in-sydney/): Portfolio red flags, pricing questions, and what ongoing support should include
+- [Website Launch In A Week: A Realistic Guide](https://www.sprucemysite.com.au/blog/website-launch-in-a-week-guide/): What a 7-10 day website launch actually requires and what not to cut
+- [WordPress vs Website Builder For Small Business](https://www.sprucemysite.com.au/blog/wordpress-vs-website-builder-small-business/): WordPress, Squarespace and Wix compared for small Australian businesses
+- [How To Reduce Small Business Tech Overwhelm](https://www.sprucemysite.com.au/blog/reduce-small-business-tech-overwhelm/): What to outsource, what to ignore, and what site management should cost in time
 
 ## Optional
 
