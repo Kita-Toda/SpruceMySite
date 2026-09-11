@@ -3,7 +3,7 @@ layout: ../layouts/PolicyLayout.astro
 title: Privacy Policy | SpruceMySite
 description: Privacy Policy for SpruceMySite - Learn how we protect and handle your personal information.
 datePublished: "2026-07-16"
-dateModified: "2026-07-16"
+dateModified: "2026-09-11"
 ---
 
 # Privacy Policy
@@ -60,7 +60,7 @@ Some third-party service providers we use may store or process data outside Aust
 
 ## 5. Cookies and Analytics
 
-Our website may use cookies and third-party analytics tools (e.g. Google Analytics, Meta Pixel) to understand website usage and improve user experience. You can disable cookies through your browser settings, though this may affect website functionality.
+Our website may use cookies and third-party analytics tools (e.g. Google Analytics, Meta Pixel) to understand website usage and improve user experience. We also use Vercel Web Analytics, which measures page views and traffic sources without cookies and without tracking you across other websites. Alongside it we use Vercel Speed Insights, which records how quickly pages load and respond on your device (loading, layout and interaction timings) — also without cookies and without tracking you across other websites. You can disable cookies through your browser settings, though this may affect website functionality.
 
 ## 6. Data Security
 

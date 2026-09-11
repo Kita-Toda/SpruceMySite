@@ -179,6 +179,22 @@ const fmt = (iso: string) =>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json" set:html={schema} />
 <script is:inline defer src="/js/blog-analytics.js"></script>
+<!--
+  Vercel Web Analytics. The raw tag rather than <Analytics /> from
+  '@vercel/analytics/astro', which is what Layout.astro mounts: this page
+  deliberately sits outside that layout and mirrors the posts' shell instead
+  (see the note at the top), and the posts are static HTML that can only carry
+  the tag. Same script either way — the component does nothing more than
+  inject it. Served by Vercel's edge, so `script-src 'self'` already allows it.
+-->
+<script is:inline defer src="/_vercel/insights/script.js"></script>
+<!--
+  Vercel Speed Insights, the performance counterpart to the tag above. Raw tag
+  for the same reason: this page sits outside Layout.astro, which is where
+  <SpeedInsights /> is mounted. The component's only extra job is route
+  attribution across client-side navigation, and there is none here.
+-->
+<script is:inline defer src="/_vercel/speed-insights/script.js"></script>
 <style is:global>
 :root{
   --cream:#fbf4e7; --cream-2:#f3e7d2; --paper:#fffdf6;

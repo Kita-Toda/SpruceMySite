@@ -275,6 +275,37 @@ const FOOTER = `<footer class="site">
 </footer>`;
 
 const ANALYTICS = `<script defer src="/js/blog-analytics.js"></script>`;
+
+/**
+ * Vercel Web Analytics, the same tag Layout.astro mounts via
+ * <Analytics /> from '@vercel/analytics/astro'. These posts are plain HTML
+ * and cannot mount an Astro component, so they carry the script tag the
+ * component would have injected — which is all that component does once the
+ * framework wrapper is stripped away.
+ *
+ * /_vercel/insights/script.js is served by Vercel's edge, not by this build,
+ * so it is same-origin and already allowed by the `script-src 'self'` in
+ * vercel.json. It 404s harmlessly anywhere that is not Vercel, and it only
+ * exists at all once Web Analytics is enabled for the project in the
+ * dashboard.
+ */
+const VERCEL_ANALYTICS = `<script defer src="/_vercel/insights/script.js"></script>`;
+
+/**
+ * Vercel Speed Insights — real-user LCP/CLS/INP/FCP/TTFB, the counterpart to
+ * the page-view tag above. Layout.astro mounts <SpeedInsights /> from
+ * '@vercel/speed-insights/astro'; these posts are plain HTML and cannot
+ * mount a component, so they carry the bare script tag instead. The
+ * component's extra work is route attribution for client-side navigation,
+ * which a standalone static page has none of — the script alone reports the
+ * pathname, and that is the whole story here.
+ *
+ * /_vercel/speed-insights/script.js is served by Vercel's edge, not by this
+ * build, so it is same-origin and already allowed by the `script-src 'self'`
+ * in vercel.json. It 404s harmlessly anywhere that is not Vercel, and only
+ * exists once Speed Insights is enabled for the project in the dashboard.
+ */
+const VERCEL_SPEED_INSIGHTS = `<script defer src="/_vercel/speed-insights/script.js"></script>`;
 const NOSCRIPT_PIXEL = `<noscript><img height="1" width="1" style="display:none" alt=""
   src="https://www.facebook.com/tr?id=870957819396743&amp;ev=PageView&amp;noscript=1"></noscript>`;
 
@@ -304,9 +335,17 @@ for (const p of posts) {
   if (!headRe.test(html)) throw new Error('no twitter:card..</script> span in ' + p.slug);
   html = html.replace(headRe, headBlock(p, words));
 
-  // 3. Analytics, last thing in the head.
+  // 3. Analytics, last thing in the head. Guarded one tag at a time, not as
+  //    a pair — a post processed before Vercel Analytics existed already has
+  //    the first tag, and a single combined guard would skip the second.
   if (!html.includes('/js/blog-analytics.js')) {
     html = html.replace('</head>', ANALYTICS + '\n</head>');
+  }
+  if (!html.includes('/_vercel/insights/script.js')) {
+    html = html.replace('</head>', VERCEL_ANALYTICS + '\n</head>');
+  }
+  if (!html.includes('/_vercel/speed-insights/script.js')) {
+    html = html.replace('</head>', VERCEL_SPEED_INSIGHTS + '\n</head>');
   }
   if (!html.includes('facebook.com/tr?id=')) {
     html = html.replace('<body>', '<body>\n\n' + NOSCRIPT_PIXEL);

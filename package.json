@@ -12,6 +12,8 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "astro": "^7.2.1"
   },
   "devDependencies": {

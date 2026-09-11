@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 export interface Props {
   title?: string;
@@ -370,5 +372,58 @@ const schemaGraph = JSON.stringify({
     <div class="cursor" aria-hidden="true"></div>
     <div class="cursor-dot" aria-hidden="true"></div>
     <slot />
+
+    {/*
+      Vercel Web Analytics. Third of the three tags on this page, alongside
+      GA4 and the Meta pixel in <head> — it answers a different question from
+      either: plain page views with no cookie and no cross-site identity. It is
+      still a browser script and a blocker can stop it, but it is served from
+      this origin rather than a known ad domain, so it survives blocklists
+      that take out the other two.
+
+      The Astro entry point, NOT '@vercel/analytics/next' — that one is the
+      Next.js build and pulls in next/navigation, which does not exist here.
+
+      It loads /_vercel/insights/script.js — same origin, injected by Vercel's
+      edge at request time, so it needs no change to the script-src or
+      connect-src in vercel.json and ships nothing in the static build. That
+      also means it is inert on `astro dev` and on any non-Vercel host: the
+      path 404s and the component quietly does nothing.
+
+      Web Analytics must be switched ON for the project in the Vercel
+      dashboard or the script path is never served.
+
+      Placed at the end of <body>, not in <head>: it is deferred and needs no
+      global on window, unlike gtag() and fbq().
+
+      Disclosed in the privacy policy §5 by name, same as the other two.
+    */}
+    <Analytics />
+
+    {/*
+      Vercel Speed Insights. Sits beside <Analytics /> and answers the other
+      half of the question: Analytics counts the visit, this one records how
+      the page actually performed for that visitor — real-user LCP, CLS, INP,
+      FCP and TTFB, rather than the lab numbers Lighthouse gives us.
+
+      The Astro entry point, NOT '@vercel/speed-insights/next' — that one is
+      the Next.js build and pulls in next/navigation, which does not exist
+      here. Same trap as the Analytics import above.
+
+      Unlike <Analytics />, this component does ship code into the build: a
+      small module bundled to /_astro/*.js that defines the
+      <vercel-speed-insights> element, which then loads
+      /_vercel/speed-insights/script.js. Both are same-origin, so the
+      script-src 'self' in vercel.json already covers them and no CSP change
+      is needed. Beacons go to /_vercel/speed-insights/vitals, also same
+      origin, so connect-src 'self' covers the reporting too.
+
+      Speed Insights must be switched ON for the project in the Vercel
+      dashboard or the script path 404s and nothing is collected. It is inert
+      on `astro dev` and on any non-Vercel host for the same reason.
+
+      Disclosed in the privacy policy §5 alongside the other three tags.
+    */}
+    <SpeedInsights />
   </body>
 </html>
