@@ -16,9 +16,12 @@ import { readFile, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { posts, bySlug, SITE, url as postUrl, path as postPath } from '../src/data/posts.mjs';
+import { BOOKING_URL, BOOK_CTA, PHONE_DISPLAY, PHONE_HREF } from '../src/data/contact.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const BLOG = join(ROOT, 'src/pages/blog');
+
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -256,6 +259,56 @@ const EXTRA_CSS = `
 .foot-legal a{color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px}
 `;
 
+/* ------------------- header phone + call bar CSS -------------------
+ * Wrapped in markers and re-inserted on every run, unlike EXTRA_CSS,
+ * which is guarded by `.keep-reading{` and therefore only ever lands
+ * once. An edit here reaches every post on the next run; an edit to
+ * EXTRA_CSS reaches only posts that have never been processed.
+ * ----------------------------------------------------------------- */
+const CALLBAR_CSS_START = "/* GSTACK:CALLBAR-CSS-START */";
+const CALLBAR_CSS_END = "/* GSTACK:CALLBAR-CSS-END */";
+const CALLBAR_CSS = `${CALLBAR_CSS_START}
+/* ---------- header phone + mobile call bar (added 2026-09-17) ---------- */
+.nav-phone{display:inline-flex; align-items:center; gap:6px; font-weight:800; color:var(--terracotta); text-decoration:none; white-space:nowrap}
+.nav-phone:hover{color:var(--terracotta-d)}
+
+.callbar{display:none}
+@media (max-width:860px){
+  .callbar{
+    display:grid; grid-template-columns:1fr 1fr; gap:10px;
+    position:fixed; left:0; right:0; bottom:0; z-index:900;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));
+    background:#fbf4e7f0; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px);
+    border-top:1px solid var(--line); box-shadow:0 -10px 30px -18px #3a261499;
+  }
+  .callbar a{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    min-height:56px; padding:8px 6px; border-radius:16px; text-decoration:none;
+    font-weight:800; font-size:14.5px; line-height:1.15; text-align:center;
+  }
+  .callbar small{font-size:11px; font-weight:600; opacity:.75}
+  .callbar .cb-call{background:var(--paper); color:var(--ink); border:2px solid var(--ink)}
+  .callbar .cb-book{background:var(--terracotta); color:var(--paper); box-shadow:0 12px 22px -12px #a24728}
+  /* Clearance so the footer legal line stays above the fixed bar — the
+     bar is ~93px tall; 24px of gap on top of that. */
+  footer.site{padding-bottom:calc(117px + env(safe-area-inset-bottom,0px))}
+}
+${CALLBAR_CSS_END}`;
+
+/* ---------------------- the mobile sticky call bar ----------------------
+ * Mirrors src/components/CallBar.astro. The posts are standalone HTML that
+ * never goes through Astro, so the markup has to be duplicated here rather
+ * than imported — if you change one, change the other.
+ *
+ * Both links are picked up by the delegated conversion tracker in
+ * public/js/blog-analytics.js (tel: -> phone_click, the widget URL ->
+ * book_call_click), the same way they are on the Astro pages.
+ * --------------------------------------------------------------------- */
+const CALLBAR = `<section class="callbar" aria-label="Contact SpruceMySite">
+  <a class="cb-call" href="${PHONE_HREF}"><span>Call Now</span><small>${PHONE_DISPLAY}</small></a>
+  <a class="cb-book" href="${BOOKING_URL}" target="_blank" rel="noopener"><span>Book A Free Call</span><small>Pick a time that suits</small></a>
+</section>`;
+
 /* ------------------------------ the footer ------------------------------ */
 const FOOTER = `<footer class="site">
   <div class="wrap-wide foot-row">
@@ -367,6 +420,14 @@ for (const p of posts) {
     html = html.replace(/\n<\/style>/, EXTRA_CSS + '</style>');
   }
 
+  // 5b. Call-bar + header-phone CSS. Stripped and re-inserted every run so
+  //     later edits actually reach posts that have already been processed.
+  html = html.replace(
+    new RegExp(escapeRe(CALLBAR_CSS_START) + '[\\s\\S]*?' + escapeRe(CALLBAR_CSS_END) + '\\n?'),
+    ''
+  );
+  html = html.replace(/\n<\/style>/, '\n' + CALLBAR_CSS + '\n</style>');
+
   // 6. Visible breadcrumb above the hero. Any previous one is stripped first
   //    so a re-run replaces it rather than stacking a second.
   html = html.replace(/[ \t]*<nav class="crumbs"[\s\S]*?<\/nav>\n/, '');
@@ -380,7 +441,29 @@ for (const p of posts) {
   );
   html = html.replace(/· \d+ min read</, `· ${p.readingMinutes} min read<`);
 
-  // 8. Keep-reading block after the article, then the rebuilt footer. Same
+  // 8. Header phone link, before the booking button. Stripped first so a
+  //    re-run replaces it rather than stacking a second copy.
+  html = html.replace(/[ \t]*<a class="nav-phone"[\s\S]*?<\/a>\n/, '');
+  html = html.replace(
+    /([ \t]*)(<a class="btn" href="[^"]*\/widget\/booking\/)/,
+    (_m, indent, btn) =>
+      `${indent}<a class="nav-phone" href="${PHONE_HREF}">\u260E\uFE0E ${PHONE_DISPLAY}</a>\n${indent}${btn}`
+  );
+
+  // 9. Booking CTA wording — one source of truth, src/data/contact.mjs.
+  html = html.replace(
+    /(<a class="btn" href="[^"]*\/widget\/booking\/[^"]*"[^>]*>)([^<]*?)(\s*(?:&rarr;|\u2192)?\s*)(<\/a>)/g,
+    (_m, open, _label, arrow, close) => open + BOOK_CTA + arrow + close
+  );
+
+  // 10. Mobile sticky call bar, last thing before </body>.
+  //     The \n* on both sides matters: an \n? there leaves one more blank
+  //     line behind on every run, so the file never settles and the codemod
+  //     stops being idempotent.
+  html = html.replace(/\n*<section class="callbar"[\s\S]*?<\/section>\n*/, '\n');
+  html = html.replace(/\n<\/body>/, '\n\n' + CALLBAR + '\n\n</body>');
+
+  // 11. Keep-reading block after the article, then the rebuilt footer. Same
   //    strip-then-insert shape as the breadcrumb, for the same reason.
   html = html.replace(/[ \t]*<section class="keep-reading"[\s\S]*?<\/section>\n/, '');
   const tailRe = /\n[ \t]*<\/article>\n\s*<\/div>\n<\/main>/;

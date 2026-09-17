@@ -70,6 +70,13 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 .menu a{text-decoration:none;font-weight:600;font-size:.98rem;position:relative}
 .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-5px;height:2px;width:0;background:var(--terracotta);transition:.3s}
 .menu a:not(.btn):hover::after{width:100%}
+/* Header phone link. Sits between the FAQ link and the booking button so the
+   two conversion paths — call now, book later — are side by side. Underline
+   suppressed because .menu a:not(.btn)::after would draw one under the icon. */
+.nav-phone{display:inline-flex;align-items:center;gap:7px;font-weight:800!important;color:var(--terracotta);white-space:nowrap}
+.nav-phone::after{display:none}
+.nav-phone svg{flex:none}
+.nav-phone:hover{color:var(--terracotta-d)}
 .btn{display:inline-flex;align-items:center;gap:9px;background:var(--terracotta);color:#fff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:60px;border:none;cursor:pointer;font-size:1rem;box-shadow:0 14px 26px -12px var(--terracotta-d);transition:transform .25s,box-shadow .25s,background .25s}
 .btn:hover{transform:translateY(-3px);box-shadow:0 22px 34px -14px var(--terracotta-d);background:var(--terracotta-d)}
 .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
@@ -82,7 +89,7 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;width:100%}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--paper);border:1px solid var(--line);padding:8px 16px;border-radius:50px;font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sage-d);box-shadow:0 8px 20px -16px #000;margin-bottom:22px}
 .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(111,124,76,.22)}
-.hero h1{font-size:clamp(2.9rem,7vw,6rem);margin-bottom:20px}
+.hero h1{font-size:clamp(2.35rem,5.2vw,4.4rem);margin-bottom:20px}
 .hero h1 .hi{display:block;font-size:.42em;font-weight:500;color:var(--ink-soft);letter-spacing:0;margin-bottom:.1em}
 .hero h1 em{font-style:italic;color:var(--terracotta);position:relative;white-space:nowrap}
 .hero h1 em svg{position:absolute;left:-2%;bottom:-.14em;width:104%;height:.3em;color:var(--honey)}
@@ -90,7 +97,11 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 .hero .equation{font-family:"Fraunces";font-style:italic;font-size:1.32rem;color:var(--violet);margin-bottom:30px}
 .hero .equation b{color:var(--violet);font-style:normal}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.trust{display:flex;align-items:center;gap:10px;margin-top:26px;font-size:.92rem;color:var(--ink-soft)}
+/* "Prefer to talk now?" — the ready-right-now escape hatch under the hero CTAs. */
+.hero-phone{margin:16px 0 0;font-size:.98rem;color:var(--ink-soft)}
+.hero-phone a{font-weight:800;color:var(--terracotta);text-decoration:none;border-bottom:2px solid rgba(201,96,60,.35);transition:border-color .25s,color .25s}
+.hero-phone a:hover{color:var(--terracotta-d);border-bottom-color:var(--terracotta-d)}
+.trust{display:flex;align-items:center;gap:10px;margin-top:18px;font-size:.92rem;color:var(--ink-soft)}
 .stars{color:var(--honey);letter-spacing:2px}
 
 /* three.js stage */
@@ -302,7 +313,7 @@ footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padd
   .cards,.quotes,.steps{grid-template-columns:1fr}
   .menu{display:none}
   .burger{display:flex}
-  .menu.open{display:flex;position:absolute;top:100%;right:18px;flex-direction:column;background:var(--paper);padding:20px 26px;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line)}
+  .menu.open{display:flex;position:absolute;top:100%;right:18px;flex-direction:column;align-items:flex-start;gap:18px;background:var(--paper);padding:20px 26px;border-radius:18px;box-shadow:var(--shadow);border:1px solid var(--line)}
   .hero{padding-top:120px}
   .stage{max-width:380px;margin-top:30px}
   .keyart{display:none}
@@ -311,6 +322,34 @@ footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padd
   .stats{grid-template-columns:1fr}
   body{font-size:17px}
   .engine,.keys{margin:0 14px}
+
+  /* Compact the hero copy so the primary CTA lands ABOVE the fold on a
+     ~780px-tall phone. The fixed .callbar owns the bottom ~93px, so anything
+     below roughly y=670 is either off-screen or sitting under the bar — which
+     is where the CTA, the phone line and the trust line ended up once the
+     headline grew from six words to nine. Measured on a 390x780 viewport:
+     this pulls the CTA from y=679 to inside the fold. */
+  .hero{padding-top:84px}
+  .eyebrow{margin-bottom:14px;font-size:.74rem;padding:7px 13px}
+  .hero h1{font-size:2.05rem;margin-bottom:14px}
+  .hero .lead{font-size:1.02rem;margin-bottom:10px}
+  .hero .equation{font-size:1.06rem;margin-bottom:14px}
+  .hero-cta{gap:10px}
+  .hero-cta .btn{flex:1 1 100%;justify-content:center}
+  /* The secondary CTA drops to a text link on phones. As a second full-width
+     pill it cost ~55px of fold for an anchor jump, and the fixed .callbar is
+     already carrying two real buttons at the bottom of the same screen. */
+  .hero-cta .btn.ghost{
+    flex:0 0 auto;background:none;border:none;box-shadow:none;padding:4px 0;
+    color:var(--ink-soft);font-weight:700;text-decoration:underline;
+    text-underline-offset:4px;text-decoration-color:var(--line)
+  }
+  .hero-cta .btn.ghost:hover{background:none;color:var(--ink)}
+  /* "Prefer to talk now? Call Christian on ..." is a straight duplicate of the
+     Call Now button in the always-visible .callbar on this breakpoint, and it
+     was costing 60px of fold. The number is still one tap away at all times. */
+  .hero-phone{display:none}
+  .trust{margin-top:10px;font-size:.82rem;line-height:1.35;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important}

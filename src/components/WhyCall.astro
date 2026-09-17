@@ -1,0 +1,107 @@
+---
+import { BOOKING_URL, BOOK_CTA, PHONE_DISPLAY, PHONE_HREF } from '../data/contact.mjs';
+
+/*
+  "What we'll cover on the call" — the reassurance block that sits immediately
+  before the booking CTA, so nobody has to guess what they're agreeing to.
+
+  EVERY FACT IN THE `proof` ARRAY MUST BE SUBSTANTIABLE. This block sits where a
+  testimonials section would normally go, and the temptation to pad it with
+  ratings, client counts or results is exactly how the four fabricated 5-star
+  claims got onto this site in the first place (MARKETING-PLAN.md §3, P0 #1/#2 —
+  misleading conduct under ACL s18/s29). Each line below is traceable:
+
+    10+ years         -> same figure as Stats.astro and the hero eyebrow
+    Bondi Junction    -> published address, Person + ProfessionalService schema
+    7-10 days         -> same figure as Stats.astro, About.astro and the FAQ
+    Mon-Sat 9am-8pm   -> Contact.astro assistance hours + openingHours schema
+    ABN 31 567 153 201-> footer, and it is a real registered ABN
+
+  Do not add a line here that cannot be pointed at something already published.
+*/
+
+const agenda = [
+  {
+    title: "What's stopping your site converting",
+    body: "We look at your website the way a customer does and find where they give up before they contact you."
+  },
+  {
+    title: 'Your quickest local SEO win',
+    body: "Usually one fixable thing — your Google Business Profile, your suburb pages or your reviews — that moves you up in local results."
+  },
+  {
+    title: 'Whether faster follow-up would win more jobs',
+    body: 'If enquiries are going cold before you call back, we work out what an automatic 60-second reply would be worth to you.'
+  },
+  {
+    title: 'A practical next step — either way',
+    body: "You leave with something you can act on, whether you work with us or not. No hard sell, no 40-slide pitch deck."
+  }
+];
+
+const proof = [
+  '10+ years building Sydney sites',
+  'Bondi Junction based, not offshore',
+  'Sites live in 7–10 days',
+  'Reachable Mon–Sat, 9am–8pm',
+  'Registered business — ABN 31 567 153 201'
+];
+---
+<section id="why-call">
+  <div class="wrap">
+    <span class="tag reveal">Before You Book</span>
+    <h2 class="sec-title reveal">What We'll Actually Cover On The Call.</h2>
+    <p class="sec-sub reveal">It's a conversation, not a pitch. Here's exactly what happens so you can decide whether it's worth your time.</p>
+
+    <div class="agenda">
+      {agenda.map((item, i) => (
+        <div class="agenda-item reveal">
+          <span class="agenda-n">{String(i + 1).padStart(2, '0')}</span>
+          <div>
+            <h3>{item.title}</h3>
+            <p>{item.body}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="why-cta reveal">
+      <div class="why-proof">
+        {proof.map((p) => (
+          <span class="why-chip">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            {p}
+          </span>
+        ))}
+      </div>
+      <div class="why-actions">
+        <a href={BOOKING_URL} class="btn" target="_blank" rel="noopener" data-cursor>
+          {BOOK_CTA}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href={PHONE_HREF} class="btn ghost" data-cursor>Or Call {PHONE_DISPLAY}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .agenda{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:40px}
+  .agenda-item{display:flex;gap:16px;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:24px 24px 20px;box-shadow:0 18px 40px -32px rgba(58,38,20,.55)}
+  .agenda-n{flex:none;font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:600;color:var(--terracotta);line-height:1;padding-top:2px}
+  .agenda-item h3{font-size:1.16rem;margin-bottom:8px}
+  .agenda-item p{font-size:.97rem;color:var(--ink-soft);margin:0}
+
+  .why-cta{margin-top:36px;background:var(--cream-2);border:1px solid var(--line);border-radius:var(--r);padding:28px;display:flex;flex-wrap:wrap;gap:24px;align-items:center;justify-content:space-between}
+  .why-proof{display:flex;flex-wrap:wrap;gap:10px;max-width:46em}
+  .why-chip{display:inline-flex;align-items:center;gap:7px;background:var(--paper);border:1px solid var(--line);border-radius:50px;padding:7px 14px;font-size:.86rem;font-weight:700;color:var(--ink-soft)}
+  .why-chip svg{color:var(--sage);flex:none}
+  .why-actions{display:flex;flex-wrap:wrap;gap:12px}
+
+  @media(max-width:860px){
+    .agenda{grid-template-columns:1fr}
+    .why-cta{flex-direction:column;align-items:flex-start;padding:24px 20px}
+    .why-actions{width:100%}
+    .why-actions .btn{flex:1 1 100%;justify-content:center}
+  }
+</style>

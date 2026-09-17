@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import Nav from '../components/Nav.astro';
 import Footer from '../components/Footer.astro';
+import CallBar from '../components/CallBar.astro';
 
 export interface Props {
   title: string;
@@ -27,6 +28,8 @@ const { title, description, canonical, datePublished, dateModified } = Astro.pro
     <slot />
   </main>
   <Footer />
+  {/* Mobile-only sticky Call Now / Book bar — hidden above 860px. */}
+  <CallBar />
 </Layout>
 
 <script>
@@ -273,6 +276,24 @@ document.querySelectorAll<HTMLButtonElement>('.q button').forEach(btn => {
   font-size: 1.1rem;
 }
 
+/* Booking button + "or call" on one row, stacked on narrow screens. */
+.cta-band-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  align-items: center;
+  justify-content: center;
+}
+.cta-band-phone {
+  color: var(--cream);
+  font-weight: 700;
+  font-size: .98rem;
+  text-decoration: none;
+  border-bottom: 2px solid rgba(251,244,231,.35);
+  transition: border-color .25s;
+}
+.cta-band-phone:hover { border-bottom-color: var(--cream); }
+
 /* ---------- inline star rating ---------- */
 .stars-row { display: flex; gap: 3px; margin-bottom: 6px; }
 .stars-row svg { width: 16px; height: 16px; fill: var(--honey); }
@@ -281,5 +302,8 @@ document.querySelectorAll<HTMLButtonElement>('.q button').forEach(btn => {
 @media (max-width: 720px) {
   .svc-hero { padding: 110px 0 60px; }
   .cta-band { border-radius: 18px; margin: 0 14px 80px; padding: 56px 24px; }
+  /* Clearance for the fixed mobile CallBar, which overlaps the last ~76px. */
+  .cta-band { margin-bottom: 96px; }
+  .cta-band-actions { flex-direction: column; }
 }
 </style>

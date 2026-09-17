@@ -1,4 +1,5 @@
 ---
+import { BOOKING_URL, BOOK_CTA, PHONE_DISPLAY, PHONE_HREF } from '../data/contact.mjs';
 ---
 <section class="hero" id="top">
   <div class="wrap hero-grid">
@@ -6,28 +7,39 @@
       <span class="eyebrow"><span class="dot"></span>10+ Years • Bondi Junction, Sydney</span>
       <h1>
         <span class="hi">Hi, I'm Christian 👋</span>
-        Let's Get Your Digital House In
-        <em>Order
+        {/* The space before <em> is an explicit expression, not markup
+            whitespace: Astro's compressHTML collapses a newline + indent
+            between a text node and an inline element to nothing, which
+            renders as "MoreEnquiries". */}
+        Web Design &amp; Local SEO That Brings Sydney Businesses More{' '}<em>Enquiries
           <svg viewBox="0 0 200 20" preserveAspectRatio="none"><path d="M2 14 C50 4 150 4 198 12" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/></svg>
         </em>.
       </h1>
-      <p class="lead">You didn't start your business to spend Sundays fixing broken plugins. We build smart systems that work while you're grabbing a coffee.</p>
+      <p class="lead">We build the website, the local SEO and the lead follow-up that turn Sydney searches into booked jobs — so you're not spending Sundays fixing broken plugins.</p>
       <p class="equation">Web design <b>+</b> mindset tools <b>=</b> less burnout, more leads.</p>
       <div class="hero-cta">
-        <a href="https://api.sprucemysite.com.au/widget/booking/IDovJNXAiGWPcSZOYddc" class="btn" target="_blank" rel="noopener" data-cursor>
-          Book A Call
+        <a href={BOOKING_URL} class="btn" target="_blank" rel="noopener" data-cursor>
+          {BOOK_CTA}
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#services" class="btn ghost" data-cursor>See How It Works</a>
       </div>
+      <p class="hero-phone">
+        Prefer to talk now? Call Christian on{' '}<a href={PHONE_HREF} data-cursor>{PHONE_DISPLAY}</a>
+      </p>
       <!--
         No star glyphs here until real Google reviews exist. Five honey stars beside a
         trust line reads as a 5-star rating whether or not a number is attached, and
         SpruceMySite has no reviews on record — that's misleading conduct under ACL
         s18/s29. Same rule as Stats.astro and Reviews.astro. See MARKETING-PLAN.md §3.
         Restore a rating display only when it reflects a real, verifiable Google score.
+
+        Everything in the reassurance line below must stay substantiable: the address
+        is published in the Person/ProfessionalService schema, "10+ years" is the same
+        figure as Stats.astro, and "no hard sell" is a promise about the call itself,
+        not a claim about past results.
       -->
-      <div class="trust"><span class="pin" aria-hidden="true">📍</span> Bondi Junction Based · 10+ Years Building Sydney Sites</div>
+      <div class="trust"><span class="pin" aria-hidden="true">📍</span> Bondi Junction Based · 10+ Years Building Sydney Sites · No Hard Sell</div>
     </div>
     <div class="stage" id="stage" data-cursor>
       <div class="ring"></div>

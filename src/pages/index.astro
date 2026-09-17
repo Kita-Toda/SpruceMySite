@@ -10,7 +10,9 @@ import Services from '../components/Services.astro';
 import Analytics from '../components/Analytics.astro';
 import KeysBand from '../components/KeysBand.astro';
 import Reviews from '../components/Reviews.astro';
+import WhyCall from '../components/WhyCall.astro';
 import FAQ from '../components/FAQ.astro';
+import CallBar from '../components/CallBar.astro';
 import Quote from '../components/Quote.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
@@ -29,15 +31,23 @@ import Footer from '../components/Footer.astro';
   <Services />
   <Analytics />
   <KeysBand />
+  {/*
+    <Reviews /> renders nothing while its `quotes` array is empty — that's by
+    design, not a bug. It stays mounted here so the first real, permissioned
+    client quote is a one-line change in Reviews.astro rather than a re-wiring
+    job. See the header of that file before adding anything to it.
+  */}
   <Reviews />
+  <WhyCall />
   <FAQ />
   {/*
     <Quote /> hidden 2026-08-12 at the owner's request.
 
     This was the site's ONLY form — the Formspree quote form that feeds the
     n8n → GoHighLevel pipeline. While it's commented out, the sole conversion
-    paths are the "Book A Call" booking widget in the hero and the phone/email
-    links in <Contact />. Nothing else links to #quote, so no dead anchors.
+    paths are the booking widget (hero, nav, #why-call, <Contact /> and the
+    mobile <CallBar />) and the tel:/mailto: links beside them. Nothing else
+    links to #quote, so no dead anchors.
 
     To restore: uncomment the line below. The component, its styles
     (.cta-box in global.css) and its submit handler are all untouched.
@@ -45,6 +55,7 @@ import Footer from '../components/Footer.astro';
   {/* <Quote /> */}
   <Contact />
   <Footer />
+  <CallBar />
 </Layout>
 
 <script>
