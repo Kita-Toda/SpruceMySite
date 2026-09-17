@@ -18,7 +18,11 @@
 }
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+/* overflow-x on html as well as body. Set on body alone it is widely ignored on
+   mobile, which is how the marquee overflow above stayed pannable. `clip` rather
+   than `hidden` so this never silently turns into a scroll container; nothing
+   here uses position:sticky, so there is nothing for it to break. */
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   margin:0;
   background:var(--cream);
@@ -27,6 +31,13 @@ body{
   font-size:18px;
   line-height:1.6;
   overflow-x:hidden;
+  /* Chrome on Android inflates text inside wide blocks on its own ("font
+     boosting"), which silently overrides the hero sizes tuned below and is the
+     usual reason a layout looks right on iPhone and wrong on a Pixel. */
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  /* Kills the grey flash box Android draws over a tapped button. */
+  -webkit-tap-highlight-color:transparent;
   -webkit-font-smoothing:antialiased;
   cursor:pointer;
 }
@@ -78,6 +89,10 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 .nav-phone svg{flex:none}
 .nav-phone:hover{color:var(--terracotta-d)}
 .btn{display:inline-flex;align-items:center;gap:9px;background:var(--terracotta);color:#fff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:60px;border:none;cursor:pointer;font-size:1rem;box-shadow:0 14px 26px -12px var(--terracotta-d);transition:transform .25s,box-shadow .25s,background .25s}
+/* Press feedback for touch. .btn's hover transition does nothing on a phone,
+   and the body rule above removes Android's default grey tap flash, so without
+   this a tapped button looks broken. Mirrors .callbar-btn:active. */
+.btn:active{transform:translateY(1px)}
 .btn:hover{transform:translateY(-3px);box-shadow:0 22px 34px -14px var(--terracotta-d);background:var(--terracotta-d)}
 .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink);box-shadow:none}
 .btn.ghost:hover{background:var(--ink);color:var(--cream)}
@@ -86,6 +101,14 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:90px}
+/* 100vh on a phone is the viewport with the URL bar HIDDEN, so on first paint —
+   when the bar is still showing — the hero is ~60-110px taller than the screen
+   on both iOS Safari and Chrome on Android. That pushes the CTA the 560px block
+   below was carefully measured to keep above the fold back under it, and makes
+   the page jump as the bar retracts. 100dvh tracks the visible area instead.
+   The 100vh line above stays as the fallback for browsers without dvh
+   (pre-15.4 Safari, pre-108 Chrome); this overrides it wherever dvh is real. */
+@supports (min-height:100dvh){ .hero{min-height:100dvh} }
 .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;width:100%}
 .eyebrow{display:inline-flex;align-items:center;gap:9px;background:var(--paper);border:1px solid var(--line);padding:8px 16px;border-radius:50px;font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--sage-d);box-shadow:0 8px 20px -16px #000;margin-bottom:22px}
 .eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 4px rgba(111,124,76,.22)}
@@ -127,7 +150,13 @@ header.scrolled{background:rgba(251,244,231,.82);backdrop-filter:blur(14px);box-
 @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
 
 /* ---------- marquee ---------- */
-.marquee{position:relative;z-index:2;background:var(--ink);color:var(--cream);padding:18px 0;margin-top:30px;transform:rotate(-1.4deg) scale(1.04);box-shadow:var(--shadow)}
+/* overflow:hidden is load-bearing, not cosmetic. .marquee-track below is
+   width:max-content — 3565px of repeated text — and without clipping it here
+   that width becomes the width of the DOCUMENT. On a 390px phone the page then
+   pans ~3000px sideways into empty space. The body overflow-x:hidden alone does
+   not stop it: set on body but not html, mobile Safari and Chrome on Android
+   both still allow the pan. Clipping at the banner fixes the cause. */
+.marquee{position:relative;z-index:2;overflow:hidden;background:var(--ink);color:var(--cream);padding:18px 0;margin-top:30px;transform:rotate(-1.4deg) scale(1.04);box-shadow:var(--shadow)}
 .marquee-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scrollx 28s linear infinite}
 .marquee:hover .marquee-track{animation-play-state:paused}
 .marquee span{font-family:"Fraunces";font-style:italic;font-size:1.5rem;padding:0 30px;display:inline-flex;align-items:center;gap:30px}
@@ -481,7 +510,11 @@ footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padd
   padding: 12px 13px;
   color: #fff;
   font-family: inherit;
-  font-size: 15px;
+  /* 16px is a hard floor, not a style choice: iOS Safari auto-zooms the whole
+     page when you focus an input smaller than this, and does not zoom back out.
+     On the quote form that means every phone lead starts by fighting the
+     layout. Android does not do it, which is why it survives desktop testing. */
+  font-size: 16px;
   margin-bottom: 14px;
   min-height: 48px;
   -webkit-appearance: none;
