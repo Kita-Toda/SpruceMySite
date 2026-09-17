@@ -21,6 +21,27 @@ subdomain, so their authority accrues to the main domain.
 - `public/llms.txt` is hand-curated: add the post there too.
 - `dist/sitemap.xml` is generated at build. Don't hand-edit it.
 
+## Dependencies
+
+`npm audit` must stay at zero. It runs as part of `npm run check` — deliberately
+NOT as part of `npm run build`, because a newly published advisory must never
+block a production deploy of unrelated work.
+
+When an advisory appears:
+
+1. **Upgrade the parent first.** Every advisory this repo has ever had came in
+   transitively through `astro`, and the fix was already inside the semver range
+   in `package.json` — only `package-lock.json` was stale. `npm update astro`
+   was the whole fix.
+2. **`overrides` is a last resort**, for when the parent has no fixed release.
+   An override beats the parent's own range, so a stale one can pin a
+   *vulnerable* version that npm would otherwise have fixed by itself.
+3. **Delete overrides once the parent catches up.** Test by removing them and
+   re-running `npm audit`. On 2026-09-17 all seven were found dead this way.
+
+`.github/dependabot.yml` opens grouped update PRs weekly so the lockfile can't
+drift far enough for this to recur. Its header records the full post-mortem.
+
 ## Skill routing
 
 When the user's request matches an available skill, invoke it via the Skill tool. When in doubt, invoke the skill.

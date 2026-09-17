@@ -1,0 +1,58 @@
+# Why this file exists.
+#
+# Without it, Dependabot only ever sends SECURITY ALERTS — an email when an
+# advisory lands. It never opens an update PR. That is how this repo collected
+# six open advisories (one critical) by 2026-09-17: every dependency was
+# transitive through `astro`, every fix was already inside the `^7.2.1` range
+# in package.json, and nothing ever refreshed package-lock.json. The lockfile
+# sat on astro 7.2.1 while 7.3.3 shipped the fixes.
+#
+# The failure mode that followed is the one worth preventing. Each time alerts
+# appeared, the fix was a hand-written `overrides` entry forcing a safe version
+# (ac25e1c added seven, 80da168 bumped one). Overrides beat the parent package's
+# own range, so a stale override can later PIN a vulnerable version that npm
+# would otherwise have fixed on its own. By the time astro was upgraded to
+# 7.3.3, all seven overrides were dead weight — verified by removing them and
+# re-auditing: 0 vulnerabilities, byte-identical build output.
+#
+# THE RULE: upgrade the parent package first. Reach for `overrides` only when
+# the parent genuinely has no fixed release, and delete the override as soon as
+# it does. Re-test overrides after every major upgrade — `npm audit` with them
+# removed is the check.
+
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+      time: "09:00"
+      timezone: Australia/Sydney
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: deps
+    # Grouped so a normal week is one reviewable PR, not eight. Security
+    # patches are deliberately NOT grouped — they should arrive on their own
+    # and be mergeable without waiting on an unrelated minor bump.
+    groups:
+      astro:
+        patterns:
+          - astro
+          - "@astrojs/*"
+      vercel:
+        patterns:
+          - "@vercel/*"
+      dev-tooling:
+        dependency-type: development
+        patterns:
+          - "*"
+
+  # The repo has no workflows today. Kept so that if one is ever added, its
+  # pinned action SHAs get the same weekly treatment rather than rotting.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci
