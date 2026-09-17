@@ -25,3 +25,7 @@ backup html pages/
 *.zip
 .vercel
 .gstack/
+
+# Internal notes — deliberately never committed. Anchored to the repo root
+# per the note above.
+/RANK-AND-RENT-*.md
