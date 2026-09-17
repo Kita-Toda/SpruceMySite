@@ -70,8 +70,11 @@ updates:
       - dependency-name: typescript
         update-types: [version-update:semver-major]
 
-  # The repo has no workflows today. Kept so that if one is ever added, its
-  # pinned action SHAs get the same weekly treatment rather than rotting.
+  # 755caaa added ci.yml and dependabot-auto-merge.yml, so this now has real
+  # work to do: keep their pinned action SHAs current rather than rotting.
+  # (Before those existed this ecosystem errored every run with
+  # "dependency_file_not_found" — harmless, but that is what those red
+  # "Dependabot Updates / github_actions" runs on 2026-09-17 were.)
   - package-ecosystem: github-actions
     directory: /
     schedule:
