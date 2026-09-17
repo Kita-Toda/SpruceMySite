@@ -1,24 +1,37 @@
 # Why this file exists.
 #
-# Without it, Dependabot only ever sends SECURITY ALERTS — an email when an
-# advisory lands. It never opens an update PR. That is how this repo collected
-# six open advisories (one critical) by 2026-09-17: every dependency was
-# transitive through `astro`, every fix was already inside the `^7.2.1` range
-# in package.json, and nothing ever refreshed package-lock.json. The lockfile
-# sat on astro 7.2.1 while 7.3.3 shipped the fixes.
+# CORRECTION (2026-09-17, same day): the first version of this header — and the
+# commit message on 5e7a797 — claimed Dependabot "was only ever sending security
+# ALERTS by email; it was never opening update PRs". That was wrong, and the
+# open PR list disproves it. Dependabot SECURITY updates need no config file and
+# had already opened a PR for every advisory:
 #
-# The failure mode that followed is the one worth preventing. Each time alerts
-# appeared, the fix was a hand-written `overrides` entry forcing a safe version
-# (ac25e1c added seven, 80da168 bumped one). Overrides beat the parent package's
-# own range, so a stale override can later PIN a vulnerable version that npm
-# would otherwise have fixed on its own. By the time astro was upgraded to
-# 7.3.3, all seven overrides were dead weight — verified by removing them and
-# re-auditing: 0 vulnerabilities, byte-identical build output.
+#   #12  2026-09-09  svgo    4.0.2  -> 4.1.0
+#   #13  2026-09-10  astro   7.2.1  -> 7.2.8
+#   #15  2026-09-11  js-yaml 4.3.1  -> 4.3.2
+#   #16  2026-09-11  sharp   0.35.3 -> 0.35.4
+#   #8   2026-08-12  nanoid  3.3.15 -> 3.3.18
 #
-# THE RULE: upgrade the parent package first. Reach for `overrides` only when
-# the parent genuinely has no fixed release, and delete the override as soon as
-# it does. Re-test overrides after every major upgrade — `npm audit` with them
-# removed is the check.
+# Those are the exact fixes. They sat open for up to eight days (#8 for a month)
+# and nobody merged them. So the real failure was never detection or delivery —
+# it was that nothing acted on the PRs. A config file does not fix that, and no
+# amount of extra PRs will.
+#
+# What this file actually adds is VERSION updates: routine non-security bumps,
+# which Dependabot does NOT do without config. That keeps the lockfile from
+# drifting between advisories — worth having, but it is a secondary benefit.
+# The primary fix is a human or an automerge rule acting on security PRs.
+#
+# The one thing that IS load-bearing from the original post-mortem: the
+# `overrides` habit. Each round of alerts got hand-patched with an entry forcing
+# a safe version (ac25e1c added seven, 80da168 bumped one) instead of upgrading
+# the parent. An override beats the parent package's own range, so a stale one
+# can later PIN a vulnerable version npm would otherwise have fixed unattended.
+# Upgrading astro 7.2.1 -> 7.3.3 made all seven dead weight; verified by
+# deleting them and re-auditing (0 vulnerabilities, byte-identical build).
+#
+# THE RULE: merge the security PR, or upgrade the parent. Reach for `overrides`
+# only when the parent has no fixed release, and delete it once one exists.
 
 version: 2
 updates:
@@ -47,6 +60,15 @@ updates:
         dependency-type: development
         patterns:
           - "*"
+
+    # typescript majors are held back on purpose. @astrojs/check@0.9.10
+    # peer-requires `^5.0.0 || ^6.0.0`, so TypeScript 7 fails `npm install`
+    # with ERESOLVE and takes the Vercel build down with it — which is exactly
+    # what happened to the first PR this file generated (#17, preview build
+    # failed). Lift this once @astrojs/check declares support for TS 7.
+    ignore:
+      - dependency-name: typescript
+        update-types: [version-update:semver-major]
 
   # The repo has no workflows today. Kept so that if one is ever added, its
   # pinned action SHAs get the same weekly treatment rather than rotting.

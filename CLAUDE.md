@@ -39,8 +39,20 @@ When an advisory appears:
 3. **Delete overrides once the parent catches up.** Test by removing them and
    re-running `npm audit`. On 2026-09-17 all seven were found dead this way.
 
-`.github/dependabot.yml` opens grouped update PRs weekly so the lockfile can't
-drift far enough for this to recur. Its header records the full post-mortem.
+**The actual failure mode, recorded honestly.** On 2026-09-17 six advisories
+were open. Dependabot had *already* opened a PR for every one of them — #12
+(svgo), #13 (astro), #15 (js-yaml), #16 (sharp), some sitting for over a week.
+Detection and delivery both worked. Nothing merged them. So the thing to fix is
+the reviewing habit, not the tooling: **when a Dependabot security PR arrives,
+merge it or supersede it deliberately.**
+
+`.github/dependabot.yml` adds *version* updates (routine bumps, which Dependabot
+does not do without config) so the lockfile can't drift between advisories. That
+is a secondary benefit, not the fix. Its header carries the full post-mortem,
+including the correction to the first, wrong version of this explanation.
+
+Note that config also generates PRs that can break the build: TypeScript majors
+are pinned back because `@astrojs/check@0.9.10` peer-requires `^5 || ^6`.
 
 ## Skill routing
 
