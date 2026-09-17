@@ -1,0 +1,87 @@
+# Merges Dependabot SECURITY patches automatically, once CI passes.
+#
+# This exists because of what actually went wrong on 2026-09-17. Dependabot had
+# already opened a PR for every one of six advisories — #12, #13, #15, #16, and
+# #8 a month earlier — and every one sat unmerged, one of them for eight days,
+# while the alerts stayed open. Detection worked. Delivery worked. Nothing acted
+# on them. A config file that opens MORE pull requests does not fix that; this
+# does.
+#
+# Deliberately narrow. A PR merges only when ALL of these hold:
+#
+#   * it is a security update (Dependabot says so via fetch-metadata)
+#   * the bump is patch or minor, never major
+#   * the CI job in ci.yml passed
+#
+# Everything else — routine version bumps, and every major — still waits for a
+# human. TypeScript 7 (#17) would fail two of the three tests.
+
+name: Dependabot auto-merge
+
+on: pull_request_target
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  verify:
+    # pull_request_target runs in the context of the BASE branch with a
+    # writable token, so it must never check out or execute PR code. It does
+    # not: ci.yml does the building, on the untrusted `pull_request` event with
+    # a read-only token. This job only waits for that result.
+    if: github.actor == 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for CI
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const sha = context.payload.pull_request.head.sha;
+            const deadline = Date.now() + 15 * 60 * 1000;
+            while (Date.now() < deadline) {
+              const { data } = await github.rest.checks.listForRef({
+                owner, repo, ref: sha, check_name: 'verify',
+              });
+              const run = data.check_runs.find(r => r.name === 'verify');
+              if (run && run.status === 'completed') {
+                if (run.conclusion === 'success') return;
+                core.setFailed(`CI concluded ${run.conclusion}`);
+                return;
+              }
+              await new Promise(r => setTimeout(r, 15000));
+            }
+            core.setFailed('timed out waiting for CI');
+
+  automerge:
+    needs: verify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Read Dependabot metadata
+        id: meta
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # alert-state is 'OPEN' only for a security update. A routine version
+      # bump reports an empty string and falls through without merging.
+      - name: Merge security patch/minor
+        if: |
+          steps.meta.outputs.alert-state == 'OPEN' &&
+          (steps.meta.outputs.update-type == 'version-update:semver-patch' ||
+           steps.meta.outputs.update-type == 'version-update:semver-minor')
+        run: gh pr merge --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Explain when left for a human
+        if: |
+          !(steps.meta.outputs.alert-state == 'OPEN' &&
+            (steps.meta.outputs.update-type == 'version-update:semver-patch' ||
+             steps.meta.outputs.update-type == 'version-update:semver-minor'))
+        run: |
+          echo "Left open for review."
+          echo "  security alert : ${{ steps.meta.outputs.alert-state || 'none (routine bump)' }}"
+          echo "  update type    : ${{ steps.meta.outputs.update-type }}"
